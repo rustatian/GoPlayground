@@ -15,6 +15,3 @@
 
 .gitignore
 .idea/
-main.go
-multiply_read_from_channel.go
-rpc.go
