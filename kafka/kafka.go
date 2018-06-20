@@ -31,7 +31,9 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for range producer.Successes() {
+		for a := range producer.Successes() {
+			aa, _ := a.Value.Encode()
+			log.Println(string(aa))
 			successes++
 		}
 	}()
@@ -39,13 +41,12 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for err := range producer.Errors() {
-			log.Println(err)
+		for range producer.Errors() {
+			//log.Println(err.Msg)
 			errors++
 		}
 	}()
 
-ProducerLoop:
 	for {
 		message := &sarama.ProducerMessage{Topic: "my_topic", Value: sarama.StringEncoder("testing 123")}
 		select {
@@ -54,7 +55,6 @@ ProducerLoop:
 
 		case <-signals:
 			producer.AsyncClose() // Trigger a shutdown of the producer.
-			break ProducerLoop
 		}
 	}
 
