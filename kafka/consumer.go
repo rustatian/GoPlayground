@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/Shopify/sarama"
 	"log"
 	"os"
@@ -12,6 +13,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	json.NewDecoder(nil).Decode()
 
 	defer func() {
 		if err := consumer.Close(); err != nil {
