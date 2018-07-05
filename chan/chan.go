@@ -1,6 +1,15 @@
 package main
 
 func main() {
-	a := 1 << 16
-	println(a)
+	print(fooo())
+
+}
+
+func fooo() (i int) {
+	defer func() {
+		i = 3
+	}()
+
+	print("whoo")
+	return 2
 }
