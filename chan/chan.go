@@ -1,15 +1,46 @@
 package main
 
-func main() {
-	print(fooo())
+import (
+	"log"
+	"sync"
+)
+
+var receiver chan int
+
+func Setup() (receiver chan int) {
+	receiver = make(chan int)
+	return
+}
+
+//func Setup() (chan int) {
+//  receiver = make(chan int)
+//  return receiver
+//}
+
+func Launch(j int) {
+
+	for i := 0; i < j; i++ {
+		receiver <- i
+	}
 
 }
 
-func fooo() (i int) {
-	defer func() {
-		i = 3
+func main() {
+
+	var wg sync.WaitGroup
+	wg.Add(10)
+
+	receiver = Setup()
+
+	go func() {
+		for r := range receiver {
+			log.Println(r)
+			wg.Done()
+		}
 	}()
 
-	print("whoo")
-	return 2
+	Launch(10)
+
+	wg.Wait()
+
 }
