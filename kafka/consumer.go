@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/Shopify/sarama"
 	"log"
 	"os"
@@ -9,12 +8,10 @@ import (
 )
 
 func main() {
-	consumer, err := sarama.NewConsumer([]string{"localhost:9092"}, nil)
+	consumer, err := sarama.NewConsumer([]string{"54.152.193.114:9092"}, nil)
 	if err != nil {
 		panic(err)
 	}
-
-	json.NewDecoder(nil).Decode()
 
 	defer func() {
 		if err := consumer.Close(); err != nil {

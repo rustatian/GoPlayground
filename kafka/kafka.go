@@ -11,10 +11,10 @@ import (
 func main() {
 	config := sarama.NewConfig()
 	//config.Producer.MaxMessageBytes = 100000000
-	config.Producer.Return.Successes = true
+	//config.Producer.Return.Successes = true
 	//config.ChannelBufferSize = 1000000000
 	//config.Net.MaxOpenRequests = 100000
-	producer, err := sarama.NewAsyncProducer([]string{"localhost:9092"}, config)
+	producer, err := sarama.NewAsyncProducer([]string{"54.152.193.114:9092"}, config)
 	if err != nil {
 		panic(err)
 	}
@@ -41,8 +41,8 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for range producer.Errors() {
-			//log.Println(err.Msg)
+		for i := range producer.Errors() {
+			log.Println(i.Err)
 			errors++
 		}
 	}()

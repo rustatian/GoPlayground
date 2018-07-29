@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	broker := sarama.NewBroker("localhost:9092")
+	broker := sarama.NewBroker("54.152.193.114:9092")
 	err := broker.Open(nil)
 	if err != nil {
 		panic(err)
