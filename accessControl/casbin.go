@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/casbin/casbin"
-	"net/http"
 )
 
 type User struct {
@@ -14,8 +13,6 @@ type User struct {
 type Users []User
 
 func main() {
-
-	a := http.Request{}
 	e := casbin.NewEnforcer("./accessControl/auth_model.conf", "./accessControl/policy.csv")
 
 	sub := "alice" // the user that wants to access a resource.
