@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/ValeryPiashchynski/GoPlayground/rabbitmq/ers"
-	"github.com/ValeryPiashchynski/amqp"
+	"github.com/streadway/amqp"
 	"log"
 )
 
