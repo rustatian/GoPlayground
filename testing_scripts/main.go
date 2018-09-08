@@ -2,8 +2,10 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	tm "github.com/buger/goterm"
 	"io"
+	"io/ioutil"
 	"math/rand"
 	"mime/multipart"
 	"net/http"
@@ -100,7 +102,7 @@ func doPostRequest(fn string) {
 		panic(err)
 	}
 
-	req, err := http.NewRequest(http.MethodPost, "http://34.228.40.149:5685/v1/documents", &buf)
+	req, err := http.NewRequest(http.MethodPost, "http://192.168.101.96:5685/v1/documents", &buf)
 	req.Header.Set("Content-Type", writer.FormDataContentType())
 	req.Header.Set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vYXV0aC5pbnR1cm4uZG9ja2VyOjgwODIvYXV0aC9hY2Nlc3NfdG9rZW4iLCJpYXQiOjE1MzQ5NjM5ODEsImV4cCI6MTUzNzU5MTk4MSwibmJmIjoxNTM0OTYzOTgxLCJqdGkiOiJVR09TemptUkppcjRiTXlyIiwic3ViIjoxNTQ3LCJ1aWRfdXVpZCI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImNvbXBhbnlfdXVpZCI6IjMzMzMzMzMzLTMzMzMtMzMzMy0zMzMzLTMzMzMzMzMzMzMzMyJ9.-91UgS0AWUxWvpn115Tb5NAfDEc9EWaG4nGPgursVgM")
 	req.Close = true
@@ -114,11 +116,11 @@ func doPostRequest(fn string) {
 		defer resp.Body.Close()
 		resp.Close = true
 
-		//body, err := ioutil.ReadAll(resp.Body)
-		//if err != nil {
-		//	panic(err)
-		//}
-
-		//fmt.Printf("%s\n", string(body))
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			panic(err)
+		}
+		//
+		fmt.Printf("%s\n", string(body))
 	}
 }
