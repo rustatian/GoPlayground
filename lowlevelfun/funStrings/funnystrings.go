@@ -1,4 +1,4 @@
-package main
+package funStrings
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 func main() {
 	fmt.Print()
-	up := FromInterfaceToBytes([]byte{0x11, 0x23, 0x34})
+	up := FromInterfaceToBytes("some text for parse")
 	fmt.Print(up)
 
 	//type MyString string
