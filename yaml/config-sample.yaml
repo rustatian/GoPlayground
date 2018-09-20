@@ -1,0 +1,21 @@
+version: '3'
+endpoints:
+   - endpoint: http://localhost:5685/v1/document
+     duration: 20s
+     rate: 100
+     method: POST
+     content:
+        $include: multipart.yaml
+########################################################################
+   - endpoint: http://localhost:5685/v2/document
+     duration: 20s
+     rate: 100
+     method: GET
+########################################################################
+   - endpoint: http://localhost:5685/v3/document
+     duration: 20s
+     rate: 100
+     method: POST
+     content:
+       $include: post.yaml
+########################################################################

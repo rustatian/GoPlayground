@@ -1,0 +1,5 @@
+version: '3'
+
+  {type: text, name: "description", value: "text", extension: none,}
+  {type: file, name: auto, extension: "TXT,JPEG,XML", size: auto, quantity: 50 }
+  {type: file, name: "some_name", extension: "TXT,JPEG,XML", size: 5-50, quantity: 50 }

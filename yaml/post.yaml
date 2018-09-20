@@ -1,0 +1,9 @@
+version: '3'
+#binary:
+
+{file: none}
+{file: json, content-type: "application/json", path: ""}
+{file: binary, content-type: "application/octet-stream", path: "C://fsdf/sdf/dsf"}      # windows
+{file: binary, content-type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", path: "/User/0xdev/file.txt"}    # linux/unix
+
+#--- {file: auto, path: "/User/0xdev/file.txt"}  ---linux/unix
