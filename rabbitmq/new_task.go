@@ -26,7 +26,7 @@ func main() {
 	//	false,
 	//	nil,
 	//)
-	//ers.FailOnErrors(err, "Failed to declare a queue")
+	ers.FailOnErrors(err, "Failed to declare a queue")
 
 	err = ch.Publish(
 		"",
