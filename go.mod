@@ -1,4 +1,4 @@
-module github.com/ValeryPiashchynski/GoPlayground
+module GoPlayground
 
 require (
 	bitbucket.org/inturnco/go-sdk v0.1.26
@@ -26,6 +26,8 @@ require (
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
 	github.com/globalsign/mgo v0.0.0-20180905125535-1ca0a4f7cbcb // indirect
 	github.com/go-ini/ini v1.38.2 // indirect
+	github.com/go-kit/kit v0.7.0
+	github.com/go-logfmt/logfmt v0.3.0 // indirect
 	github.com/go-openapi/analysis v0.0.0-20180825180245-b006789cd277 // indirect
 	github.com/go-openapi/errors v0.0.0-20180926063021-1801eed82180
 	github.com/go-openapi/jsonpointer v0.0.0-20180825180259-52eb3d4b47c6 // indirect
@@ -37,6 +39,7 @@ require (
 	github.com/go-openapi/swag v0.0.0-20180908172849-dd0dad036e67
 	github.com/go-openapi/validate v0.0.0-20180825180342-e0648ff40507
 	github.com/go-sql-driver/mysql v1.4.0 // indirect
+	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/gocraft/work v0.5.1
 	github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
@@ -47,6 +50,7 @@ require (
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
 	github.com/jinzhu/now v0.0.0-20180511015916-ed742868f2ae // indirect
 	github.com/jtolds/gls v4.2.1+incompatible // indirect
+	github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 // indirect
 	github.com/leonelquinteros/gorand v1.0.0 // indirect
 	github.com/lib/pq v1.0.0
 	github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329 // indirect
