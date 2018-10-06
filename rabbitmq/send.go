@@ -1,9 +1,8 @@
 package main
 
 import (
-	"log"
-
 	"github.com/streadway/amqp"
+	"log"
 )
 
 func FF(err error, msg string) {
@@ -22,26 +21,36 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"hello", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
-	)
-	FF(err, "Failed to declare a queue")
-
-	q2, err := ch.QueueDeclare(
-		"hello2", // name
+		"aaaaaa", // name
 		false,    // durable
 		false,    // delete when unused
 		false,    // exclusive
 		false,    // no-wait
 		nil,      // arguments
 	)
+	//mm := amqp.Publishing{
+	//	ContentType:  "text/plain",
+	//	Body:         []byte("Go Go AMQP!"),
+	//}
+	//
+	//err = ch.Publish("", q.Name, false, true, mm)
+	//if err != nil {
+	//	panic(err)
+	//}
+
+	FF(err, "Failed to declare a queue")
+
+	//q2, err := ch.QueueDeclare(
+	//	"b", // name
+	//	false,    // durable
+	//	false,    // delete when unused
+	//	false,    // exclusive
+	//	false,    // no-wait
+	//	nil,      // arguments
+	//)
 
 	body := "Hello World!"
-	body2 := "Hello World2!"
+	//body2 := "Hello World2!"
 	err = ch.Publish(
 		"",     // exchange
 		q.Name, // routing key
@@ -52,15 +61,15 @@ func main() {
 			Body:        []byte(body),
 		})
 
-	err = ch.Publish(
-		"",      // exchange
-		q2.Name, // routing key
-		false,   // mandatory
-		false,   // immediate
-		amqp.Publishing{
-			ContentType: "text/plain",
-			Body:        []byte(body2),
-		})
-	log.Printf(" [x] Sent %s", body)
-	FF(err, "Failed to publish a message")
+	//err = ch.Publish(
+	//	"",      // exchange
+	//	q2.Name, // routing key
+	//	false,   // mandatory
+	//	false,   // immediate
+	//	amqp.Publishing{
+	//		ContentType: "text/plain",
+	//		Body:        []byte(body2),
+	//	})
+	//log.Printf(" [x] Sent %s", body)
+	//FF(err, "Failed to publish a message")
 }

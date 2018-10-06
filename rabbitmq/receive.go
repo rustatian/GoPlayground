@@ -22,22 +22,22 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"hello", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		"bbbbbbb", // name
+		false,     // durable
+		false,     // delete when unused
+		false,     // exclusive
+		false,     // no-wait
+		nil,       // arguments
 	)
 
-	q2, err := ch.QueueDeclare(
-		"hello2", // name
-		false,    // durable
-		false,    // delete when unused
-		false,    // exclusive
-		false,    // no-wait
-		nil,      // arguments
-	)
+	//q2, err := ch.QueueDeclare(
+	//	"b", // name
+	//	false,    // durable
+	//	false,    // delete when unused
+	//	false,    // exclusive
+	//	false,    // no-wait
+	//	nil,      // arguments
+	//)
 	F(err, "Failed to declare a queue")
 
 	msgs, err := ch.Consume(
@@ -51,37 +51,52 @@ func main() {
 	)
 	F(err, "Failed to register a consumer")
 
-	msgs2, err := ch.Consume(
-		q2.Name, // queue
-		"",      // consumer
-		true,    // auto-ack
-		false,   // exclusive
-		false,   // no-local
-		false,   // no-wait
-		nil,     // args
-	)
+	//msgs2, err := ch.Consume(
+	//	q2.Name, // queue
+	//	"",      // consumer
+	//	true,    // auto-ack
+	//	false,   // exclusive
+	//	false,   // no-local
+	//	false,   // no-wait
+	//	nil,     // args
+	//)
 
 	forever := make(chan bool)
 
-	go func() {
-		for {
-			select {
-			case m, _ := <-msgs:
-				log.Printf("Received a message: %s", m.Body)
-				return
-			default:
+	//go func() {
+	//	for {
+	//		select {
+	//		case m, _ := <-msgs:
+	//			log.Printf("Received a message: %s", m.Body)
+	//		default:
+	//
+	//		}
+	//	}
+	//}()
 
-			}
-		}
-	}()
+	go listen(msgs)
 
-	go func() {
-		for d := range msgs2 {
-			log.Printf("Received a message: %s", d.Body)
-			return
-		}
-	}()
+	//go func() {
+	//	for d := range msgs2 {
+	//		log.Printf("Received a message: %s", d.Body)
+	//		return
+	//	}
+	//}()
 
 	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
 	<-forever
+}
+
+func listen(delivery <-chan amqp.Delivery) {
+	for {
+		select {
+		case m, _ := <-delivery:
+			go func(msg amqp.Delivery) {
+				log.Printf("Received a message: %s", m.Body)
+				log.Printf("Received a message Type is: %s", m.Type)
+			}(m)
+		default:
+
+		}
+	}
 }
