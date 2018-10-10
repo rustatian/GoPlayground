@@ -21,12 +21,12 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"aaaaaa", // name
-		false,    // durable
-		false,    // delete when unused
-		false,    // exclusive
-		false,    // no-wait
-		nil,      // arguments
+		"a",   // name
+		false, // durable
+		false, // delete when unused
+		false, // exclusive
+		false, // no-wait
+		nil,   // arguments
 	)
 	//mm := amqp.Publishing{
 	//	ContentType:  "text/plain",
@@ -52,14 +52,17 @@ func main() {
 	body := "Hello World!"
 	//body2 := "Hello World2!"
 	err = ch.Publish(
-		"",     // exchange
-		q.Name, // routing key
-		false,  // mandatory
-		false,  // immediate
+		"INTURN", // exchange
+		q.Name,   // routing key
+		false,    // mandatory
+		false,    // immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
 			Body:        []byte(body),
 		})
+	if err != nil {
+		panic(err)
+	}
 
 	//err = ch.Publish(
 	//	"",      // exchange

@@ -22,12 +22,12 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"bbbbbbb", // name
-		false,     // durable
-		false,     // delete when unused
-		false,     // exclusive
-		false,     // no-wait
-		nil,       // arguments
+		"b",   // name
+		false, // durable
+		false, // delete when unused
+		false, // exclusive
+		false, // no-wait
+		nil,   // arguments
 	)
 
 	//q2, err := ch.QueueDeclare(
@@ -40,6 +40,7 @@ func main() {
 	//)
 	F(err, "Failed to declare a queue")
 
+	ch.QueueBind(q.Name, "", "INTURN", false, nil)
 	msgs, err := ch.Consume(
 		q.Name, // queue
 		"",     // consumer
