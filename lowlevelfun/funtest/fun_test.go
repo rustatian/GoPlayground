@@ -1,7 +1,7 @@
 package funtest
 
 import (
-	"github.com/ValeryPiashchynski/GoPlayground/lowlevelfun/funStrings"
+	"GoPlayground/lowlevelfun/funStrings"
 	"testing"
 )
 

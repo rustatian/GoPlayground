@@ -2,6 +2,7 @@ package funStrings
 
 import (
 	"fmt"
+	"runtime"
 	"unsafe"
 )
 
@@ -10,6 +11,7 @@ func main() {
 	up := FromInterfaceToBytes("some text for parse")
 	fmt.Print(up)
 
+	runtime.Gosched()
 	//type MyString string
 	//ms := []MyString{"C", "C++", "Go"}
 	//fmt.Printf("%s\n", ms)  // [C C++ Go]
