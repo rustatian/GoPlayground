@@ -1,8 +1,12 @@
 package slice
 
-//func main() {
-//
-//}
+import (
+	"sync"
+)
+
+func main() {
+
+}
 
 func sliceUniqueStd(ss []string) []string {
 	seen := make(map[string]bool, len(ss))
@@ -20,24 +24,43 @@ func sliceUniqueStd(ss []string) []string {
 	return ss[:i]
 }
 
+var sourcePool = sync.Pool{
+	New: func() interface{} {
+		return make(map[string]bool)
+	},
+}
+
+func getSource() map[string]bool {
+	r := sourcePool.Get().(map[string]bool)
+	return r
+}
+func putSource(r map[string]bool) {
+	sourcePool.Put(r)
+}
+
 func sliceUniqueUpdated(ss []string) []string {
-	seen := make(map[string]bool, len(ss))
+	nSS := ss
+	//seen := make(map[string]bool, len(nSS))
+	seen := getSource()
 	ii := 0
 
-	for i := 0; i < len(ss); i++ {
-		if _, ok := seen[ss[i]]; ok {
+	for i := 0; i < len(nSS); i++ {
+		if _, ok := seen[nSS[i]]; ok {
 			continue
 		}
-		seen[ss[i]] = true
-		if ii > 0 && len(ss) > ii {
-			ss[ii] = ss[i]
+
+		seen[nSS[i]] = true
+		if ii > 0 && len(nSS) > ii {
+			nSS[ii] = nSS[i]
 		}
 
 		ii++
 	}
 
-	if len(ss) > ii && ii > 0 {
-		return ss[:ii]
+	putSource(seen)
+
+	if len(nSS) > ii && ii > 0 {
+		return nSS[:ii]
 	}
 
 	return nil
