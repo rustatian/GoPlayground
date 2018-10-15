@@ -7,6 +7,17 @@ import (
 func main() {
 
 }
+func xy(a []string) {
+	x := a[0]
+	y := a[1]
+	_ = x + y
+}
+
+func yx(a []string) {
+	x := a[1]
+	y := a[0]
+	_ = x + y
+}
 
 func sliceUniqueStd(ss []string) []string {
 	seen := make(map[string]bool, len(ss))
@@ -20,7 +31,6 @@ func sliceUniqueStd(ss []string) []string {
 
 		i++
 	}
-
 	return ss[:i]
 }
 
@@ -39,28 +49,27 @@ func putSource(r map[string]bool) {
 }
 
 func sliceUniqueUpdated(ss []string) []string {
-	nSS := ss
-	//seen := make(map[string]bool, len(nSS))
-	seen := getSource()
+	seen := make(map[string]bool, len(ss))
+	//seen := getSource()
 	ii := 0
 
-	for i := 0; i < len(nSS); i++ {
-		if _, ok := seen[nSS[i]]; ok {
+	for i := 0; i < len(ss); i++ {
+		if _, ok := seen[ss[i]]; ok {
 			continue
 		}
 
-		seen[nSS[i]] = true
-		if ii > 0 && len(nSS) > ii {
-			nSS[ii] = nSS[i]
+		seen[ss[i]] = true
+		if ii > 0 && len(ss) > ii {
+			ss[ii] = ss[i]
 		}
 
 		ii++
 	}
 
-	putSource(seen)
+	//putSource(seen)
 
-	if len(nSS) > ii && ii > 0 {
-		return nSS[:ii]
+	if len(ss) > ii && ii > 0 {
+		return ss[:ii]
 	}
 
 	return nil
