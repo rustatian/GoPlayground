@@ -1,0 +1,15 @@
+# command-line-arguments
+./fr.go:5:6: cannot inline frameP: unhandled op FOR
+./fr.go:18:6: cannot inline frameV: unhandled op FOR
+./fr.go:32:6: cannot inline callers: function too complex: cost 101 exceeds budget 80
+./fr.go:5:13: leaking param: callers
+./fr.go:5:13: 	from callers (passed to call[argument escapes]) at ./fr.go:6:33
+./fr.go:15:9: &f escapes to heap
+./fr.go:15:9: 	from ~r2 (return) at ./fr.go:15:2
+./fr.go:7:6: moved to heap: f
+./fr.go:18:13: leaking param: callers
+./fr.go:18:13: 	from callers (passed to call[argument escapes]) at ./fr.go:19:33
+./fr.go:36:12: stk escapes to heap
+./fr.go:36:12: 	from ~r0 (return) at ./fr.go:36:2
+./fr.go:33:6: moved to heap: stk
+./fr.go:35:32: callers stk does not escape

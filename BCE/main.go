@@ -49,8 +49,8 @@ func putSource(r map[string]bool) {
 }
 
 func sliceUniqueUpdated(ss []string) []string {
-	seen := make(map[string]bool, len(ss))
-	//seen := getSource()
+	//seen := make(map[string]bool, len(ss))
+	seen := getSource()
 	ii := 0
 
 	for i := 0; i < len(ss); i++ {
@@ -66,7 +66,7 @@ func sliceUniqueUpdated(ss []string) []string {
 		ii++
 	}
 
-	//putSource(seen)
+	putSource(seen)
 
 	if len(ss) > ii && ii > 0 {
 		return ss[:ii]
