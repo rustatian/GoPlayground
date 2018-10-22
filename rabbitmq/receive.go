@@ -13,7 +13,7 @@ func F(err error, msg string) {
 }
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@192.168.101.60:5672/")
 	F(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
@@ -22,7 +22,7 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"b",   // name
+		"a",   // name
 		false, // durable
 		false, // delete when unused
 		false, // exclusive
