@@ -1,10 +1,13 @@
 package slice
 
 import (
+	"fmt"
+	"os"
 	"sync"
 )
 
 func main() {
+	fmt.Print(os.TempDir())
 
 }
 func xy(a []string) {
