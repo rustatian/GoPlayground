@@ -9,8 +9,6 @@ import (
 )
 
 type Record struct {
-	sync.Mutex
-
 	buf  string
 	cond *sync.Cond
 
@@ -19,7 +17,7 @@ type Record struct {
 
 func NewRecord(writers ...io.Writer) *Record {
 	r := &Record{writers: writers}
-	r.cond = sync.NewCond(r)
+	r.cond = sync.NewCond(&sync.RWMutex{})
 	return r
 }
 
@@ -34,21 +32,21 @@ func (r *Record) Prompt() {
 			//r.cond.Broadcast()
 		}
 
-		r.Lock()
+		r.cond.L.Lock()
 		r.buf = s
-		r.Unlock()
+		r.cond.L.Unlock()
 
-		r.cond.Signal()
+		r.cond.Broadcast()
 	}
 }
 
 func (r *Record) Start() error {
 	f := func(w io.Writer) {
 		for {
-			r.Lock()
+			r.cond.L.Lock()
 			r.cond.Wait()
 			fmt.Fprintf(w, "%s\n", r.buf)
-			r.Unlock()
+			r.cond.L.Unlock()
 
 		}
 	}
