@@ -53,6 +53,9 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
 	github.com/robfig/cron v0.0.0-20180505203441-b41be1df6967 // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20180130194729-c4fab1ac1bec // indirect
+	github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e // indirect
+	github.com/shurcooL/go-goon v0.0.0-20170922171312-37c2f522c041 // indirect
+	github.com/shurcooL/goexec v0.0.0-20181022054255-67b40f7358c4 // indirect
 	github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d // indirect
 	github.com/smartystreets/goconvey v0.0.0-20180222194500-ef6db91d284a // indirect
 	github.com/spf13/afero v1.1.2
@@ -62,6 +65,8 @@ require (
 	gocv.io/x/gocv v0.17.0
 	golang.org/x/crypto v0.0.0-20181025113841-85e1b3f9139a // indirect
 	golang.org/x/net v0.0.0-20181023162649-9b4f9f5ad519
+	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2 // indirect
+	golang.org/x/tools v0.0.0-20181111003725-6d71ab8aade0 // indirect
 	google.golang.org/appengine v1.2.0 // indirect
 	gopkg.in/ini.v1 v1.39.0 // indirect
 )
