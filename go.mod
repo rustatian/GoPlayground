@@ -1,7 +1,6 @@
 module github.com/ValeryPiashchynski/GoPlayground
 
 require (
-	bitbucket.org/inturnco/go-sdk v0.1.34
 	cloud.google.com/go v0.31.0 // indirect
 	github.com/Knetic/govaluate v3.0.0+incompatible // indirect
 	github.com/Microsoft/go-winio v0.4.11 // indirect
@@ -32,7 +31,6 @@ require (
 	github.com/gocraft/work v0.5.1
 	github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
-	github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 // indirect
 	github.com/goware/urlx v0.0.0-20171129014730-06d8eeb3ce17
 	github.com/jinzhu/gorm v1.9.1
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
@@ -61,12 +59,11 @@ require (
 	github.com/spf13/afero v1.1.2
 	github.com/stevvooe/resumable v0.0.0-20180830230917-22b14a53ba50 // indirect
 	github.com/streadway/amqp v0.0.0-20180806233856-70e15c650864
+	github.com/therecipe/qt v0.0.0-20181120163229-1814eac5c003
 	go.opencensus.io v0.18.0
 	gocv.io/x/gocv v0.17.0
-	golang.org/x/crypto v0.0.0-20181025113841-85e1b3f9139a // indirect
-	golang.org/x/net v0.0.0-20181023162649-9b4f9f5ad519
+	golang.org/x/net v0.0.0-20181114220301-adae6a3d119a
 	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2 // indirect
-	golang.org/x/tools v0.0.0-20181111003725-6d71ab8aade0 // indirect
 	google.golang.org/appengine v1.2.0 // indirect
 	gopkg.in/ini.v1 v1.39.0 // indirect
 )

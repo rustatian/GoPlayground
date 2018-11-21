@@ -12,7 +12,7 @@ func FF(err error, msg string) {
 }
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@192.168.101.60:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	FF(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
@@ -21,12 +21,12 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"a",   // name
-		false, // durable
-		false, // delete when unused
-		false, // exclusive
-		false, // no-wait
-		nil,   // arguments
+		"health", // name
+		false,    // durable
+		false,    // delete when unused
+		false,    // exclusive
+		false,    // no-wait
+		nil,      // arguments
 	)
 	//mm := amqp.Publishing{
 	//	ContentType:  "text/plain",
@@ -52,10 +52,10 @@ func main() {
 	body := "Hello World!"
 	//body2 := "Hello World2!"
 	err = ch.Publish(
-		"INTURN", // exchange
-		q.Name,   // routing key
-		false,    // mandatory
-		false,    // immediate
+		"",     // exchange
+		q.Name, // routing key
+		false,  // mandatory
+		false,  // immediate
 		amqp.Publishing{
 			ContentType: "text/plain",
 			Body:        []byte(body),
