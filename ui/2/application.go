@@ -14,7 +14,7 @@ func main() {
 	gui.NewQGuiApplication(len(os.Args), os.Args)
 
 	var app = qml.NewQQmlApplicationEngine(nil)
-	app.Load(core.NewQUrl3("/Users/0xdev/go/src/github.com/ValeryPiashchynski/GoPlayground/ui/2/qml/application.qml", 0))
+	app.Load(core.NewQUrl3("/Users/0xdev/Projects/repo/GoPlayground/ui/2/qml/application.qml", 0))
 
 	gui.QGuiApplication_Exec()
 }

@@ -1,9 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	_ "unsafe"
+)
+
+//go:linkname zerobase runtime.zerobase
+var zerobase uintptr
+
+//go:linkname now zerobase.now
+func now() string
 
 func main() {
-	a := []int{1, 2, 4, 5}
-	fmt.Println(&a[2])
-	fmt.Println(&a[3])
+
+	println(now())
+
+	var s struct{}
+	var a [42]struct{}
+
+	fmt.Printf("zerobase = %p\n", &zerobase)
+	fmt.Printf("       s = %p\n", &s)
+	fmt.Printf("       a = %p\n", &a)
 }
