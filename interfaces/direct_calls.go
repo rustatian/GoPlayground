@@ -1,4 +1,4 @@
-package main
+package inter
 
 func main() {
 	Add(10, 32)
