@@ -8,17 +8,14 @@ import (
 //go:linkname zerobase runtime.zerobase
 var zerobase uintptr
 
-//go:linkname now zerobase.now
-func now() string
+var notlikezerobase uintptr
 
 func main() {
-
-	println(now())
-
 	var s struct{}
 	var a [42]struct{}
 
 	fmt.Printf("zerobase = %p\n", &zerobase)
+	fmt.Printf("not like zerobase = %p\n", &notlikezerobase)
 	fmt.Printf("       s = %p\n", &s)
 	fmt.Printf("       a = %p\n", &a)
 }

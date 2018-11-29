@@ -6,9 +6,21 @@ func main() {
 	var a, b S
 	a.addr()
 	b.addr()
+
+	var c, d B
+	c.addr()
+	d.addr()
 }
 
 type S struct {
+	//name string
+}
+
+type B struct {
+}
+
+func (s *B) addr() {
+	fmt.Printf("%p\n", s)
 }
 
 func (s *S) addr() {
