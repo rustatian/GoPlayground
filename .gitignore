@@ -15,3 +15,5 @@
 
 .gitignore
 .idea/
+.DS_STORE
+*.o
