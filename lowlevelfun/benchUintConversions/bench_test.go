@@ -6,7 +6,8 @@ import (
 )
 
 //go:noinline
-func convertFun(id [8]byte) uint64 {
+func convertFun(id []byte) uint64 {
+	_ = id[7]
 	var u64 uint64
 	u64 |= uint64(id[7]&0xFF) << 0
 	u64 |= uint64(id[6]&0xFF) << 8
@@ -25,7 +26,8 @@ func convertNotFun(id []byte) uint64 {
 }
 
 func Benchmark_FunConvert(b *testing.B) {
-	var byteSlice = [8]byte{1, 2, 3, 4, 5, 6, 7, 8}
+	var byteSlice = []byte{1, 2, 3, 4, 5, 6, 7, 8}
+	//fmt.Println(convertFun(byteSlice))
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		convertFun(byteSlice)

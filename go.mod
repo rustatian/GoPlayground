@@ -1,7 +1,6 @@
 module github.com/ValeryPiashchynski/GoPlayground
 
 require (
-	bitbucket.org/inturnco/go-sdk v0.2.0
 	cloud.google.com/go v0.31.0 // indirect
 	github.com/Microsoft/go-winio v0.4.11 // indirect
 	github.com/Shopify/sarama v1.19.0

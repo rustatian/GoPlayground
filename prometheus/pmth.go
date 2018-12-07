@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bitbucket.org/inturnco/go-sdk/helpers"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -61,7 +60,6 @@ func (m *metrics) StartCollectingMetrics() {
 				}
 				fmt.Printf("%s\n", string(contents))
 
-				uuid, _ := helpers.GenerateUUID()
 				filename := uuid + "_metrics.prom"
 
 				err = ioutil.WriteFile(m.p+filename, contents, 0644)
