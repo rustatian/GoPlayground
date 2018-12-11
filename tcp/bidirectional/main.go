@@ -23,7 +23,7 @@ import (
 var iface = flag.String("i", "en0", "Interface to get packets from")
 var snaplen = flag.Int("s", 16<<10, "SnapLen for pcap packet capture")
 var filter = flag.String("f", "tcp", "BPF filter for pcap")
-var logAllPackets = flag.Bool("v", false, "Logs every packet in great detail")
+var logAllPackets = flag.Bool("v", true, "Logs every packet in great detail")
 
 // key is used to map bidirectional streams to each other.
 type key struct {
