@@ -1,6 +1,8 @@
 package ttt
 
-import "runtime"
+import (
+	"runtime"
+)
 
 func frameP(callers []uintptr, n int) *runtime.Frame {
 	frames := runtime.CallersFrames(callers)

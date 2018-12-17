@@ -46,6 +46,7 @@ func (pq PriorityQueue) Swap(i, j int) {
 	pq[j].Index = j
 }
 
+
 func main() {
 
 	listItems := []*Item{
