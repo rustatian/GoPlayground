@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/streadway/amqp"
-	"io/ioutil"
 	"log"
 )
 
@@ -13,12 +13,7 @@ func FF(err error, msg string) {
 }
 
 func main() {
-	f, err := ioutil.ReadFile("/Users/0xdev/Projects/repo/GoPlayground/rabbitmq/file.txt")
-	if err != nil {
-		panic(err)
-	}
-
-	conn, err := amqp.Dial("amqp://guest:guest@192.168.101.60:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	FF(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
@@ -27,7 +22,7 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"bigfile", // name
+		"refine_inventory", // name
 		false,     // durable
 		false,     // delete when unused
 		false,     // exclusive
@@ -38,13 +33,41 @@ func main() {
 		panic(err)
 	}
 
+	tt := UpdateRequest{
+		CompanyID: "3333324234234213412341234",
+		Type:      "company",
+		Scope:     InventoryScope{[]string{"1"}, []string{"1"}, []string{"1"}}}
+	b, _ := tt.Marshal()
+
 	err = ch.Publish(
 		"",     // exchange
-		q.Name, 	// routing key
+		q.Name, // routing key
 		false,  // mandatory
 		false,  // immediate
 		amqp.Publishing{
+			Headers:     map[string]interface{}{"JWTToken": "Bearer ",},
 			ContentType: "text/plain",
-			Body:        f,
+			Body:        b,
 		})
 }
+
+type InventoryScope struct {
+	GroupIds   []string
+	PackageIds []string
+	ProductIds []string
+}
+
+//UpdateRequest is used as notify message to the productservice
+type UpdateRequest struct {
+	CompanyID string         `json:"companyId"`
+	Type      UpdateType     `json:"type"`
+	Scope     InventoryScope `json:"scope"`
+}
+
+//Marshal is using for hiding functionality of converting struct to []byte json
+func (u *UpdateRequest) Marshal() ([]byte, error) {
+	return json.Marshal(u)
+}
+
+//UpdateType is used to separate company and other update requests
+type UpdateType string

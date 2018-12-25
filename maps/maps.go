@@ -1,12 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	a := make(map[int]int, 6)
-	a[1] = 2
-	changeMap(a)
-	fmt.Print(a[1])
+	m := make(map[*int]string)
+	m[nil] = "0"
+	fmt.Println(m[nil])
+	sort.Sort()
 }
 
 func changeMap(m map[int]int) {

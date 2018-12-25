@@ -1,54 +1,62 @@
 package main
 
 import (
-	"io"
-	"os"
-
+	"flag"
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	"golang.org/x/net/context"
+	"os"
+	"sync"
 )
 
 func main() {
+	fs := flag.NewFlagSet("dockerMegaUtility", flag.ExitOnError)
+
+	nrun := fs.Bool("run", true, "run all containers")
+	nstop := fs.Bool("stop", true, "stop all containers")
+	ndelete := fs.Bool("delete", true, "delete all containers")
+
+	err := fs.Parse(os.Args[1:])
+	if err != nil {
+		panic(err)
+	}
+
 	ctx := context.Background()
-	cli, err := client.NewClientWithOpts(client.WithVersion("1.37"))
+	cli, err := client.NewEnvClient()
+
 	if err != nil {
 		panic(err)
 	}
 
-	reader, err := cli.ImagePull(ctx, "docker.io/library/alpine", types.ImagePullOptions{})
-	if err != nil {
-		panic(err)
-	}
-	io.Copy(os.Stdout, reader)
-
-	resp, err := cli.ContainerCreate(ctx, &container.Config{
-		Image: "alpine",
-		Cmd:   []string{"echo", "hello world"},
-		Tty:   true,
-	}, nil, nil, "")
-	if err != nil {
-		panic(err)
+	if *nstop {
+		stop(ctx, cli)
+		//return
 	}
 
-	if err := cli.ContainerStart(ctx, resp.ID, types.ContainerStartOptions{}); err != nil {
-		panic(err)
-	}
-
-	statusCh, errCh := cli.ContainerWait(ctx, resp.ID, container.WaitConditionNotRunning)
-	select {
-	case err := <-errCh:
+	if *ndelete {
+		containers, err := cli.ContainerList(ctx, types.ContainerListOptions{All: true})
 		if err != nil {
 			panic(err)
 		}
-	case <-statusCh:
+
+		for _, cont := range containers {
+			remove(ctx, cli, cont.ID)
+		}
+
+		//return
 	}
 
-	out, err := cli.ContainerLogs(ctx, resp.ID, types.ContainerLogsOptions{ShowStdout: true})
-	if err != nil {
-		panic(err)
+	wg := &sync.WaitGroup{}
+	if *nrun {
+		wg.Add(6)
+		go rabbit(ctx, cli, wg)
+		go zipkin(ctx, cli, wg)
+		go consul(ctx, cli, wg)
+		go postgresql(ctx, cli, wg)
+		go redis(ctx, cli, wg)
+		go elastic(ctx, cli, wg)
 	}
 
-	io.Copy(os.Stdout, out)
+	wg.Wait()
+
 }
