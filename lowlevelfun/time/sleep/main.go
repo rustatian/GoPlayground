@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	time.Sleep(time.Second * 3)
+	time.Sleep(time.Microsecond * 1)
 }
 
 // called from assembly

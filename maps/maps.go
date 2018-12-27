@@ -1,17 +1,19 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "sync"
 
 func main() {
-	m := make(map[*int]string)
-	m[nil] = "0"
-	fmt.Println(m[nil])
-	sort.Sort()
+	mmm := make(map[int]int, 10)
+	wg := &sync.WaitGroup{}
+	for i:=0; i < 10000; i ++ {
+		wg.Add(1)
+		go ch(mmm, wg)
+	}
+	wg.Wait()
 }
 
-func changeMap(m map[int]int) {
-	m[1] = 23
+func ch(m map[int]int, wg *sync.WaitGroup) {
+	a := m[1]
+	_ = a
+	wg.Done()
 }
