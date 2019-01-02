@@ -10,8 +10,8 @@ import (
 
 func main() {
 	var example *int
-	slice := make_slice(1e9, unsafe.Sizeof(example))
-	a := *(*[]*int)(unsafe.Pointer(&slice))
+	slice := make_slice_non_fun(1e5, unsafe.Sizeof(example))
+	//a := *(*[]*int)(unsafe.Pointer(&slice))
 
 	for i := 0; i < 10; i++ {
 		start := time.Now()
@@ -19,7 +19,7 @@ func main() {
 		fmt.Printf("GC took %s\n", time.Since(start))
 	}
 
-	runtime.KeepAlive(a)
+	runtime.KeepAlive(slice)
 }
 
 type SliceHeader struct {
@@ -28,7 +28,11 @@ type SliceHeader struct {
 	Cap  int
 }
 
-func make_slice(len int, eltsize uintptr) SliceHeader {
+//http://man7.org/linux/man-pages/man2/mmap.2.html
+//void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
+
+
+func make_slice(len int, eltsize uintptr) []*int {
 	fd := -1
 	data, _, errno := syscall.Syscall6(
 		syscall.SYS_MMAP,
@@ -43,9 +47,18 @@ func make_slice(len int, eltsize uintptr) SliceHeader {
 	if errno != 0 {
 		panic(errno)
 	}
-	return SliceHeader{
+
+
+	slice := SliceHeader{
 		Data: data,
 		Len:  len,
 		Cap:  len,
 	}
+
+	return *(*[]*int)(unsafe.Pointer(&slice))
+}
+
+func make_slice_non_fun(len int, eltsize uintptr) []*int {
+	slice := make([]*int, len, len)
+	return slice
 }
