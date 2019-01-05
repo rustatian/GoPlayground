@@ -7,6 +7,8 @@ require (
 	github.com/Microsoft/go-winio v0.4.11 // indirect
 	github.com/Shopify/sarama v1.20.0
 	github.com/Shopify/toxiproxy v2.1.3+incompatible // indirect
+	github.com/ValeryPiashchynski/Worker v1.0.0 // indirect
+	github.com/ValeryPiashchynski/go-2pc v0.0.1 // indirect
 	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
 	github.com/casbin/casbin v1.7.0
 	github.com/denisenkom/go-mssqldb v0.0.0-20181014144952-4e0d7dc8888f // indirect
@@ -65,3 +67,5 @@ require (
 	google.golang.org/appengine v1.3.0 // indirect
 	gopkg.in/ini.v1 v1.39.3 // indirect
 )
+
+replace github.com/ValeryPiashchynski/go-2pc v0.0.1 => /Users/0xdev/Projects/repo/go-2pc

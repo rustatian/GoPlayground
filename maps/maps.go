@@ -1,19 +1,21 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 func main() {
-	mmm := make(map[int]int, 10)
 	wg := &sync.WaitGroup{}
-	for i:=0; i < 10000; i ++ {
-		wg.Add(1)
-		go ch(mmm, wg)
+	for i:=0; i < 10; i ++ {
+		wg.Add(2)
+		go ch("ch", wg)
+		go ch("ch2", wg)
 	}
 	wg.Wait()
 }
 
-func ch(m map[int]int, wg *sync.WaitGroup) {
-	a := m[1]
-	_ = a
+func ch(a string, wg *sync.WaitGroup) {
+	fmt.Println(a)
 	wg.Done()
 }

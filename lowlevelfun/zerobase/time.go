@@ -1,7 +1,14 @@
-package zerobase
+package main
 
-import "time"
+import (
+	"fmt"
+	_ "unsafe"
+)
 
-func now() string {
-	return time.Now().String()
+//go:linkname time_now time.now
+func time_now() (sec int64, nsec int32, mono int64)
+
+func main() {
+	a, _, _ := time_now()
+	fmt.Print(a)
 }

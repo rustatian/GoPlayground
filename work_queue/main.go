@@ -1,28 +1,44 @@
 package main
 
 import (
-	"github.com/gocraft/work"
-	"github.com/gomodule/redigo/redis"
-	"log"
+	"fmt"
+	"github.com/ValeryPiashchynski/Worker"
+	"io/ioutil"
+	"net/http"
+	"time"
 )
 
-// Make a redis pool
-var redisPool = &redis.Pool{
-	MaxActive: 5,
-	MaxIdle:   5,
-	Wait:      true,
-	Dial: func() (redis.Conn, error) {
-		return redis.Dial("tcp", ":6379")
-	},
-}
-
-// Make an enqueuer with a particular namespace
-var enqueuer = work.NewEnqueuer("my_app_namespace", redisPool)
-
 func main() {
-	// Enqueue a job named "send_email" with the specified parameters.
-	_, err := enqueuer.Enqueue("send_email", work.Q{"address": "test@example.com", "subject": "hello world", "customer_id": 4})
-	if err != nil {
-		log.Fatal(err)
+	// create a variable
+	var w Worker.Work
+
+	// example of sites to get info from in parallel
+	sites := []string{"http://google.com", "http://amazon.com", "http://spiralscout.com", "http://0xdev.me"}
+
+	// add this sites to worker
+	for _, v := range sites {
+		w.Add(v)
 	}
+	time.Now()
+
+	// Run the work in 10 goroutines (for example)
+	// So, we know, that we working with strings, and we need to make type assertion
+	// Each task will be handled by separate goroutine
+	w.Run(10, func(item interface{}) {
+		str := item.(string)
+
+		// we also could add work during the process of running
+		w.Add("https://tut.by")
+		r, err := http.Get(str)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		_, err = ioutil.ReadAll(r.Body)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	})
 }
