@@ -54,6 +54,7 @@ require (
 	github.com/pkg/errors v0.8.0
 	github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
 	github.com/robfig/cron v0.0.0-20180505203441-b41be1df6967 // indirect
+	github.com/sirupsen/logrus v1.3.0 // indirect
 	github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d // indirect
 	github.com/smartystreets/goconvey v0.0.0-20181108003508-044398e4856c // indirect
 	github.com/spf13/afero v1.2.0
@@ -64,7 +65,6 @@ require (
 	gocv.io/x/gocv v0.18.0
 	golang.org/x/net v0.0.0-20181217023233-e147a9138326
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c
-	google.golang.org/appengine v1.3.0 // indirect
 	gopkg.in/ini.v1 v1.39.3 // indirect
 )
 
