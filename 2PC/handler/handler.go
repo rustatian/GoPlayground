@@ -1,73 +1,53 @@
 package main
 
 import (
+	"crypto/rand"
+	"fmt"
 	"github.com/ValeryPiashchynski/go-2pc"
+	"github.com/ValeryPiashchynski/go-2pc/transport/amqp"
+	"io"
 	"log"
-
-	"github.com/streadway/amqp"
+	"os"
 )
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	l := log.New(os.Stdout, "", 0)
+	a := amqp.NewAMQPCoordinator("amqp://guest:guest@localhost:5672/", )
+
+	h := go2pc.New2PCHandler(a, l)
+
+	err := h.InitCoordinator()
 	if err != nil {
 		panic(err)
 	}
-	defer conn.Close()
 
-	ch, err := conn.Channel()
-	defer ch.Close()
-
-
-	msgs, err := ch.Consume(
-		"2PC_Work", // queue
-		"",    // consumer
-		false, // auto-ack
-		false, // exclusive
-		false, // no-local
-		false, // no-wait
-		nil,   // args
-	)
-
-	someService := "someService"
-	//someError := "some very very complicated error"
-	r := go2pc.Response{
-		ServiceName: &someService,
-		//Err:         &someError,
+	// signal -
+	// replyTo
+	err = h.PhaseDone(go2pc.InitDone, go2pc.Init2PC, "temp1")
+	if err != nil {
+		panic(err)
 	}
-	b, _ := r.Marshal()
 
-	forever := make(chan bool)
+	//phase 1
 
-	go func() {
-		for l := range msgs {
-			switch l.CorrelationId {
-			// init phase
-			case go2pc.Init2PC:
-				log.Printf("Received a message: %s", l.Body)
-				log.Printf("Received a message exchange is: %s", l.Exchange)
+	err = h.PhaseDone(go2pc.Phase1Done, go2pc.Phase1Start, "temp2")
+	if err != nil {
+		panic(err)
+	}
 
-				err = ch.Publish(
-					"2PHASE_COMMIT", // exchange
-					"2PC_Work", // routing key
-					false, // mandatory
-					false, // immediate
-					amqp.Publishing{
-						ContentType:   "application/json",
-						CorrelationId: go2pc.InitDone,
-						Body:          b,
-					})
+	// tx.commit
 
-				err = l.Ack(false)
-				if err != nil {
-					panic(err)
-				}
-				return
-			}
-		}
-	}()
+	err = h.PhaseDone(go2pc.Phase2Done, go2pc.Phase2Start, "temp3")
+	if err != nil {
+		panic(err)
+	}
+}
 
-	//go listen(msgs)
-
-	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
-	<-forever
+func randomBoundary() string {
+	var buf [30]byte
+	_, err := io.ReadFull(rand.Reader, buf[:])
+	if err != nil {
+		panic(err)
+	}
+	return fmt.Sprintf("%x", buf[:])
 }

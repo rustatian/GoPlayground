@@ -7,8 +7,8 @@ require (
 	github.com/Microsoft/go-winio v0.4.11 // indirect
 	github.com/Shopify/sarama v1.20.0
 	github.com/Shopify/toxiproxy v2.1.3+incompatible // indirect
-	github.com/ValeryPiashchynski/Worker v1.0.0 // indirect
-	github.com/ValeryPiashchynski/go-2pc v0.0.1 // indirect
+	github.com/ValeryPiashchynski/Worker v1.0.0
+	github.com/ValeryPiashchynski/go-2pc v0.0.1
 	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
 	github.com/casbin/casbin v1.7.0
 	github.com/denisenkom/go-mssqldb v0.0.0-20181014144952-4e0d7dc8888f // indirect
@@ -30,7 +30,6 @@ require (
 	github.com/go-openapi/validate v0.17.2
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
-	github.com/gocraft/work v0.5.1
 	github.com/gofrs/uuid v3.1.0+incompatible // indirect
 	github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
@@ -45,6 +44,7 @@ require (
 	github.com/mdlayher/raw v0.0.0-20181016155347-fa5ef3332ca9 // indirect
 	github.com/minio/minio-go v6.0.11+incompatible
 	github.com/mitchellh/go-homedir v1.0.0 // indirect
+	github.com/mmcloughlin/avo v0.0.0-20190113200647-5dc9498dacc0
 	github.com/nats-io/gnatsd v1.3.0 // indirect
 	github.com/nats-io/go-nats v1.7.0
 	github.com/nats-io/nkeys v0.0.2 // indirect
@@ -53,8 +53,6 @@ require (
 	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
 	github.com/pkg/errors v0.8.0
 	github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
-	github.com/robfig/cron v0.0.0-20180505203441-b41be1df6967 // indirect
-	github.com/sirupsen/logrus v1.3.0 // indirect
 	github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d // indirect
 	github.com/smartystreets/goconvey v0.0.0-20181108003508-044398e4856c // indirect
 	github.com/spf13/afero v1.2.0

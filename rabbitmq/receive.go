@@ -16,29 +16,26 @@ func main() {
 	ch, err := conn.Channel()
 	defer ch.Close()
 
-	msgs, err := ch.Consume(
-		"abort", // queue
-		"",     // consumer
-		true,   // auto-ack
-		false,  // exclusive
-		false,  // no-local
-		false,  // no-wait
-		nil,    // args
+
+	ch.ex
+
+	// bind queue to the initdone topic
+	err = ch.QueueBind(
+		q.Name,   // queue name
+		topic,    // routing key
+		exchange, // exchange
+		false,
+		nil,
 	)
 
 	forever := make(chan bool)
 
 	go func() {
 		for l := range msgs {
-			switch l.CorrelationId {
-			// init phase
-			case "init_2PC":
-				log.Printf("Received a message: %s", l.Body)
-				log.Printf("Received a message Type is: %s", l.Type)
-				l.Ack(false)
 
-			}
-
+			log.Printf("Received a message: %s", l.Body)
+			log.Printf("Received a message Type is: %s", l.Type)
+			l.Ack(false)
 		}
 	}()
 
