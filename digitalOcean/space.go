@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	accessKey := "BUIX2OH6JJK7DIR4UOBM"
-	secKey := "BRV7l4Vz/+VAgwuZwKYn9kgb581xaChuQRrXkzYGtv0"
+	accessKey := ""
+	secKey := ""
 	endpoint := "0xdev.ams3.digitaloceanspaces.com"
 	spaceName := "0xdev" // Space names must be globally unique
 	ssl := true

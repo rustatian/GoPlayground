@@ -5,23 +5,35 @@ import (
 	"sync"
 )
 
-func main() {
-	wg := sync.WaitGroup{}
-
-	aaa := []int{1, 2, 3, 4, 5}
-
-	for i := 0; i < len(aaa); i++ {
-		wg.Add(1)
-		go func(ii int) {
-			defer wg.Done()
-
-			fmt.Println(ii)
-		}(i) //change(aaa[i], &wg)
-	}
-	wg.Wait()
+type Node struct {
+	Name string
+	Children []Node
 }
 
-func change(sl int, group *sync.WaitGroup) {
-	fmt.Println(sl)
-	group.Done()
+func main() {
+
+	s := make([]int, 0, 10)
+
+	wg := &sync.WaitGroup{}
+
+	wg.Add(2)
+
+	go func() {
+		for i:=0; i < 10; i++ {
+			s = append(s, i)
+		}
+		wg.Done()
+	}()
+
+	go func() {
+		for i:=0; i < 10; i++ {
+			s = append(s, i)
+		}
+		wg.Done()
+	}()
+
+	wg.Wait()
+
+	fmt.Println(s)
+	fmt.Println(len(s))
 }
