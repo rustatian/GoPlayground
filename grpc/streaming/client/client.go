@@ -1,52 +1,42 @@
 package client
 
 import (
+	"context"
+	"fmt"
+	pb "github.com/ValeryPiashchynski/GoPlayground/grpc/streaming"
 	"google.golang.org/grpc"
-	pb ""
+	"time"
 )
 
 func main() {
+	ctx := context.Background()
 	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
 
 	defer conn.Close()
-	client :=
-}
+	client := pb.NewFooServiceClient(conn)
+	stream, err := client.FooRPC(ctx)
 
-//package main
-//
-//import (
-//"log"
-//"time"
-//
-//"golang.org/x/net/context"
-//"google.golang.org/grpc"
-//
-//pb "github.com/jzelinskie/grpc/simple"
-//)
-//
-//func main() {
-//	conn, err := grpc.Dial("localhost:6000", grpc.WithInsecure())
-//	if err != nil {
-//		log.Fatalf("failed to connect: %s", err)
-//	}
-//	defer conn.Close()
-//
-//	client := pb.NewSimpleServiceClient(conn)
-//	stream, err := client.SimpleRPC(context.Background())
-//	waitc := make(chan struct{})
-//
-//	msg := &pb.SimpleData{"sup"}
-//	go func() {
-//		for {
-//			log.Println("Sleeping...")
-//			time.Sleep(2 * time.Second)
-//			log.Println("Sending msg...")
-//			stream.Send(msg)
-//		}
-//	}()
-//	<-waitc
-//	stream.CloseSend()
-//}
+	wc := make(chan struct{})
+
+	msg := &pb.Data{Msg:"some_data"}
+	go func() {
+		for {
+			fmt.Println("Sleep for 1 second")
+			time.Sleep(time.Second * 1)
+			fmt.Println("Sending message")
+			err := stream.Send(msg)
+			if err != nil {
+				panic(err)
+			}
+		}
+	}()
+
+	<- wc
+	err = stream.CloseSend()
+	if err != nil {
+		panic(err)
+	}
+}
