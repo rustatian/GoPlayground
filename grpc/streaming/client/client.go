@@ -1,4 +1,4 @@
-package client
+package main
 
 import (
 	"context"
@@ -8,6 +8,29 @@ import (
 	"time"
 )
 
+//type fooClient struct {
+//
+//}
+//
+//func(c *fooClient) FooRPC(ctx context.Context, opts ...grpc.CallOption) (pb.FooService_FooRPCClient, error) {
+//	grpc.NewClientStream(ctx,)
+//}
+
+//var serviceDescription = grpc.ServiceDesc{
+//	ServiceName: "foo.FooService",
+//	HandlerType: (*pb.FooServiceServer)(nil),
+//	Methods:     []grpc.MethodDesc{},
+//	Streams: []grpc.StreamDesc{
+//		{
+//			StreamName:    "FooRPC",
+//			Handler:       pb.,
+//			ServerStreams: true,
+//			ClientStreams: true,
+//		},
+//	},
+//	Metadata: "foo.proto",
+//}
+
 func main() {
 	ctx := context.Background()
 	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure())
@@ -15,7 +38,12 @@ func main() {
 		panic(err)
 	}
 
-	defer conn.Close()
+	defer func() {
+		err = conn.Close()
+		if err != nil {
+			panic(err)
+		}
+	}()
 	client := pb.NewFooServiceClient(conn)
 	stream, err := client.FooRPC(ctx)
 
@@ -27,7 +55,7 @@ func main() {
 			fmt.Println("Sleep for 1 second")
 			time.Sleep(time.Second * 1)
 			fmt.Println("Sending message")
-			err := stream.Send(msg)
+			err := stream.SendMsg(msg)
 			if err != nil {
 				panic(err)
 			}

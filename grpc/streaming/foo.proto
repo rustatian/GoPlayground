@@ -3,8 +3,7 @@ syntax = "proto3";
 package foo;
 
 service FooService {
-    rpc FooRPC (stream Data) returns (stream Data) {
-    };
+    rpc FooRPC (stream Data) returns (stream Data) {};
 }
 
 
