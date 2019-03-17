@@ -12,7 +12,6 @@ require (
 	github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37
 	github.com/casbin/casbin v1.8.1
 	github.com/denisenkom/go-mssqldb v0.0.0-20190204142019-df6d76eb9289 // indirect
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/docker/distribution v2.7.1+incompatible // indirect
 	github.com/docker/docker v1.13.1
 	github.com/docker/go-connections v0.4.0
@@ -40,6 +39,7 @@ require (
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/gopacket v1.1.16
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jinzhu/gorm v1.9.2
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
 	github.com/jinzhu/now v1.0.0 // indirect
@@ -49,7 +49,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.10.0 // indirect
 	github.com/mdlayher/raw v0.0.0-20190220170618-480b93709cce // indirect
 	github.com/minio/minio-go v6.0.14+incompatible
-	github.com/mitchellh/go-homedir v1.1.0 // indirect
+	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mmcloughlin/avo v0.0.0-20190220211728-3cfe40e76ce5
 	github.com/nats-io/gnatsd v1.4.1 // indirect
 	github.com/nats-io/go-nats v1.7.2
@@ -62,6 +62,8 @@ require (
 	github.com/smartystreets/assertions v0.0.0-20190215210624-980c5ac6f3ac // indirect
 	github.com/smartystreets/goconvey v0.0.0-20190222223459-a17d461953aa // indirect
 	github.com/spf13/afero v1.2.1
+	github.com/spf13/cobra v0.0.3
+	github.com/spf13/viper v1.3.2
 	github.com/streadway/amqp v0.0.0-20190214183023-884228600bc9
 	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/therecipe/qt v0.0.0-20190121211426-e73768bc9bcc
