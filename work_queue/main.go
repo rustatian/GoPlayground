@@ -13,7 +13,7 @@ func main() {
 	var w Worker.Work
 
 	// example of sites to get info from in parallel
-	sites := []string{"http://google.com", "http://amazon.com", "http://spiralscout.com", "http://0xdev.me"}
+	sites := []string{"http://google.com", "http://amazon.com", "http://spiralscout.com", "https://inturn.co"}
 
 	// add this sites to worker
 	for _, v := range sites {
@@ -41,4 +41,6 @@ func main() {
 			return
 		}
 	})
+
+	fmt.Print("FINISH")
 }
