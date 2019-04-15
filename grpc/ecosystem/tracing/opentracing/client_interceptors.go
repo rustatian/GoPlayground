@@ -99,6 +99,7 @@ func (s *tracedClientStream) finishClientSpan(err error) {
 	}
 }
 
+
 // ClientAddContextTags returns a context with specified opentracing tags, which
 // are used by UnaryClientInterceptor/StreamClientInterceptor when creating a
 // new span.
