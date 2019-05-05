@@ -1,12 +1,11 @@
 package main
 
 import (
-	"github.com/pkg/errors"
-	"time"
+	"runtime"
 )
 
 func main() {
-	time.Sleep(time.Second * 5)
-
-	panic(errors.New("Whooops, error!"))
+	a := make([]*int, 100)
+	runtime.GC()
+	runtime.KeepAlive(a)
 }
