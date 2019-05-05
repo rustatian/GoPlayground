@@ -92,7 +92,7 @@
 			this._nextCallbackTimeoutID = 1;
 
 			const mem = () => {
-				// The buffer may change when requesting more memory.
+				// The buffer may change when requesting more mm.
 				return new DataView(this._inst.exports.mem.buffer);
 			}
 
@@ -381,7 +381,7 @@
 
 			const mem = new DataView(this._inst.exports.mem.buffer)
 
-			// Pass command line arguments and environment variables to WebAssembly by writing them to the linear memory.
+			// Pass command line arguments and environment variables to WebAssembly by writing them to the linear mm.
 			let offset = 4096;
 
 			const strPtr = (str) => {

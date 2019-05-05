@@ -163,8 +163,8 @@ func main() {
 	streamFactory := &myFactory{bidiMap: make(map[key]*bidi)}
 	streamPool := tcpassembly.NewStreamPool(streamFactory)
 	assembler := tcpassembly.NewAssembler(streamPool)
-	// Limit memory usage by auto-flushing connection state if we get over 100K
-	// packets in memory, or over 1000 for a single stream.
+	// Limit mm usage by auto-flushing connection state if we get over 100K
+	// packets in mm, or over 1000 for a single stream.
 	assembler.MaxBufferedPagesTotal = 100000
 	assembler.MaxBufferedPagesPerConnection = 1000
 

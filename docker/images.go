@@ -3,14 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
+	"os"
+	"sync"
+
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/nat"
-	"io"
-	"os"
-	"sync"
 )
 
 //docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --restart always --name rabbit rabbitmq:3-management
@@ -30,7 +31,7 @@ func rabbit(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 	resp, err := cli.ContainerCreate(ctx, &container.Config{Hostname: "my-rabbit",
 		Image: "rabbitmq:3.7.8-management",
 		Tty:   true,
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "rabbit")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "rabbit")
 	if err != nil {
 		panic(err)
 	}
@@ -66,7 +67,7 @@ func zipkin(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 	resp, err := cli.ContainerCreate(ctx, &container.Config{Hostname: "zipkin",
 		Image: "openzipkin/zipkin:latest",
 		Tty:   true,
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "zipkin")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "zipkin")
 	if err != nil {
 		panic(err)
 	}
@@ -100,9 +101,9 @@ func consul(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 
 	resp, err := cli.ContainerCreate(ctx, &container.Config{Hostname: "consul",
 		Image: "consul:latest",
-		Cmd:   []string{"agent", "-dev", "-client=0.0.0.0",},
+		Cmd:   []string{"agent", "-dev", "-client=0.0.0.0"},
 		Tty:   true,
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "consul")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "consul")
 	if err != nil {
 		panic(err)
 	}
@@ -140,7 +141,7 @@ func postgresql(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 		Image: "postgres:latest",
 		Tty:   true,
 		Env:   []string{"POSTGRES_PASSWORD=1"},
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "postgres")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "postgres")
 	if err != nil {
 		panic(err)
 	}
@@ -179,7 +180,7 @@ func elastic(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 		Image: "elasticsearch:6.5.4",
 		Tty:   true,
 		Env:   []string{"discovery.type=single-node"},
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "es")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "es")
 	if err != nil {
 		panic(err)
 	}
@@ -215,7 +216,7 @@ func redis(ctx context.Context, cli *client.Client, wg *sync.WaitGroup) {
 	resp, err := cli.ContainerCreate(ctx, &container.Config{Hostname: "redis",
 		Image: "redis:latest",
 		Tty:   true,
-	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always",}, PortBindings: bindings,}, &network.NetworkingConfig{}, "redis")
+	}, &container.HostConfig{RestartPolicy: container.RestartPolicy{Name: "always"}, PortBindings: bindings}, &network.NetworkingConfig{}, "redis")
 	if err != nil {
 		panic(err)
 	}

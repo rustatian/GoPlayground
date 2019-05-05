@@ -9,8 +9,9 @@ import (
 )
 
 func main() {
-	var example *int
-	slice := make_slice_non_fun(1e5, unsafe.Sizeof(example))
+	//var example *string
+	//slice := make_slice_non_fun(1e5, unsafe.Sizeof(example))
+	slice := make([]*string, 1e5, 1e5)
 	//a := *(*[]*int)(unsafe.Pointer(&slice))
 
 	for i := 0; i < 10; i++ {
@@ -31,8 +32,7 @@ type SliceHeader struct {
 //http://man7.org/linux/man-pages/man2/mmap.2.html
 //void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 
-
-func make_slice(len int, eltsize uintptr) []*int {
+func make_slice(len int, eltsize uintptr) []*string {
 	fd := -1
 	data, _, errno := syscall.Syscall6(
 		syscall.SYS_MMAP,
@@ -48,17 +48,16 @@ func make_slice(len int, eltsize uintptr) []*int {
 		panic(errno)
 	}
 
-
 	slice := SliceHeader{
 		Data: data,
 		Len:  len,
 		Cap:  len,
 	}
 
-	return *(*[]*int)(unsafe.Pointer(&slice))
+	return *(*[]*string)(unsafe.Pointer(&slice))
 }
 
-func make_slice_non_fun(len int, eltsize uintptr) []*int {
-	slice := make([]*int, len, len)
+func make_slice_non_fun(len int, eltsize uintptr) []*string {
+	slice := make([]*string, len, len)
 	return slice
 }

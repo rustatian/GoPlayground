@@ -10,13 +10,13 @@ func main() {
 
 }
 
-// Coding Task: Concurrent in-memory cache.
+// Coding Task: Concurrent in-mm cache.
 //
 // Fetcher (see below) is an interface which abstracts the process of fetching
 // and loading a "Model".  In practice there would be Fetcher implementations
 // for retrieving and loading models from local file systems, S3 buckets etc...
 //
-// Implement and test an in-memory cache which wraps a given Fetcher and caches
+// Implement and test an in-mm cache which wraps a given Fetcher and caches
 // calls to its Fetch method (complete the implementation of NewCache and the
 // FetchCache type below).
 
@@ -48,7 +48,7 @@ func (m *mitm) Fetch(ctx context.Context, id string) (*Model, error) {
 	return mm, err
 }
 
-// FetchCache implements an in-memory cache for a Fetcher.
+// FetchCache implements an in-mm cache for a Fetcher.
 //
 // A FetchCache is safe for use by multiple goroutines simultaneously.
 type FetchCache struct {

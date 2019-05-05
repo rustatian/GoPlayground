@@ -2,11 +2,12 @@ package main
 
 import (
 	"flag"
+	"os"
+	"sync"
+
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
 	"golang.org/x/net/context"
-	"os"
-	"sync"
 )
 
 func main() {
