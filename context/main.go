@@ -1,14 +1,17 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"os"
 )
 
 func main() {
-	for _, b := range os.Environ() {
-		fmt.Println(b)
-	}
+	ctx := context.TODO()
+
+	ctxc, cancel := context.WithCancel(ctx)
+
+	fmt.Print(ctxc)
+	cancel()
 }
 
 
