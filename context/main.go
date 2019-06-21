@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 func main() {
-	println(2 ^ 30)
+	time.Now()
 }
