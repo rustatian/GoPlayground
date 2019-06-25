@@ -15,6 +15,16 @@ func (p *message) print() string {
 
 func main() {
 	m := &message{content: "Hello"}
-	defer func() { fmt.Print(m.print()) }()
+
+	defer func() {
+		fmt.Print(m.print())
+	}()
+
 	m.set("World")
+
+
+	defer func(mm string) {
+		fmt.Println("Some message")
+		fmt.Println(mm)
+	}("Hello")
 }
