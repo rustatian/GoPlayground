@@ -2,6 +2,20 @@ package main
 
 import "testing"
 
+type TL [2]uintptr
+
+func (TL) Method1() {
+
+}
+
+func (TL) Method2() {
+
+}
+
+var tl TL
+
+var e interface{}
+
 func BenchmarkA_FooP(b *testing.B) {
 	aa := aa{}
 	a := &foos{
