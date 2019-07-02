@@ -1,0 +1,702 @@
+"".frameP STEXT size=539 args=0x28 locals=0xb8
+	0x0000 00000 (fr.go:8)	TEXT	"".frameP(SB), ABIInternal, $184-40
+	0x0000 00000 (fr.go:8)	MOVQ	(TLS), CX
+	0x0009 00009 (fr.go:8)	LEAQ	-56(SP), AX
+	0x000e 00014 (fr.go:8)	CMPQ	AX, 16(CX)
+	0x0012 00018 (fr.go:8)	JLS	529
+	0x0018 00024 (fr.go:8)	SUBQ	$184, SP
+	0x001f 00031 (fr.go:8)	MOVQ	BP, 176(SP)
+	0x0027 00039 (fr.go:8)	LEAQ	176(SP), BP
+
+]
+	0x002f 00047 (fr.go:9)	XCHGL	AX, AX
+	0x0030 00048 (fr.go:9)	LEAQ	type.runtime.Frames(SB), AX
+
+
+
+	0x0000 00000 (fr.go:22)	TEXT	"".frameV(SB), ABIInternal, $168-96
+	0x0000 00000 (fr.go:22)	MOVQ	(TLS), CX
+	0x0009 00009 (fr.go:22)	LEAQ	-40(SP), AX
+	0x000e 00014 (fr.go:22)	CMPQ	AX, 16(CX)
+	0x0012 00018 (fr.go:22)	JLS	452
+	0x0018 00024 (fr.go:22)	SUBQ	$168, SP
+	0x001f 00031 (fr.go:22)	MOVQ	BP, 160(SP)
+	0x0027 00039 (fr.go:22)	LEAQ	160(SP), BP
+
+
+	0x002f 00047 (fr.go:22)	XORPS	X0, X0
+	0x0032 00050 (fr.go:22)	MOVUPS	X0, "".~r2+208(SP)
+	0x003a 00058 (fr.go:22)	MOVUPS	X0, "".~r2+224(SP)
+	0x0042 00066 (fr.go:22)	MOVUPS	X0, "".~r2+240(SP)
+	0x004a 00074 (fr.go:22)	MOVUPS	X0, "".~r2+256(SP)
+
+	0x0052 00082 (fr.go:23)	XCHGL	AX, AX
+
+
+
+
+
+
+	0x0037 00055 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $0
+	0x0037 00055 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	AX, (SP)
+	0x003b 00059 ($GOROOT/src/runtime/symtab.go:61)	CALL	runtime.newobject(SB)
+	0x0040 00064 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $2
+	0x0040 00064 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	8(SP), DI
+	0x0045 00069 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+200(SP), AX
+	0x004d 00077 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	AX, 8(DI)
+	0x0051 00081 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+208(SP), CX
+	0x0059 00089 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	CX, 16(DI)
+	0x005d 00093 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $-2
+	0x005d 00093 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$0, $-2
+	0x005d 00093 ($GOROOT/src/runtime/symtab.go:61)	CMPL	runtime.writeBarrier(SB), $0
+	0x0064 00100 ($GOROOT/src/runtime/symtab.go:61)	JNE	505
+	0x006a 00106 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+192(SP), CX
+	0x0072 00114 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	CX, (DI)
+	0x0075 00117 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $2
+	0x0075 00117 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$0, $1
+	0x0075 00117 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	DI, "".frames+96(SP)
+	0x007a 00122 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	$0, 32(DI)
+	0x0082 00130 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	$2, 40(DI)
+	0x008a 00138 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $3
+	0x008a 00138 ($GOROOT/src/runtime/symtab.go:62)	LEAQ	48(DI), CX
+	0x008e 00142 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $-2
+	0x008e 00142 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$0, $-2
+	0x008e 00142 ($GOROOT/src/runtime/symtab.go:62)	CMPL	runtime.writeBarrier(SB), $0
+	0x0095 00149 ($GOROOT/src/runtime/symtab.go:62)	JNE	485
+	0x009b 00155 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	CX, 24(DI)
+
+	0x01e5 00485 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $-2
+	0x01e5 00485 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$0, $-2
+	0x01e5 00485 ($GOROOT/src/runtime/symtab.go:62)	LEAQ	24(DI), DX
+	0x01e9 00489 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	DX, DI
+	0x01ec 00492 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	CX, AX
+	0x01ef 00495 ($GOROOT/src/runtime/symtab.go:62)	CALL	runtime.gcWriteBarrier(SB)
+	0x01f4 00500 ($GOROOT/src/runtime/symtab.go:62)	JMP	159
+	0x01f9 00505 (fr.go:8)	MOVQ	AX, CX
+	0x01fc 00508 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+192(SP), AX
+	0x0204 00516 ($GOROOT/src/runtime/symtab.go:61)	CALL	runtime.gcWriteBarrier(SB)
+	0x0209 00521 (fr.go:11)	MOVQ	CX, AX
+	0x020c 00524 ($GOROOT/src/runtime/symtab.go:61)	JMP	117
+	0x0211 00529 ($GOROOT/src/runtime/symtab.go:61)	NOP
+	0x0211 00529 (fr.go:8)	PCDATA	$0, $-1
+	0x0211 00529 (fr.go:8)	PCDATA	$2, $-1
+	0x0211 00529 (fr.go:8)	CALL	runtime.morestack_noctxt(SB)
+	0x0216 00534 (fr.go:8)	JMP	0
+	0x0000 65 48 8b 0c 25 00 00 00 00 48 8d 44 24 c8 48 3b  eH..%....H.D$.H;
+	0x0010 41 10 0f 86 f9 01 00 00 48 81 ec b8 00 00 00 48  A.......H......H
+	0x0020 89 ac 24 b0 00 00 00 48 8d ac 24 b0 00 00 00 90  ..$....H..$.....
+	0x0030 48 8d 05 00 00 00 00 48 89 04 24 e8 00 00 00 00  H......H..$.....
+	0x0040 48 8b 7c 24 08 48 8b 84 24 c8 00 00 00 48 89 47  H.|$.H..$....H.G
+	0x0050 08 48 8b 8c 24 d0 00 00 00 48 89 4f 10 83 3d 00  .H..$....H.O..=.
+	0x0060 00 00 00 00 0f 85 8f 01 00 00 48 8b 8c 24 c0 00  ..........H..$..
+	0x0070 00 00 48 89 0f 48 89 7c 24 60 48 c7 47 20 00 00  ..H..H.|$`H.G ..
+	0x0080 00 00 48 c7 47 28 02 00 00 00 48 8d 4f 30 83 3d  ..H.G(....H.O0.=
+	0x0090 00 00 00 00 00 0f 85 4a 01 00 00 48 89 4f 18 48  .......J...H.O.H
+	0x00a0 8d 05 00 00 00 00 48 89 04 24 e8 00 00 00 00 48  ......H..$.....H
+	0x00b0 8b 44 24 08 48 89 44 24 68 48 8b 8c 24 c8 00 00  .D$.H.D$hH..$...
+	0x00c0 00 48 ff c9 eb 0e 48 8b 54 24 58 48 ff ca 48 89  .H....H.T$XH..H.
+	0x00d0 c8 48 89 d1 48 8b 94 24 d8 00 00 00 48 39 d1 0f  .H..H..$....H9..
+	0x00e0 8c fb 00 00 00 48 89 4c 24 58 0f 57 c0 0f 11 44  .....H.L$X.W...D
+	0x00f0 24 70 0f 11 84 24 80 00 00 00 0f 11 84 24 90 00  $p...$.......$..
+	0x0100 00 00 0f 11 84 24 a0 00 00 00 48 8b 44 24 60 48  .....$....H.D$`H
+	0x0110 89 04 24 e8 00 00 00 00 0f 10 44 24 08 0f 11 44  ..$.......D$...D
+	0x0120 24 70 0f 10 44 24 18 0f 11 84 24 80 00 00 00 0f  $p..D$....$.....
+	0x0130 10 44 24 28 0f 11 84 24 90 00 00 00 0f 10 44 24  .D$(...$......D$
+	0x0140 38 0f 11 84 24 a0 00 00 00 0f b6 44 24 48 3c 00  8...$......D$H<.
+	0x0150 83 3d 00 00 00 00 00 75 51 0f 10 44 24 70 48 8b  .=.....uQ..D$pH.
+	0x0160 4c 24 68 0f 11 01 0f 10 84 24 80 00 00 00 0f 11  L$h......$......
+	0x0170 41 10 0f 10 84 24 90 00 00 00 0f 11 41 20 0f 10  A....$......A ..
+	0x0180 84 24 a0 00 00 00 0f 11 41 30 3c 00 0f 85 34 ff  .$......A0<...4.
+	0x0190 ff ff 48 89 8c 24 e0 00 00 00 48 8b ac 24 b0 00  ..H..$....H..$..
+	0x01a0 00 00 48 81 c4 b8 00 00 00 c3 88 44 24 57 48 8d  ..H........D$WH.
+	0x01b0 05 00 00 00 00 48 89 04 24 48 8b 44 24 68 48 89  .....H..$H.D$hH.
+	0x01c0 44 24 08 48 8d 4c 24 70 48 89 4c 24 10 e8 00 00  D$.H.L$pH.L$....
+	0x01d0 00 00 0f b6 44 24 57 3c 00 48 8b 4c 24 68 eb ac  ....D$W<.H.L$h..
+	0x01e0 48 89 c1 eb ad 48 8d 57 18 48 89 d7 48 89 c8 e8  H....H.W.H..H...
+	0x01f0 00 00 00 00 e9 a6 fe ff ff 48 89 c1 48 8b 84 24  .........H..H..$
+	0x0200 c0 00 00 00 e8 00 00 00 00 48 89 c8 e9 64 fe ff  .........H...d..
+	0x0210 ff e8 00 00 00 00 e9 e5 fd ff ff                 ...........
+	rel 5+4 t=16 TLS+0
+	rel 51+4 t=15 type.runtime.Frames+0
+	rel 60+4 t=8 runtime.newobject+0
+	rel 95+4 t=15 runtime.writeBarrier+-1
+	rel 144+4 t=15 runtime.writeBarrier+-1
+	rel 162+4 t=15 type.runtime.Frame+0
+	rel 171+4 t=8 runtime.newobject+0
+	rel 276+4 t=8 runtime.(*Frames).Next+0
+	rel 338+4 t=15 runtime.writeBarrier+-1
+	rel 433+4 t=15 type.runtime.Frame+0
+	rel 462+4 t=8 runtime.typedmemmove+0
+	rel 496+4 t=8 runtime.gcWriteBarrier+0
+	rel 517+4 t=8 runtime.gcWriteBarrier+0
+	rel 530+4 t=8 runtime.morestack_noctxt+0
+"".frameV STEXT size=462 args=0x60 locals=0xa8
+
+	0x0053 00083 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $1
+	0x0053 00083 ($GOROOT/src/runtime/symtab.go:61)	LEAQ	type.runtime.Frames(SB), AX
+	0x005a 00090 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $0
+	0x005a 00090 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	AX, (SP)
+	0x005e 00094 ($GOROOT/src/runtime/symtab.go:61)	CALL	runtime.newobject(SB)
+	0x0063 00099 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $2
+	0x0063 00099 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	8(SP), DI
+	0x0068 00104 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+184(SP), AX
+	0x0070 00112 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	AX, 8(DI)
+	0x0074 00116 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+192(SP), CX
+	0x007c 00124 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	CX, 16(DI)
+	0x0080 00128 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $-2
+	0x0080 00128 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$0, $-2
+	0x0080 00128 ($GOROOT/src/runtime/symtab.go:61)	CMPL	runtime.writeBarrier(SB), $0
+	0x0087 00135 ($GOROOT/src/runtime/symtab.go:61)	JNE	428
+	0x008d 00141 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+176(SP), CX
+	0x0095 00149 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	CX, (DI)
+	0x0098 00152 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $2
+	0x0098 00152 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$0, $1
+	0x0098 00152 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	$0, 32(DI)
+	0x00a0 00160 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	$2, 40(DI)
+	0x00a8 00168 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $3
+	0x00a8 00168 ($GOROOT/src/runtime/symtab.go:62)	LEAQ	48(DI), CX
+	0x00ac 00172 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $-2
+	0x00ac 00172 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$0, $-2
+	0x00ac 00172 ($GOROOT/src/runtime/symtab.go:62)	CMPL	runtime.writeBarrier(SB), $0
+	0x00b3 00179 ($GOROOT/src/runtime/symtab.go:62)	JNE	396
+	0x00b9 00185 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	CX, 24(DI)
+	0x00bd 00189 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$2, $2
+	0x00bd 00189 ($GOROOT/src/runtime/symtab.go:61)	PCDATA	$0, $2
+	0x00bd 00189 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	DI, "".frames+88(SP)
+	0x00c2 00194 (fr.go:24)	PCDATA	$0, $3
+	0x00c2 00194 (fr.go:24)	XORPS	X0, X0
+	0x00c5 00197 (fr.go:24)	MOVUPS	X0, "".f+96(SP)
+	0x00ca 00202 (fr.go:24)	MOVUPS	X0, "".f+112(SP)
+	0x00cf 00207 (fr.go:24)	MOVUPS	X0, "".f+128(SP)
+	0x00d7 00215 (fr.go:24)	MOVUPS	X0, "".f+144(SP)
+	0x00df 00223 (fr.go:25)	DECQ	AX
+	0x00e2 00226 (fr.go:25)	JMP	242
+	0x00e4 00228 (fr.go:25)	PCDATA	$2, $0
+	0x00e4 00228 (fr.go:25)	MOVQ	"".i+80(SP), CX
+	0x00e9 00233 (fr.go:25)	LEAQ	-1(CX), AX
+	0x00ed 00237 (fr.go:27)	PCDATA	$2, $2
+	0x00ed 00237 (fr.go:27)	MOVQ	"".frames+88(SP), DI
+	0x00f2 00242 (fr.go:25)	MOVQ	"".n+200(SP), CX
+	0x00fa 00250 (fr.go:25)	CMPQ	AX, CX
+	0x00fd 00253 (fr.go:25)	JLT	322
+	0x00ff 00255 (fr.go:25)	PCDATA	$0, $2
+	0x00ff 00255 (fr.go:25)	MOVQ	AX, "".i+80(SP)
+	0x0104 00260 (fr.go:27)	PCDATA	$2, $0
+	0x0104 00260 (fr.go:27)	MOVQ	DI, (SP)
+	0x0108 00264 (fr.go:27)	CALL	runtime.(*Frames).Next(SB)
+	0x010d 00269 (fr.go:27)	CMPB	72(SP), $0
+	0x0112 00274 (fr.go:27)	PCDATA	$0, $3
+	0x0112 00274 (fr.go:27)	MOVUPS	8(SP), X0
+	0x0117 00279 (fr.go:27)	MOVUPS	X0, "".f+96(SP)
+	0x011c 00284 (fr.go:27)	MOVUPS	24(SP), X0
+	0x0121 00289 (fr.go:27)	MOVUPS	X0, "".f+112(SP)
+	0x0126 00294 (fr.go:27)	MOVUPS	40(SP), X0
+	0x012b 00299 (fr.go:27)	MOVUPS	X0, "".f+128(SP)
+	0x0133 00307 (fr.go:27)	MOVUPS	56(SP), X0
+	0x0138 00312 (fr.go:27)	MOVUPS	X0, "".f+144(SP)
+	0x0140 00320 (fr.go:28)	JNE	228
+	0x0142 00322 (fr.go:32)	PCDATA	$0, $4
+	0x0142 00322 (fr.go:32)	MOVUPS	"".f+96(SP), X0
+	0x0147 00327 (fr.go:32)	MOVUPS	X0, "".~r2+208(SP)
+	0x014f 00335 (fr.go:32)	MOVUPS	"".f+112(SP), X0
+	0x0154 00340 (fr.go:32)	MOVUPS	X0, "".~r2+224(SP)
+	0x015c 00348 (fr.go:32)	MOVUPS	"".f+128(SP), X0
+	0x0164 00356 (fr.go:32)	MOVUPS	X0, "".~r2+240(SP)
+	0x016c 00364 (fr.go:32)	PCDATA	$0, $5
+	0x016c 00364 (fr.go:32)	MOVUPS	"".f+144(SP), X0
+	0x0174 00372 (fr.go:32)	MOVUPS	X0, "".~r2+256(SP)
+	0x017c 00380 (fr.go:32)	MOVQ	160(SP), BP
+	0x0184 00388 (fr.go:32)	ADDQ	$168, SP
+	0x018b 00395 (fr.go:32)	RET
+	0x018c 00396 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$2, $-2
+	0x018c 00396 ($GOROOT/src/runtime/symtab.go:62)	PCDATA	$0, $-2
+	0x018c 00396 ($GOROOT/src/runtime/symtab.go:62)	LEAQ	24(DI), DX
+	0x0190 00400 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	DI, BX
+	0x0193 00403 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	DX, DI
+	0x0196 00406 (fr.go:22)	MOVQ	AX, SI
+	0x0199 00409 ($GOROOT/src/runtime/symtab.go:62)	MOVQ	CX, AX
+	0x019c 00412 ($GOROOT/src/runtime/symtab.go:62)	CALL	runtime.gcWriteBarrier(SB)
+	0x01a1 00417 (fr.go:25)	MOVQ	SI, AX
+	0x01a4 00420 (fr.go:27)	MOVQ	BX, DI
+	0x01a7 00423 ($GOROOT/src/runtime/symtab.go:62)	JMP	189
+	0x01ac 00428 (fr.go:22)	MOVQ	AX, CX
+	0x01af 00431 ($GOROOT/src/runtime/symtab.go:61)	MOVQ	"".callers+176(SP), AX
+	0x01b7 00439 ($GOROOT/src/runtime/symtab.go:61)	CALL	runtime.gcWriteBarrier(SB)
+	0x01bc 00444 (fr.go:25)	MOVQ	CX, AX
+	0x01bf 00447 ($GOROOT/src/runtime/symtab.go:61)	JMP	152
+	0x01c4 00452 ($GOROOT/src/runtime/symtab.go:61)	NOP
+	0x01c4 00452 (fr.go:22)	PCDATA	$0, $-1
+	0x01c4 00452 (fr.go:22)	PCDATA	$2, $-1
+	0x01c4 00452 (fr.go:22)	CALL	runtime.morestack_noctxt(SB)
+	0x01c9 00457 (fr.go:22)	JMP	0
+	0x0000 65 48 8b 0c 25 00 00 00 00 48 8d 44 24 d8 48 3b  eH..%....H.D$.H;
+	0x0010 41 10 0f 86 ac 01 00 00 48 81 ec a8 00 00 00 48  A.......H......H
+	0x0020 89 ac 24 a0 00 00 00 48 8d ac 24 a0 00 00 00 0f  ..$....H..$.....
+	0x0030 57 c0 0f 11 84 24 d0 00 00 00 0f 11 84 24 e0 00  W....$.......$..
+	0x0040 00 00 0f 11 84 24 f0 00 00 00 0f 11 84 24 00 01  .....$.......$..
+	0x0050 00 00 90 48 8d 05 00 00 00 00 48 89 04 24 e8 00  ...H......H..$..
+	0x0060 00 00 00 48 8b 7c 24 08 48 8b 84 24 b8 00 00 00  ...H.|$.H..$....
+	0x0070 48 89 47 08 48 8b 8c 24 c0 00 00 00 48 89 4f 10  H.G.H..$....H.O.
+	0x0080 83 3d 00 00 00 00 00 0f 85 1f 01 00 00 48 8b 8c  .=...........H..
+	0x0090 24 b0 00 00 00 48 89 0f 48 c7 47 20 00 00 00 00  $....H..H.G ....
+	0x00a0 48 c7 47 28 02 00 00 00 48 8d 4f 30 83 3d 00 00  H.G(....H.O0.=..
+	0x00b0 00 00 00 0f 85 d3 00 00 00 48 89 4f 18 48 89 7c  .........H.O.H.|
+	0x00c0 24 58 0f 57 c0 0f 11 44 24 60 0f 11 44 24 70 0f  $X.W...D$`..D$p.
+	0x00d0 11 84 24 80 00 00 00 0f 11 84 24 90 00 00 00 48  ..$.......$....H
+	0x00e0 ff c8 eb 0e 48 8b 4c 24 50 48 8d 41 ff 48 8b 7c  ....H.L$PH.A.H.|
+	0x00f0 24 58 48 8b 8c 24 c8 00 00 00 48 39 c8 7c 43 48  $XH..$....H9.|CH
+	0x0100 89 44 24 50 48 89 3c 24 e8 00 00 00 00 80 7c 24  .D$PH.<$......|$
+	0x0110 48 00 0f 10 44 24 08 0f 11 44 24 60 0f 10 44 24  H...D$...D$`..D$
+	0x0120 18 0f 11 44 24 70 0f 10 44 24 28 0f 11 84 24 80  ...D$p..D$(...$.
+	0x0130 00 00 00 0f 10 44 24 38 0f 11 84 24 90 00 00 00  .....D$8...$....
+	0x0140 75 a2 0f 10 44 24 60 0f 11 84 24 d0 00 00 00 0f  u...D$`...$.....
+	0x0150 10 44 24 70 0f 11 84 24 e0 00 00 00 0f 10 84 24  .D$p...$.......$
+	0x0160 80 00 00 00 0f 11 84 24 f0 00 00 00 0f 10 84 24  .......$.......$
+	0x0170 90 00 00 00 0f 11 84 24 00 01 00 00 48 8b ac 24  .......$....H..$
+	0x0180 a0 00 00 00 48 81 c4 a8 00 00 00 c3 48 8d 57 18  ....H.......H.W.
+	0x0190 48 89 fb 48 89 d7 48 89 c6 48 89 c8 e8 00 00 00  H..H..H..H......
+	0x01a0 00 48 89 f0 48 89 df e9 11 ff ff ff 48 89 c1 48  .H..H.......H..H
+	0x01b0 8b 84 24 b0 00 00 00 e8 00 00 00 00 48 89 c8 e9  ..$.........H...
+	0x01c0 d4 fe ff ff e8 00 00 00 00 e9 32 fe ff ff        ..........2...
+	rel 5+4 t=16 TLS+0
+	rel 86+4 t=15 type.runtime.Frames+0
+	rel 95+4 t=8 runtime.newobject+0
+	rel 130+4 t=15 runtime.writeBarrier+-1
+	rel 174+4 t=15 runtime.writeBarrier+-1
+	rel 265+4 t=8 runtime.(*Frames).Next+0
+	rel 413+4 t=8 runtime.gcWriteBarrier+0
+	rel 440+4 t=8 runtime.gcWriteBarrier+0
+	rel 453+4 t=8 runtime.morestack_noctxt+0
+"".callers STEXT size=157 args=0x18 locals=0x38
+	0x0000 00000 (fr.go:36)	TEXT	"".callers(SB), ABIInternal, $56-24
+	0x0000 00000 (fr.go:36)	MOVQ	(TLS), CX
+	0x0009 00009 (fr.go:36)	CMPQ	SP, 16(CX)
+	0x000d 00013 (fr.go:36)	JLS	147
+	0x0013 00019 (fr.go:36)	SUBQ	$56, SP
+	0x0017 00023 (fr.go:36)	MOVQ	BP, 48(SP)
+	0x001c 00028 (fr.go:36)	LEAQ	48(SP), BP
+	0x0021 00033 (fr.go:36)	FUNCDATA	$0, gclocals·9783710103695d7171ee820ce562d18d(SB)
+	0x0021 00033 (fr.go:36)	FUNCDATA	$1, gclocals·663f8c6bfa83aa777198789ce63d9ab4(SB)
+	0x0021 00033 (fr.go:36)	FUNCDATA	$3, gclocals·1cf923758aae2e428391d1783fe59973(SB)
+	0x0021 00033 (fr.go:37)	PCDATA	$2, $1
+	0x0021 00033 (fr.go:37)	PCDATA	$0, $0
+	0x0021 00033 (fr.go:37)	LEAQ	type.[64]uintptr(SB), AX
+	0x0028 00040 (fr.go:37)	PCDATA	$2, $0
+	0x0028 00040 (fr.go:37)	MOVQ	AX, (SP)
+	0x002c 00044 (fr.go:37)	CALL	runtime.newobject(SB)
+	0x0031 00049 (fr.go:37)	PCDATA	$2, $1
+	0x0031 00049 (fr.go:37)	MOVQ	8(SP), AX
+	0x0036 00054 (fr.go:37)	PCDATA	$2, $0
+	0x0036 00054 (fr.go:37)	PCDATA	$0, $1
+	0x0036 00054 (fr.go:37)	MOVQ	AX, "".&stk+40(SP)
+	0x003b 00059 (fr.go:39)	MOVQ	$4, (SP)
+	0x0043 00067 (fr.go:39)	MOVQ	$64, 16(SP)
+	0x004c 00076 (fr.go:39)	MOVQ	$64, 24(SP)
+	0x0055 00085 (fr.go:39)	CALL	runtime.Callers(SB)
+	0x005a 00090 (fr.go:39)	MOVQ	32(SP), AX
+	0x005f 00095 (fr.go:40)	TESTQ	AX, AX
+	0x0062 00098 (fr.go:40)	JLT	140
+	0x0064 00100 (fr.go:40)	CMPQ	AX, $64
+	0x0068 00104 (fr.go:40)	JHI	140
+	0x006a 00106 (fr.go:40)	PCDATA	$2, $2
+	0x006a 00106 (fr.go:40)	PCDATA	$0, $2
+	0x006a 00106 (fr.go:40)	MOVQ	"".&stk+40(SP), CX
+	0x006f 00111 (fr.go:40)	PCDATA	$2, $0
+	0x006f 00111 (fr.go:40)	MOVQ	CX, "".~r0+64(SP)
+	0x0074 00116 (fr.go:40)	MOVQ	AX, "".~r0+72(SP)
+	0x0079 00121 (fr.go:40)	MOVQ	$64, "".~r0+80(SP)
+	0x0082 00130 (fr.go:40)	MOVQ	48(SP), BP
+	0x0087 00135 (fr.go:40)	ADDQ	$56, SP
+	0x008b 00139 (fr.go:40)	RET
+	0x008c 00140 (fr.go:40)	PCDATA	$0, $0
+	0x008c 00140 (fr.go:40)	CALL	runtime.panicslice(SB)
+	0x0091 00145 (fr.go:40)	UNDEF
+	0x0093 00147 (fr.go:40)	NOP
+	0x0093 00147 (fr.go:36)	PCDATA	$0, $-1
+	0x0093 00147 (fr.go:36)	PCDATA	$2, $-1
+	0x0093 00147 (fr.go:36)	CALL	runtime.morestack_noctxt(SB)
+	0x0098 00152 (fr.go:36)	JMP	0
+	0x0000 65 48 8b 0c 25 00 00 00 00 48 3b 61 10 0f 86 80  eH..%....H;a....
+	0x0010 00 00 00 48 83 ec 38 48 89 6c 24 30 48 8d 6c 24  ...H..8H.l$0H.l$
+	0x0020 30 48 8d 05 00 00 00 00 48 89 04 24 e8 00 00 00  0H......H..$....
+	0x0030 00 48 8b 44 24 08 48 89 44 24 28 48 c7 04 24 04  .H.D$.H.D$(H..$.
+	0x0040 00 00 00 48 c7 44 24 10 40 00 00 00 48 c7 44 24  ...H.D$.@...H.D$
+	0x0050 18 40 00 00 00 e8 00 00 00 00 48 8b 44 24 20 48  .@........H.D$ H
+	0x0060 85 c0 7c 28 48 83 f8 40 77 22 48 8b 4c 24 28 48  ..|(H..@w"H.L$(H
+	0x0070 89 4c 24 40 48 89 44 24 48 48 c7 44 24 50 40 00  .L$@H.D$HH.D$P@.
+	0x0080 00 00 48 8b 6c 24 30 48 83 c4 38 c3 e8 00 00 00  ..H.l$0H..8.....
+	0x0090 00 0f 0b e8 00 00 00 00 e9 63 ff ff ff           .........c...
+	rel 5+4 t=16 TLS+0
+	rel 36+4 t=15 type.[64]uintptr+0
+	rel 45+4 t=8 runtime.newobject+0
+	rel 86+4 t=8 runtime.Callers+0
+	rel 141+4 t=8 runtime.panicslice+0
+	rel 148+4 t=8 runtime.morestack_noctxt+0
+"".init STEXT size=92 args=0x0 locals=0x8
+	0x0000 00000 (<autogenerated>:1)	TEXT	"".init(SB), ABIInternal, $8-0
+	0x0000 00000 (<autogenerated>:1)	MOVQ	(TLS), CX
+	0x0009 00009 (<autogenerated>:1)	CMPQ	SP, 16(CX)
+	0x000d 00013 (<autogenerated>:1)	JLS	85
+	0x000f 00015 (<autogenerated>:1)	SUBQ	$8, SP
+	0x0013 00019 (<autogenerated>:1)	MOVQ	BP, (SP)
+	0x0017 00023 (<autogenerated>:1)	LEAQ	(SP), BP
+	0x001b 00027 (<autogenerated>:1)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x001b 00027 (<autogenerated>:1)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x001b 00027 (<autogenerated>:1)	FUNCDATA	$3, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x001b 00027 (<autogenerated>:1)	PCDATA	$2, $0
+	0x001b 00027 (<autogenerated>:1)	PCDATA	$0, $0
+	0x001b 00027 (<autogenerated>:1)	MOVBLZX	"".initdone·(SB), AX
+	0x0022 00034 (<autogenerated>:1)	CMPB	AL, $1
+	0x0025 00037 (<autogenerated>:1)	JLS	48
+	0x0027 00039 (<autogenerated>:1)	PCDATA	$2, $-2
+	0x0027 00039 (<autogenerated>:1)	PCDATA	$0, $-2
+	0x0027 00039 (<autogenerated>:1)	MOVQ	(SP), BP
+	0x002b 00043 (<autogenerated>:1)	ADDQ	$8, SP
+	0x002f 00047 (<autogenerated>:1)	RET
+	0x0030 00048 (<autogenerated>:1)	JNE	57
+	0x0032 00050 (<autogenerated>:1)	PCDATA	$2, $0
+	0x0032 00050 (<autogenerated>:1)	PCDATA	$0, $0
+	0x0032 00050 (<autogenerated>:1)	CALL	runtime.throwinit(SB)
+	0x0037 00055 (<autogenerated>:1)	UNDEF
+	0x0039 00057 (<autogenerated>:1)	MOVB	$1, "".initdone·(SB)
+	0x0040 00064 (<autogenerated>:1)	CALL	runtime.init(SB)
+	0x0045 00069 (<autogenerated>:1)	MOVB	$2, "".initdone·(SB)
+	0x004c 00076 (<autogenerated>:1)	MOVQ	(SP), BP
+	0x0050 00080 (<autogenerated>:1)	ADDQ	$8, SP
+	0x0054 00084 (<autogenerated>:1)	RET
+	0x0055 00085 (<autogenerated>:1)	NOP
+	0x0055 00085 (<autogenerated>:1)	PCDATA	$0, $-1
+	0x0055 00085 (<autogenerated>:1)	PCDATA	$2, $-1
+	0x0055 00085 (<autogenerated>:1)	CALL	runtime.morestack_noctxt(SB)
+	0x005a 00090 (<autogenerated>:1)	JMP	0
+	0x0000 65 48 8b 0c 25 00 00 00 00 48 3b 61 10 76 46 48  eH..%....H;a.vFH
+	0x0010 83 ec 08 48 89 2c 24 48 8d 2c 24 0f b6 05 00 00  ...H.,$H.,$.....
+	0x0020 00 00 80 f8 01 76 09 48 8b 2c 24 48 83 c4 08 c3  .....v.H.,$H....
+	0x0030 75 07 e8 00 00 00 00 0f 0b c6 05 00 00 00 00 01  u...............
+	0x0040 e8 00 00 00 00 c6 05 00 00 00 00 02 48 8b 2c 24  ............H.,$
+	0x0050 48 83 c4 08 c3 e8 00 00 00 00 eb a4              H...........
+	rel 5+4 t=16 TLS+0
+	rel 30+4 t=15 "".initdone·+0
+	rel 51+4 t=8 runtime.throwinit+0
+	rel 59+4 t=15 "".initdone·+-1
+	rel 65+4 t=8 runtime.init+0
+	rel 71+4 t=15 "".initdone·+-1
+	rel 86+4 t=8 runtime.morestack_noctxt+0
+go.info.runtime.CallersFrames$abstract SDWARFINFO dupok size=48
+	0x0000 04 72 75 6e 74 69 6d 65 2e 43 61 6c 6c 65 72 73  .runtime.Callers
+	0x0010 46 72 61 6d 65 73 00 01 01 11 63 61 6c 6c 65 72  Frames....caller
+	0x0020 73 00 00 00 00 00 00 0c 66 00 3d 00 00 00 00 00  s.......f.=.....
+	rel 35+4 t=28 go.info.[]uintptr+0
+	rel 43+4 t=28 go.info.*runtime.Frames+0
+go.loc."".frameP SDWARFLOC size=540
+	0x0000 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0010 00 00 00 00 00 00 00 00 b4 00 00 00 00 00 00 00  ................
+	0x0020 01 00 55 b4 00 00 00 00 00 00 00 fc 01 00 00 00  ..U.............
+	0x0030 00 00 00 03 00 91 a0 7f fc 01 00 00 00 00 00 00  ................
+	0x0040 1b 02 00 00 00 00 00 00 01 00 55 00 00 00 00 00  ..........U.....
+	0x0050 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff ff  ................
+	0x0060 ff ff ff 00 00 00 00 00 00 00 00 b4 00 00 00 00  ................
+	0x0070 00 00 00 cb 00 00 00 00 00 00 00 01 00 50 cb 00  .............P..
+	0x0080 00 00 00 00 00 00 ec 01 00 00 00 00 00 00 03 00  ................
+	0x0090 91 a8 7f 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x00a0 00 00 00 ff ff ff ff ff ff ff ff 00 00 00 00 00  ................
+	0x00b0 00 00 00 00 00 00 00 00 00 00 00 1b 02 00 00 00  ................
+	0x00c0 00 00 00 0b 00 9c 93 08 91 08 93 08 91 10 93 08  ................
+	0x00d0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x00e0 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x00f0 00 00 00 00 00 00 00 00 1b 02 00 00 00 00 00 00  ................
+	0x0100 02 00 91 18 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0110 00 00 00 00 ff ff ff ff ff ff ff ff 00 00 00 00  ................
+	0x0120 00 00 00 00 c4 00 00 00 00 00 00 00 cb 00 00 00  ................
+	0x0130 00 00 00 00 01 00 52 cb 00 00 00 00 00 00 00 d4  ......R.........
+	0x0140 00 00 00 00 00 00 00 03 00 91 98 7f d4 00 00 00  ................
+	0x0150 00 00 00 00 18 01 00 00 00 00 00 00 01 00 52 18  ..............R.
+	0x0160 01 00 00 00 00 00 00 e3 01 00 00 00 00 00 00 03  ................
+	0x0170 00 91 98 7f 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0180 00 00 00 00 ff ff ff ff ff ff ff ff 00 00 00 00  ................
+	0x0190 00 00 00 00 00 00 00 00 00 00 00 00 1b 02 00 00  ................
+	0x01a0 00 00 00 00 0b 00 9c 93 08 91 08 93 08 91 10 93  ................
+	0x01b0 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x01c0 00 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00  ................
+	0x01d0 00 00 00 00 00 00 00 00 00 b4 00 00 00 00 00 00  ................
+	0x01e0 00 01 00 55 b4 00 00 00 00 00 00 00 fc 01 00 00  ...U............
+	0x01f0 00 00 00 00 03 00 91 a0 7f fc 01 00 00 00 00 00  ................
+	0x0200 00 1b 02 00 00 00 00 00 00 01 00 55 00 00 00 00  ...........U....
+	0x0210 00 00 00 00 00 00 00 00 00 00 00 00              ............
+	rel 8+8 t=1 "".frameP+0
+	rel 99+8 t=1 "".frameP+0
+	rel 171+8 t=1 "".frameP+0
+	rel 232+8 t=1 "".frameP+0
+	rel 284+8 t=1 "".frameP+0
+	rel 396+8 t=1 "".frameP+0
+	rel 457+8 t=1 "".frameP+0
+go.info."".frameP SDWARFINFO size=160
+	0x0000 03 22 22 2e 66 72 61 6d 65 50 00 00 00 00 00 00  ."".frameP......
+	0x0010 00 00 00 00 00 00 00 00 00 00 00 01 9c 00 00 00  ................
+	0x0020 00 01 0b 66 72 61 6d 65 73 00 09 00 00 00 00 00  ...frames.......
+	0x0030 00 00 00 0b 26 66 00 0a 00 00 00 00 00 00 00 00  ....&f..........
+	0x0040 10 63 61 6c 6c 65 72 73 00 00 08 00 00 00 00 00  .callers........
+	0x0050 00 00 00 10 6e 00 00 08 00 00 00 00 00 00 00 00  ....n...........
+	0x0060 0f 7e 72 32 00 01 08 00 00 00 00 00 14 00 00 00  .~r2............
+	0x0070 00 0b 69 00 0b 00 00 00 00 00 00 00 00 00 07 00  ..i.............
+	0x0080 00 00 00 00 00 00 00 00 00 00 00 09 13 00 00 00  ................
+	0x0090 00 00 00 00 00 0e 00 00 00 00 00 00 00 00 00 00  ................
+	rel 11+8 t=1 "".frameP+0
+	rel 19+8 t=1 "".frameP+539
+	rel 29+4 t=29 gofile../Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/frames/fr.go+0
+	rel 43+4 t=28 go.info.*runtime.Frames+0
+	rel 47+4 t=28 go.loc."".frameP+0
+	rel 56+4 t=28 go.info.*runtime.Frame+0
+	rel 60+4 t=28 go.loc."".frameP+91
+	rel 75+4 t=28 go.info.[]uintptr+0
+	rel 79+4 t=28 go.loc."".frameP+163
+	rel 88+4 t=28 go.info.int+0
+	rel 92+4 t=28 go.loc."".frameP+224
+	rel 103+4 t=28 go.info.*runtime.Frame+0
+	rel 109+4 t=28 go.range."".frameP+0
+	rel 117+4 t=28 go.info.int+0
+	rel 121+4 t=28 go.loc."".frameP+276
+	rel 127+4 t=28 go.info.runtime.CallersFrames$abstract+0
+	rel 131+4 t=28 go.range."".frameP+128
+	rel 135+4 t=29 gofile../Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/frames/fr.go+0
+	rel 141+4 t=28 go.info.runtime.CallersFrames$abstract+25
+	rel 145+4 t=28 go.loc."".frameP+388
+	rel 150+4 t=28 go.info.runtime.CallersFrames$abstract+39
+	rel 154+4 t=28 go.loc."".frameP+449
+go.range."".frameP SDWARFRANGE size=224
+	0x0000 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0010 b9 00 00 00 00 00 00 00 ce 00 00 00 00 00 00 00  ................
+	0x0020 d1 00 00 00 00 00 00 00 92 01 00 00 00 00 00 00  ................
+	0x0030 aa 01 00 00 00 00 00 00 d9 01 00 00 00 00 00 00  ................
+	0x0040 de 01 00 00 00 00 00 00 e0 01 00 00 00 00 00 00  ................
+	0x0050 e3 01 00 00 00 00 00 00 e5 01 00 00 00 00 00 00  ................
+	0x0060 09 02 00 00 00 00 00 00 0c 02 00 00 00 00 00 00  ................
+	0x0070 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0080 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0090 37 00 00 00 00 00 00 00 9f 00 00 00 00 00 00 00  7...............
+	0x00a0 e5 01 00 00 00 00 00 00 f9 01 00 00 00 00 00 00  ................
+	0x00b0 fc 01 00 00 00 00 00 00 09 02 00 00 00 00 00 00  ................
+	0x00c0 0c 02 00 00 00 00 00 00 11 02 00 00 00 00 00 00  ................
+	0x00d0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	rel 8+8 t=1 "".frameP+0
+	rel 136+8 t=1 "".frameP+0
+go.isstmt."".frameP SDWARFMISC size=0
+	0x0000 04 18 04 17 05 01 02 10 01 3a 02 08 01 1d 02 07  .........:......
+	0x0010 01 04 02 05 01 0a 02 08 01 05 02 05 01 09 02 08  ................
+	0x0020 01 0e 02 03 01 26 02 05 01 74 02 0e 01 33 02 05  .....&...t...3..
+	0x0030 01 3f 02 0a 00                                   .?...
+go.loc."".frameV SDWARFLOC size=479
+	0x0000 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0010 00 00 00 00 00 00 00 00 c5 00 00 00 00 00 00 00  ................
+	0x0020 01 00 55 f2 00 00 00 00 00 00 00 96 01 00 00 00  ..U.............
+	0x0030 00 00 00 01 00 55 00 00 00 00 00 00 00 00 00 00  .....U..........
+	0x0040 00 00 00 00 00 00 ff ff ff ff ff ff ff ff 00 00  ................
+	0x0050 00 00 00 00 00 00 c5 00 00 00 00 00 00 00 96 01  ................
+	0x0060 00 00 00 00 00 00 03 00 91 b0 7f 00 00 00 00 00  ................
+	0x0070 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff ff  ................
+	0x0080 ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0090 00 00 00 ce 01 00 00 00 00 00 00 0b 00 9c 93 08  ................
+	0x00a0 91 08 93 08 91 10 93 08 00 00 00 00 00 00 00 00  ................
+	0x00b0 00 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff  ................
+	0x00c0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x00d0 ce 01 00 00 00 00 00 00 02 00 91 18 00 00 00 00  ................
+	0x00e0 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff  ................
+	0x00f0 ff ff ff ff 00 00 00 00 00 00 00 00 e2 00 00 00  ................
+	0x0100 00 00 00 00 e9 00 00 00 00 00 00 00 01 00 50 e9  ..............P.
+	0x0110 00 00 00 00 00 00 00 f2 00 00 00 00 00 00 00 03  ................
+	0x0120 00 91 a0 7f f2 00 00 00 00 00 00 00 0d 01 00 00  ................
+	0x0130 00 00 00 00 01 00 50 0d 01 00 00 00 00 00 00 96  ......P.........
+	0x0140 01 00 00 00 00 00 00 03 00 91 a0 7f 00 00 00 00  ................
+	0x0150 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff  ................
+	0x0160 ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0170 00 00 00 00 ce 01 00 00 00 00 00 00 0b 00 9c 93  ................
+	0x0180 08 91 08 93 08 91 10 93 08 00 00 00 00 00 00 00  ................
+	0x0190 00 00 00 00 00 00 00 00 00 ff ff ff ff ff ff ff  ................
+	0x01a0 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x01b0 00 c5 00 00 00 00 00 00 00 01 00 55 f2 00 00 00  ...........U....
+	0x01c0 00 00 00 00 96 01 00 00 00 00 00 00 01 00 55 00  ..............U.
+	0x01d0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ...............
+	rel 8+8 t=1 "".frameV+0
+	rel 78+8 t=1 "".frameV+0
+	rel 131+8 t=1 "".frameV+0
+	rel 192+8 t=1 "".frameV+0
+	rel 244+8 t=1 "".frameV+0
+	rel 356+8 t=1 "".frameV+0
+	rel 417+8 t=1 "".frameV+0
+go.info."".frameV SDWARFINFO size=159
+	0x0000 03 22 22 2e 66 72 61 6d 65 56 00 00 00 00 00 00  ."".frameV......
+	0x0010 00 00 00 00 00 00 00 00 00 00 00 01 9c 00 00 00  ................
+	0x0020 00 01 0b 66 72 61 6d 65 73 00 17 00 00 00 00 00  ...frames.......
+	0x0030 00 00 00 0b 66 00 18 00 00 00 00 00 00 00 00 10  ....f...........
+	0x0040 63 61 6c 6c 65 72 73 00 00 16 00 00 00 00 00 00  callers.........
+	0x0050 00 00 10 6e 00 00 16 00 00 00 00 00 00 00 00 0f  ...n............
+	0x0060 7e 72 32 00 01 16 00 00 00 00 00 14 00 00 00 00  ~r2.............
+	0x0070 0b 69 00 19 00 00 00 00 00 00 00 00 00 07 00 00  .i..............
+	0x0080 00 00 00 00 00 00 00 00 00 00 17 13 00 00 00 00  ................
+	0x0090 00 00 00 00 0e 00 00 00 00 00 00 00 00 00 00     ...............
+	rel 11+8 t=1 "".frameV+0
+	rel 19+8 t=1 "".frameV+462
+	rel 29+4 t=29 gofile../Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/frames/fr.go+0
+	rel 43+4 t=28 go.info.*runtime.Frames+0
+	rel 47+4 t=28 go.loc."".frameV+0
+	rel 55+4 t=28 go.info.runtime.Frame+0
+	rel 59+4 t=28 go.loc."".frameV+70
+	rel 74+4 t=28 go.info.[]uintptr+0
+	rel 78+4 t=28 go.loc."".frameV+123
+	rel 87+4 t=28 go.info.int+0
+	rel 91+4 t=28 go.loc."".frameV+184
+	rel 102+4 t=28 go.info.runtime.Frame+0
+	rel 108+4 t=28 go.range."".frameV+0
+	rel 116+4 t=28 go.info.int+0
+	rel 120+4 t=28 go.loc."".frameV+236
+	rel 126+4 t=28 go.info.runtime.CallersFrames$abstract+0
+	rel 130+4 t=28 go.range."".frameV+80
+	rel 134+4 t=29 gofile../Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/frames/fr.go+0
+	rel 140+4 t=28 go.info.runtime.CallersFrames$abstract+25
+	rel 144+4 t=28 go.loc."".frameV+348
+	rel 149+4 t=28 go.info.runtime.CallersFrames$abstract+39
+	rel 153+4 t=28 go.loc."".frameV+409
+go.range."".frameV SDWARFRANGE size=208
+	0x0000 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0010 df 00 00 00 00 00 00 00 42 01 00 00 00 00 00 00  ........B.......
+	0x0020 a1 01 00 00 00 00 00 00 a7 01 00 00 00 00 00 00  ................
+	0x0030 bc 01 00 00 00 00 00 00 bf 01 00 00 00 00 00 00  ................
+	0x0040 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0050 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0060 53 00 00 00 00 00 00 00 c2 00 00 00 00 00 00 00  S...............
+	0x0070 8c 01 00 00 00 00 00 00 96 01 00 00 00 00 00 00  ................
+	0x0080 99 01 00 00 00 00 00 00 a1 01 00 00 00 00 00 00  ................
+	0x0090 a7 01 00 00 00 00 00 00 ac 01 00 00 00 00 00 00  ................
+	0x00a0 af 01 00 00 00 00 00 00 bc 01 00 00 00 00 00 00  ................
+	0x00b0 bf 01 00 00 00 00 00 00 c4 01 00 00 00 00 00 00  ................
+	0x00c0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	rel 8+8 t=1 "".frameV+0
+	rel 88+8 t=1 "".frameV+0
+go.isstmt."".frameV SDWARFMISC size=0
+	0x0000 04 18 04 17 03 03 01 20 02 08 01 04 02 05 01 35  ....... .......5
+	0x0010 02 08 01 22 02 03 01 1a 02 03 01 02 02 05 01 09  ..."............
+	0x0020 02 08 01 0a 02 09 01 33 02 07 01 7d 02 0a 00     .......3...}...
+go.loc."".callers SDWARFLOC size=122
+	0x0000 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00  ................
+	0x0010 36 00 00 00 00 00 00 00 5a 00 00 00 00 00 00 00  6.......Z.......
+	0x0020 01 00 50 5a 00 00 00 00 00 00 00 9d 00 00 00 00  ..PZ............
+	0x0030 00 00 00 02 00 91 68 00 00 00 00 00 00 00 00 00  ......h.........
+	0x0040 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff 00  ................
+	0x0050 00 00 00 00 00 00 00 5f 00 00 00 00 00 00 00 91  ......._........
+	0x0060 00 00 00 00 00 00 00 01 00 50 00 00 00 00 00 00  .........P......
+	0x0070 00 00 00 00 00 00 00 00 00 00                    ..........
+	rel 8+8 t=1 "".callers+0
+	rel 79+8 t=1 "".callers+0
+go.info."".callers SDWARFINFO size=75
+	0x0000 03 22 22 2e 63 61 6c 6c 65 72 73 00 00 00 00 00  ."".callers.....
+	0x0010 00 00 00 00 00 00 00 00 00 00 00 00 01 9c 00 00  ................
+	0x0020 00 00 01 0b 26 73 74 6b 00 25 00 00 00 00 00 00  ....&stk.%......
+	0x0030 00 00 0b 6e 00 27 00 00 00 00 00 00 00 00 0f 7e  ...n.'.........~
+	0x0040 72 30 00 01 24 00 00 00 00 00 00                 r0..$......
+	rel 12+8 t=1 "".callers+0
+	rel 20+8 t=1 "".callers+157
+	rel 30+4 t=29 gofile../Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/frames/fr.go+0
+	rel 42+4 t=28 go.info.*[64]uintptr+0
+	rel 46+4 t=28 go.loc."".callers+0
+	rel 54+4 t=28 go.info.int+0
+	rel 58+4 t=28 go.loc."".callers+71
+	rel 69+4 t=28 go.info.[]uintptr+0
+go.range."".callers SDWARFRANGE size=0
+go.isstmt."".callers SDWARFMISC size=0
+	0x0000 04 13 04 0e 03 07 01 04 02 05 01 0a 02 08 01 12  ................
+	0x0010 02 05 01 05 02 03 01 08 02 05 01 1d 02 11 00     ...............
+go.loc."".init SDWARFLOC size=0
+go.info."".init SDWARFINFO size=33
+	0x0000 03 22 22 2e 69 6e 69 74 00 00 00 00 00 00 00 00  ."".init........
+	0x0010 00 00 00 00 00 00 00 00 00 01 9c 00 00 00 00 01  ................
+	0x0020 00                                               .
+	rel 9+8 t=1 "".init+0
+	rel 17+8 t=1 "".init+92
+	rel 27+4 t=29 gofile..<autogenerated>+0
+go.range."".init SDWARFRANGE size=0
+go.isstmt."".init SDWARFMISC size=0
+	0x0000 04 0f 04 0c 03 07 01 05 02 09 01 02 02 13 01 10  ................
+	0x0010 02 07 00                                         ...
+"".initdone· SNOPTRBSS size=1
+runtime.gcbits.01 SRODATA dupok size=1
+	0x0000 01                                               .
+type..namedata.*[]uintptr- SRODATA dupok size=13
+	0x0000 00 00 0a 2a 5b 5d 75 69 6e 74 70 74 72           ...*[]uintptr
+type.*[]uintptr SRODATA dupok size=56
+	0x0000 08 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00  ................
+	0x0010 2f 71 45 ab 00 08 08 36 00 00 00 00 00 00 00 00  /qE....6........
+	0x0020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0030 00 00 00 00 00 00 00 00                          ........
+	rel 24+8 t=1 runtime.algarray+80
+	rel 32+8 t=1 runtime.gcbits.01+0
+	rel 40+4 t=5 type..namedata.*[]uintptr-+0
+	rel 48+8 t=1 type.[]uintptr+0
+type.[]uintptr SRODATA dupok size=56
+	0x0000 18 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00  ................
+	0x0010 bb 33 c0 5d 02 08 08 17 00 00 00 00 00 00 00 00  .3.]............
+	0x0020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0030 00 00 00 00 00 00 00 00                          ........
+	rel 24+8 t=1 runtime.algarray+0
+	rel 32+8 t=1 runtime.gcbits.01+0
+	rel 40+4 t=5 type..namedata.*[]uintptr-+0
+	rel 44+4 t=6 type.*[]uintptr+0
+	rel 48+8 t=1 type.uintptr+0
+type..hashfunc512 SRODATA dupok size=16
+	0x0000 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00  ................
+	rel 0+8 t=1 runtime.memhash_varlen+0
+type..eqfunc512 SRODATA dupok size=16
+	0x0000 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00  ................
+	rel 0+8 t=1 runtime.memequal_varlen+0
+type..alg512 SRODATA dupok size=16
+	0x0000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	rel 0+8 t=1 type..hashfunc512+0
+	rel 8+8 t=1 type..eqfunc512+0
+runtime.gcbits. SRODATA dupok size=0
+type..namedata.*[64]uintptr- SRODATA dupok size=15
+	0x0000 00 00 0c 2a 5b 36 34 5d 75 69 6e 74 70 74 72     ...*[64]uintptr
+type.[64]uintptr SRODATA dupok size=72
+	0x0000 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0010 de d5 3b 85 02 08 08 91 00 00 00 00 00 00 00 00  ..;.............
+	0x0020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0030 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0040 40 00 00 00 00 00 00 00                          @.......
+	rel 24+8 t=1 type..alg512+0
+	rel 32+8 t=1 runtime.gcbits.+0
+	rel 40+4 t=5 type..namedata.*[64]uintptr-+0
+	rel 44+4 t=6 type.*[64]uintptr+0
+	rel 48+8 t=1 type.uintptr+0
+	rel 56+8 t=1 type.[]uintptr+0
+type.*[64]uintptr SRODATA dupok size=56
+	0x0000 08 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00  ................
+	0x0010 14 58 52 56 00 08 08 36 00 00 00 00 00 00 00 00  .XRV...6........
+	0x0020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0030 00 00 00 00 00 00 00 00                          ........
+	rel 24+8 t=1 runtime.algarray+80
+	rel 32+8 t=1 runtime.gcbits.01+0
+	rel 40+4 t=5 type..namedata.*[64]uintptr-+0
+	rel 48+8 t=1 type.[64]uintptr+0
+type..importpath.runtime. SRODATA dupok size=10
+	0x0000 00 00 07 72 75 6e 74 69 6d 65                    ...runtime
+gclocals·1e4a6ee3ceb2e7f8f2f70141f9e306c4 SRODATA dupok size=15
+	0x0000 07 00 00 00 05 00 00 00 01 01 01 00 00 10 00     ...............
+gclocals·ff4d2f3e6f2abd7e26dbb6db3ca52537 SRODATA dupok size=22
+	0x0000 07 00 00 00 0a 00 00 00 00 00 01 00 03 00 03 00  ................
+	0x0010 5b 00 00 00 00 00                                [.....
+gclocals·b6ee3d44daa8b6c8cbc0b983d524137d SRODATA dupok size=13
+	0x0000 05 00 00 00 07 00 00 00 00 01 40 42 02           ..........@B.
+gclocals·eae344cf7bb2cf5387eb625d4ac71a3e SRODATA dupok size=20
+	0x0000 06 00 00 00 09 00 00 00 01 00 00 00 00 00 00 00  ................
+	0x0010 60 01 60 01                                      `.`.
+gclocals·f3c424b7c8c29e173d9b1af17921b679 SRODATA dupok size=20
+	0x0000 06 00 00 00 09 00 00 00 00 00 00 00 01 00 2d 00  ..............-.
+	0x0010 2c 00 00 00                                      ,...
+gclocals·b2272f1f415b8f6829e4872d426325c9 SRODATA dupok size=12
+	0x0000 04 00 00 00 07 00 00 00 00 01 40 42              ..........@B
+gclocals·9783710103695d7171ee820ce562d18d SRODATA dupok size=11
+	0x0000 03 00 00 00 01 00 00 00 00 00 01                 ...........
+gclocals·663f8c6bfa83aa777198789ce63d9ab4 SRODATA dupok size=11
+	0x0000 03 00 00 00 01 00 00 00 00 01 00                 ...........
+gclocals·1cf923758aae2e428391d1783fe59973 SRODATA dupok size=11
+	0x0000 03 00 00 00 02 00 00 00 00 01 02                 ...........
+gclocals·33cdeccccebe80329f1fdbee7f5874cb SRODATA dupok size=8
+	0x0000 01 00 00 00 00 00 00 00                          ........

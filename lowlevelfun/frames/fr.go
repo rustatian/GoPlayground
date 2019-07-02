@@ -4,6 +4,7 @@ import (
 	"runtime"
 )
 
+//go:noinline
 func frameP(callers []uintptr, n int) *runtime.Frame {
 	frames := runtime.CallersFrames(callers)
 	var f runtime.Frame
@@ -17,6 +18,7 @@ func frameP(callers []uintptr, n int) *runtime.Frame {
 	return &f
 }
 
+//go:noinline
 func frameV(callers []uintptr, n int) runtime.Frame {
 	frames := runtime.CallersFrames(callers)
 	var f runtime.Frame
@@ -30,7 +32,7 @@ func frameV(callers []uintptr, n int) runtime.Frame {
 	return f
 }
 
-// callers is a wrapper for runtime.Callers that allocates a slice.
+//go:noinline
 func callers() []uintptr {
 	var stk [64]uintptr
 	const skip = 4 // Skip 4 stack frames; ok for both E and Error funcs.
