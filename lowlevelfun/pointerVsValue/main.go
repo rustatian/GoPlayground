@@ -1,5 +1,6 @@
 package main
 
+var aaa interface{}
 type foo interface {
 	FooErr()
 	Foo()
@@ -41,13 +42,12 @@ func (aa) Foo() {
 }
 
 //go:noinline
-func FooV(s foos) string {
-	a := s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
-	return a
+func FooV(s foos)  {
+	aaa = s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
+
 }
 
 //go:noinline
-func FooP(s *foos) string {
-	a := s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
-	return a
+func FooP(s *foos)  {
+	aaa = s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
 }

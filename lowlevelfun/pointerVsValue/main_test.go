@@ -29,7 +29,7 @@ func BenchmarkA_FooP(b *testing.B) {
 	}
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		_ = FooP(a)
+		FooP(a)
 	}
 }
 
@@ -46,6 +46,6 @@ func BenchmarkA_FooV(b *testing.B) {
 	}
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		_ = FooV(a)
+		FooV(a)
 	}
 }
