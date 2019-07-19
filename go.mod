@@ -46,6 +46,8 @@ require (
 	github.com/jinzhu/gorm v1.9.2
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
 	github.com/jinzhu/now v1.0.0 // indirect
+	github.com/klauspost/compress v1.7.4 // indirect
+	github.com/klauspost/cpuid v1.2.1 // indirect
 	github.com/leonelquinteros/gorand v1.0.0
 	github.com/lib/pq v1.0.0
 	github.com/mailru/easyjson v0.0.0-20190221075403-6243d8e04c3f // indirect
@@ -73,18 +75,21 @@ require (
 	github.com/streadway/amqp v0.0.0-20190214183023-884228600bc9
 	github.com/stretchr/testify v1.3.0
 	github.com/therecipe/qt v0.0.0-20190121211426-e73768bc9bcc
+	github.com/valyala/fasthttp v1.4.0 // indirect
 	github.com/zserge/webview v0.0.0-20190123072648-16c93bcaeaeb
 	go.opencensus.io v0.19.0
 	go.uber.org/atomic v1.3.2 // indirect
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.9.1
 	gocv.io/x/gocv v0.18.0
-	golang.org/x/crypto v0.0.0-20190222235706-ffb98f73852f // indirect
-	golang.org/x/net v0.0.0-20190213061140-3a22650c66bd
+	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4 // indirect
+	golang.org/x/net v0.0.0-20190628185345-da137c7871d7
 	golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
-	golang.org/x/sys v0.0.0-20190222171317-cd391775e71e // indirect
+	golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7 // indirect
+	golang.org/x/text v0.3.2 // indirect
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c
-	golang.org/x/tools v0.0.0-20190221204921-83362c3779f5 // indirect
+	golang.org/x/tools v0.0.0-20190719005602-e377ae9d6386 // indirect
+	google.golang.org/appengine v1.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20190219182410-082222b4a5c5 // indirect
 	google.golang.org/grpc v1.18.0
 	gopkg.in/ini.v1 v1.42.0 // indirect

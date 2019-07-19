@@ -1,16 +1,19 @@
 package main
 
 import (
-	"io"
-	"log"
-	"net/http"
+	"fmt"
+	"github.com/valyala/fasthttp"
 )
 
-func main() {
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
 
-	http.HandleFunc("/hello", helloHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+// request handler in fasthttp style, i.e. just plain function.
+func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
+	fmt.Fprintf(ctx, "Hello")
 }
+
+func main()  {
+	// pass plain function to fasthttp
+	fasthttp.ListenAndServe(":8081", fastHTTPHandler)
+}
+
