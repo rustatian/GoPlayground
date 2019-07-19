@@ -5,7 +5,6 @@ package main
 #include <stdlib.h>
 #include "greeter.h"
 */
-
 import "C"
 import (
 	"fmt"
