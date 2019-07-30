@@ -75,7 +75,7 @@ require (
 	github.com/streadway/amqp v0.0.0-20190214183023-884228600bc9
 	github.com/stretchr/testify v1.3.0
 	github.com/therecipe/qt v0.0.0-20190121211426-e73768bc9bcc
-	github.com/valyala/fasthttp v1.4.0 // indirect
+	github.com/valyala/fasthttp v1.4.0
 	github.com/zserge/webview v0.0.0-20190123072648-16c93bcaeaeb
 	go.opencensus.io v0.19.0
 	go.uber.org/atomic v1.3.2 // indirect
