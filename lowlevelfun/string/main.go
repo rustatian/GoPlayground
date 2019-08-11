@@ -15,9 +15,9 @@ func main() {
 
 	println("----------------------------------------------------------------------")
 
-	//sss.Len = 1000
-
-	//println(sss.Len + 10000)
+	sss.Len = 1000
+	//
+	println(*(*string)(unsafe.Pointer(&sss.Data)))
 
 
 
