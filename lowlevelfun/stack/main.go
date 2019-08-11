@@ -8,6 +8,7 @@ func main() {
 
 //go:noinline
 func other(x int) {
-	x = 5
-	print(x)
+	go func(i int) {
+		print(i)
+	}(x)
 }
