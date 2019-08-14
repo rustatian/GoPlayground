@@ -7,8 +7,10 @@ func main() {
 	switch c {
 	case a:
 		print("a")
+		fallthrough
 	case b:
 		print("b")
+		fallthrough
 	default:
 		print("c")
 
