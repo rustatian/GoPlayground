@@ -94,3 +94,5 @@ require (
 	google.golang.org/grpc v1.18.0
 	gopkg.in/ini.v1 v1.42.0 // indirect
 )
+
+go 1.13
