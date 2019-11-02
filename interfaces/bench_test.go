@@ -7,25 +7,27 @@ import (
 func Benchmark_Iface_Val(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		InterfaceFuncVal(someVarVal)
+		ii := InterfaceFuncVal(someVarVal)
+		_ = ii
 	}
 }
 
 func Benchmark_Iface_Ptr(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		InterfaceFuncPtr(someVarPtr)
+		ii := InterfaceFuncPtr(someVarPtr)
+		_ = ii
 	}
 }
 
 //go:noinline
-func InterfaceFuncPtr(i interface{}) {
-	i = nil
+func InterfaceFuncPtr(i interface{}) interface{} {
+	return i
 }
 
 //go:noinline
-func InterfaceFuncVal(i interface{}) {
-	i = nil
+func InterfaceFuncVal(i interface{}) interface{} {
+	return i
 }
 
 type foo struct {
@@ -46,5 +48,37 @@ type foo struct {
 	name15 string
 }
 
-var someVarPtr = &foo{}
-var someVarVal = foo{}
+var someVarPtr = &foo{
+	name:   "fasdfasdf",
+	name2:  "adfasdf",
+	name3:  "asdfawer",
+	name4:  "adsfasdfas",
+	name5:  "asdfewrqae",
+	name6:  "faerwefas",
+	name7:  "faserwfwaee",
+	name8:  "fdsageawegawwg",
+	name9:  "fweff34fsdfas",
+	name10: "fasgharhdshdhewr344",
+	name11: "asdf432fdsagas",
+	name12: "f3w4f3sdafaw",
+	name13: "fawf3443fsafgagha",
+	name14: "gargrwgehsdgnhfdgbda",
+	name15: "fsadgasgneworghaoisgnoisdufhbphgviuashdkjasdlkvbnasdkjvnb",
+}
+var someVarVal = foo{
+	name:   "fasdfasdf",
+	name2:  "adfasdf",
+	name3:  "asdfawer",
+	name4:  "adsfasdfas",
+	name5:  "asdfewrqae",
+	name6:  "faerwefas",
+	name7:  "faserwfwaee",
+	name8:  "fdsageawegawwg",
+	name9:  "fweff34fsdfas",
+	name10: "fasgharhdshdhewr344",
+	name11: "asdf432fdsagas",
+	name12: "f3w4f3sdafaw",
+	name13: "fawf3443fsafgagha",
+	name14: "gargrwgehsdgnhfdgbda",
+	name15: "fsadgasgneworghaoisgnoisdufhbphgviuashdkjasdlkvbnasdkjvnb",
+}
