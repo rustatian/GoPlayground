@@ -1,20 +1,26 @@
 package main
 
 import (
-	"math/rand"
+	"errors"
+	"fmt"
 	"runtime"
 	"sync"
 )
 
 func main() {
-	rand.Seed(5)
-	wg := &sync.WaitGroup{}
+	err := errors.New("some error")
 
-	s := make([]int, 1e6)
-	for i := 0; i < len(s); i++ {
-		s[i] = rand.Intn(1000)
-	}
-	cc(s, 0, wg)
+	e := fmt.Sprintf("%v", err)
+	println(e)
+
+	//rand.Seed(5)
+	//wg := &sync.WaitGroup{}
+	//
+	//s := make([]int, 1e6)
+	//for i := 0; i < len(s); i++ {
+	//	s[i] = rand.Intn(1000)
+	//}
+	//cc(s, 0, wg)
 }
 
 func cc(data []int, numThreads int, wg *sync.WaitGroup) {
@@ -47,7 +53,7 @@ func cc(data []int, numThreads int, wg *sync.WaitGroup) {
 			defer wg.Done()
 
 			for j:=0; i < len(dataCopy); j++ {
-				
+
 			}
 
 			//m.Lock()
