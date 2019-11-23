@@ -40,6 +40,7 @@ require (
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/gopacket v1.1.16
+	github.com/gorilla/mux v1.7.3 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
 	github.com/hashicorp/consul/api v1.1.0
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
