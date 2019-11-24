@@ -1,0 +1,6 @@
+goos: linux
+goarch: amd64
+pkg: github.com/ValeryPiashchynski/GoPlayground/bytes
+BenchmarkPackWoOptimization-12    	136616600	         9.13 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/ValeryPiashchynski/GoPlayground/bytes	2.139s
