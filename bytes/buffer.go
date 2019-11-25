@@ -1,6 +1,8 @@
 package main
 
-import "bytes"
+import (
+	"bytes"
+)
 
 //go:noinline
 func PackWoOptimization(m string, s uint64) []byte {
