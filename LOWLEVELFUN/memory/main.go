@@ -3,7 +3,7 @@ package main
 import "runtime"
 
 func main() {
-	//f, err := elf.Open("/Users/0xdev/Projects/repo/GoPlayground/lowlevelfun/memory/main")
+	//f, err := elf.Open("/Users/0xdev/Projects/repo/GoPlayground/LOWLEVELFUN/memory/main")
 	//
 	//if err != nil {
 	//	log.Fatal(err)
