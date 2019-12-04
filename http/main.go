@@ -9,11 +9,11 @@ import (
 
 // request handler in fasthttp style, i.e. just plain function.
 func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
-	_, _ = fmt.Fprintf(ctx, "Hello")
+	_, _ = fmt.Fprintf(ctx, "Hello World!")
 }
 
 func main()  {
 	// pass plain function to fasthttp
-	_ = fasthttp.ListenAndServe(":7878", fastHTTPHandler)
+	_ = fasthttp.ListenAndServe(":8000", fastHTTPHandler)
 }
 
