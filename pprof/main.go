@@ -22,6 +22,10 @@ func main()  {
 		log.Println(http.ListenAndServe("localhost:6061", nil))
 	}()
 
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6062", nil))
+	}()
+
 	// pass plain function to fasthttp
 	_ = fasthttp.ListenAndServe(":8000", fastHTTPHandler)
 }
