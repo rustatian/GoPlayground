@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
+	"runtime/pprof"
 )
 
 
@@ -16,6 +17,7 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main()  {
+	pprof.Profiles()
 	go func() {
 		log.Println(http.ListenAndServe("localhost:6061", nil))
 	}()

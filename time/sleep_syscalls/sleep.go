@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 func main() {
-	//println(time.Now().Nanosecond())
+	time.Sleep(time.Second * 10)
 }

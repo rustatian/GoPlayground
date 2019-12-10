@@ -12,7 +12,6 @@ func main() {
 	println(ss)
 }
 
-
 //go:noinline
 func change_by_pointer(s *string) {
 	*s = "whatever"
@@ -24,10 +23,9 @@ func magic_change(s string) {
 	//
 	//a := *(*string)(unsafe.Pointer((*reflect.StringHeader)(unsafe.Pointer(&s)).Data))
 
-
 	//newStd := "wwwhhhhhaaatttt"
 	//(*string)(unsafe.Pointer(&(*reflect.StringHeader)(unsafe.Pointer(&s)).Data)) = &newStd
-	//*(*int)(unsafe.Pointer(&(*reflect.StringHeader)(unsafe.Pointer(&s)).Len)) = len("whatever")
+	*(*int)(unsafe.Pointer(&(*reflect.StringHeader)(unsafe.Pointer(&s)).Len)) = len("whatever")
 
 
 
@@ -39,3 +37,9 @@ func magic_change(s string) {
 
 	//println(*(*string)(unsafe.Pointer(&sss.Data)))
 }
+
+func foo(a []bool) []bool {
+	a = nil
+	return a
+}
+
