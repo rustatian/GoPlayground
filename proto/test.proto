@@ -1,5 +1,5 @@
-syntax = "proto2";
+syntax = "proto3";
 
 message Test1 {
-    optional fixed64 a = 1;
+    sint64 a = 1;
 }
