@@ -3,9 +3,10 @@ package main
 import "unsafe"
 
 const maxVarintBytes = 10
-
+//923472
 func main() {
-	b := EncodeVarint(923472)
+	b := EncodeVarintC(128)
+	println(unsafe.Sizeof(b))
 	d := DecodeVarint(b)
 	println(d)
 }
@@ -16,7 +17,7 @@ func EncodeVarint(x uint64) []byte {
 	var buf [maxVarintBytes]byte
 	var n int
 	for n = 0; x > 127; n++ {
-		tmp3 := x&0x7F
+		tmp3 := x & 0x7F
 		tmp := uint8(tmp3)
 		tmp2 := 0x80 | tmp
 		println(unsafe.Sizeof(tmp2))
@@ -41,11 +42,11 @@ func DecodeVarint(buf []byte) (x uint64) {
 
 	b = uint64(buf[i])
 	i++
-	x = x + b << 7
+	x = x + b<<7
 	if b&0x80 == 0 {
 		goto done
 	}
-	x = x - 0x80 << 7
+	x = x - 0x80<<7
 
 	b = uint64(buf[i])
 	i++
@@ -53,11 +54,11 @@ func DecodeVarint(buf []byte) (x uint64) {
 	if b&0x80 == 0 {
 		goto done
 	}
-	x = x - 0x80 << 14
+	x = x - 0x80<<14
 
 	b = uint64(buf[i])
 	i++
-	x = x + b << 21
+	x = x + b<<21
 	if b&0x80 == 0 {
 		goto done
 	}
@@ -114,4 +115,24 @@ func DecodeVarint(buf []byte) (x uint64) {
 
 done:
 	return x
+}
+
+func EncodeVarintC(x uint64) []byte {
+	var buf [maxVarintBytes]byte
+	i := 0
+	if x&0x80 == 0 {
+		buf[i] = uint8(x)
+		return buf[0:i+1]
+	}
+
+	for x > 127 {
+		tmp := uint8(x&0x7F) // get first 7 bytes
+		tmp2 := tmp | 0x80
+		buf[i] = tmp2
+		x = x >> 7
+		i++
+	}
+	buf[i] = uint8(x)
+	return buf[0:i+1]
+
 }
