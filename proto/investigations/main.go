@@ -3,9 +3,10 @@ package main
 import "unsafe"
 
 const maxVarintBytes = 10
+
 //923472
 func main() {
-	b := EncodeVarintC(128)
+	b := EncodeVarint(923472)
 	println(unsafe.Sizeof(b))
 	d := DecodeVarint(b)
 	println(d)
@@ -50,7 +51,7 @@ func DecodeVarint(buf []byte) (x uint64) {
 
 	b = uint64(buf[i])
 	i++
-	x += b << 14
+	x = x + b<<14
 	if b&0x80 == 0 {
 		goto done
 	}
@@ -122,17 +123,17 @@ func EncodeVarintC(x uint64) []byte {
 	i := 0
 	if x&0x80 == 0 {
 		buf[i] = uint8(x)
-		return buf[0:i+1]
+		return buf[0 : i+1]
 	}
 
 	for x > 127 {
-		tmp := uint8(x&0x7F) // get first 7 bytes
+		tmp := uint8(x & 0x7F) // get first 7 bytes
 		tmp2 := tmp | 0x80
 		buf[i] = tmp2
 		x = x >> 7
 		i++
 	}
 	buf[i] = uint8(x)
-	return buf[0:i+1]
+	return buf[0 : i+1]
 
 }
