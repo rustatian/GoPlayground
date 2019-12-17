@@ -6,7 +6,7 @@ const maxVarintBytes = 10
 
 //923472
 func main() {
-	b := EncodeVarint(923472)
+	b := EncodeVarintC(923472)
 	println(unsafe.Sizeof(b))
 	d := DecodeVarint(b)
 	println(d)
@@ -121,13 +121,13 @@ done:
 func EncodeVarintC(x uint64) []byte {
 	var buf [maxVarintBytes]byte
 	i := 0
-	if x&0x80 == 0 {
+	if x&0x80 > 0 {
 		buf[i] = uint8(x)
 		return buf[0 : i+1]
 	}
 
 	for x > 127 {
-		tmp := uint8(x & 0x7F) // get first 7 bytes
+		tmp := uint8(x & 0x7F) // get first 7 bits
 		tmp2 := tmp | 0x80
 		buf[i] = tmp2
 		x = x >> 7
@@ -136,4 +136,29 @@ func EncodeVarintC(x uint64) []byte {
 	buf[i] = uint8(x)
 	return buf[0 : i+1]
 
+}
+
+func DecodeVarintC(buf []byte) (x uint64) {
+	i := 0
+	if buf[i]&0x80 == 0 {
+		return uint64(buf[i])
+	}
+
+	//first byte already checked
+	tmp := buf[i]
+	x = uint64(tmp) - 0x80 // remove 1-s MSB
+	i++
+
+	tmp = buf[i] //174
+	x = x + uint64(tmp) << 7
+	if tmp&0x80 == 0 {
+		goto exit
+	}
+	i++
+	tmp = buf[i]
+	x = x + uint64(tmp) << 14
+
+
+	exit:
+		return x
 }
