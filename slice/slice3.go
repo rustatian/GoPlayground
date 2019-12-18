@@ -1,15 +1,13 @@
 package main
 
-import "fmt"
 
 func main() {
-	ints := []int{1,2,3,4,5,6}
-	var out []*int
+	a := make([]int, 10)
+	a[0] = 10
+	b := a
+	b[0] = 11
 
-	for i, _ := range ints {
-		fmt.Println(&ints[i])
-		out = append(out, &ints[i])
-		fmt.Println(&out[i])
-		fmt.Println("8=======================0")
-	}
+	println(a[0])
+	println(b[0])
+
 }

@@ -1,23 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"github.com/streadway/amqp"
+	"sync"
 )
 
 func main() {
-	a := amqp.Table{}
-	a = nil
-	fmt.Print(fmt.Sprintf("%v", a))
-	//queue := make(chan string)
-	//go func() {
-	//
-	//	queue <- "one"
-	//	queue <- "two"
-	//	close(queue)
-	//}()
+	c := make(chan int, 100)
+	wg := &sync.WaitGroup{}
 
-	//for elem := range queue {
-	//	fmt.Println(elem)
-	//}
+	foo(c, wg)
+
+
+
 }
+
+func foo(c chan int, wg *sync.WaitGroup) {
+
+}
+
