@@ -16,6 +16,7 @@ require (
 	github.com/docker/docker v1.13.1
 	github.com/docker/go-connections v0.4.0
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
+	github.com/fortytw2/leaktest v1.3.0 // indirect
 	github.com/go-ini/ini v1.42.0 // indirect
 	github.com/go-kit/kit v0.8.0
 	github.com/go-openapi/analysis v0.18.0 // indirect
@@ -56,6 +57,7 @@ require (
 	github.com/nats-io/go-nats v1.7.2
 	github.com/nats-io/nkeys v0.0.2 // indirect
 	github.com/nats-io/nuid v1.0.0 // indirect
+	github.com/olivere/elastic v6.2.26+incompatible
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/pkg/errors v0.8.1
