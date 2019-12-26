@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
-	"runtime/pprof"
+	"time"
 )
 
 
@@ -17,15 +17,15 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main()  {
-	pprof.Profiles()
 	go func() {
-		log.Println(http.ListenAndServe("localhost:6061", nil))
+		log.Println(http.ListenAndServe("localhost:6063", nil))
 	}()
 
-	go func() {
-		log.Println(http.ListenAndServe("localhost:6062", nil))
-	}()
+	for i := 0; i<= 1000; i ++ {
+		time.Sleep(time.Second * 1)
+	}
 
 	// pass plain function to fasthttp
 	_ = fasthttp.ListenAndServe(":8000", fastHTTPHandler)
+
 }
