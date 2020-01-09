@@ -59,7 +59,7 @@ func findInELF(elffile *elf.File) {
 	//
 	for _, symbol := range s {
 		//00000000004aa450
-		if symbol.Value == uint64(0x4aa450) {
+		if symbol.Value == uint64(0x4f1d30) {
 			println("FOUND")
 
 			code := *(*[]byte)(unsafe.Pointer(&reflect.SliceHeader{
