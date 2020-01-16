@@ -8,10 +8,9 @@ func main() {
 	data[2] = 9
 	data[3] = 10
 	data[4] = 11
-	println(&data)
 	bts := data
-	println(&bts)
 	data = changeData(data)
+	data[0] =111
 	println(&bts)
 	println(&data)
 }
