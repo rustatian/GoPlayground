@@ -27,6 +27,7 @@ func NewCalculatorForm() *widgets.QWidget {
 	var formWidget = loader.Load(file, widget)
 	file.Close()
 
+	
 	var (
 		uiInputspinbox1 = widgets.NewQSpinBoxFromPointer(widget.FindChild("inputSpinBox1", core.Qt__FindChildrenRecursively).Pointer())
 		uiInputspinbox2 = widgets.NewQSpinBoxFromPointer(widget.FindChild("inputSpinBox2", core.Qt__FindChildrenRecursively).Pointer())
