@@ -10,9 +10,8 @@ func main() {
 	data[4] = 11
 	bts := data
 	data = changeData(data)
-	data[0] =111
-	println(&bts)
-	println(&data)
+	println(bts)
+	println(data)
 }
 
 func changeData(data []int) []int {
