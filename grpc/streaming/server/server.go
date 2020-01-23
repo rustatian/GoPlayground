@@ -17,12 +17,13 @@ func(f *fooServer) FooRPC(stream pb.FooService_FooRPCServer) error {
 
 	for {
 		msg, err := stream.Recv()
+
 		fmt.Println("Recieved a message")
 		if err == io.EOF {
 			return nil
 		}
 		if err != nil {
-			panic(err)
+			fmt.Println(err)
 		}
 		fmt.Println("Message: " + msg.Msg)
 	}
@@ -33,10 +34,10 @@ func main() {
 	pb.RegisterFooServiceServer(server,&fooServer{})
 	listener, err := net.Listen("tcp", ":30000")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	err = server.Serve(listener)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 }

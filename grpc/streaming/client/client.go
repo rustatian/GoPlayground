@@ -32,39 +32,48 @@ import (
 //}
 
 func main() {
-	ctx := context.Background()
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
+
 	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure())
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
-	defer func() {
-		err = conn.Close()
-		if err != nil {
-			panic(err)
-		}
-	}()
 	client := pb.NewFooServiceClient(conn)
 	stream, err := client.FooRPC(ctx)
 
 	wc := make(chan struct{})
 
-	msg := &pb.Data{Msg:"some_data"}
+	msg := &pb.Data{Msg: "some_data"}
 	go func() {
 		for {
-			fmt.Println("Sleep for 1 second")
-			time.Sleep(time.Second * 1)
-			fmt.Println("Sending message")
-			err := stream.SendMsg(msg)
-			if err != nil {
-				panic(err)
+			select {
+			case <-ctx.Done():
+				panic(ctx)
+			default:
+				fmt.Println("Sleep for 1 second")
+				time.Sleep(time.Second * 1)
+				fmt.Println("Sending message")
+				err := stream.SendMsg(msg)
+
+				if err != nil {
+					cancel()
+					fmt.Println(err)
+				}
 			}
 		}
 	}()
 
-	<- wc
+	<-wc
 	err = stream.CloseSend()
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
+
+	err = conn.Close()
+	if err != nil {
+		fmt.Println(err)
+	}
+
 }
