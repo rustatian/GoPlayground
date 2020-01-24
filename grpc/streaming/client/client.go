@@ -5,6 +5,9 @@ import (
 	"fmt"
 	pb "github.com/ValeryPiashchynski/GoPlayground/grpc/streaming"
 	"google.golang.org/grpc"
+	"log"
+	"net/http"
+	_ "net/http/pprof"
 	"time"
 )
 
@@ -32,8 +35,11 @@ import (
 //}
 
 func main() {
+	go func() {
+		log.Println(http.ListenAndServe("0.0.0.0:6061", nil))
+	}()
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*500)
 
 	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure())
 	if err != nil {
@@ -45,18 +51,22 @@ func main() {
 
 	wc := make(chan struct{})
 
-	msg := &pb.Data{Msg: "some_data"}
+	buf := make([]string, 0)
 	go func() {
 		for {
 			select {
 			case <-ctx.Done():
 				panic(ctx)
 			default:
-				fmt.Println("Sleep for 1 second")
-				time.Sleep(time.Second * 1)
-				fmt.Println("Sending message")
+				time.Sleep(time.Millisecond * 100)
+				s := "flasfjash;fjhas;ljdf;lasjdf;ljasdf;ljlfaj;lsaghwret235dfsaddfj;"
+				j := ""
+				for i := 0; i < 1000; i++ {
+					j += s
+				}
+				msg := &pb.Data{Msg: j}
 				err := stream.SendMsg(msg)
-
+				buf = append(buf, j)
 				if err != nil {
 					cancel()
 					fmt.Println(err)

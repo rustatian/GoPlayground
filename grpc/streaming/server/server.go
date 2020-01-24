@@ -13,19 +13,16 @@ type fooServer struct {
 }
 
 func(f *fooServer) FooRPC(stream pb.FooService_FooRPCServer) error {
-	fmt.Println("Start a stream")
 
 	for {
 		msg, err := stream.Recv()
-
-		fmt.Println("Recieved a message")
 		if err == io.EOF {
 			return nil
 		}
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println("Message: " + msg.Msg)
+		fmt.Println("Message: " + msg.Msg[:100])
 	}
 }
 
