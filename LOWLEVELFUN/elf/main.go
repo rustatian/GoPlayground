@@ -39,6 +39,7 @@ func getFunctionAddress(func_name interface{}) uintptr {
 		typ uintptr
 		value *uintptr
 	}
+
 	e := (*dummy)(unsafe.Pointer(&func_name))
 	return *e.value
 }
@@ -58,7 +59,6 @@ func findInELF(elffile *elf.File) {
 	//}
 	//
 	for _, symbol := range s {
-		//00000000004aa450
 		if symbol.Value == uint64(0x4f1d30) {
 			println("FOUND")
 
@@ -72,3 +72,44 @@ func findInELF(elffile *elf.File) {
 		}
 	}
 }
+
+//or byte ptr ds:[rdx], ch
+//pop rbx
+//xor dword ptr ds:[rcx], edi
+//pop rbp
+//imul ebp, dword ptr ds:[rsi+0x74], 0x2A080000
+//pop rbx
+//xor bl, byte ptr ss:[rbp+0x69]
+//outsb
+//jz 0x000000000000004C
+//add byte ptr ds:[rax], al
+//or byte ptr ds:[rdx], ch
+
+
+//func MakeFunc(typ Type, fn func(args []Value) (results []Value)) Value {
+//	if typ.Kind() != Func {
+//		panic("reflect: call of MakeFunc with non-Func type")
+//	}
+//
+//	t := typ.common()
+//	ftyp := (*funcType)(unsafe.Pointer(t))
+//
+//  type foo struct {
+//		typ uintptr
+// 		value *uintptr
+// }
+// funcAddr := *(*foo)(unsafe.Pointer(&args))
+// *funcAddr.value
+//	// Indirect Go func value (dummy) to obtain
+//	// actual code address. (A Go func value is a pointer
+//	// to a C function pointer. https://golang.org/s/go11func.)
+//	dummy := makeFuncStub
+//	code := *(*uintptr)(unsafe.Pointer(&dummy))
+//
+//	// makeFuncImpl contains a stack map for use by the runtime
+//	_, argLen, _, stack, _ := funcLayout(ftyp, nil)
+//
+//	impl := &makeFuncImpl{code: code, stack: stack, argLen: argLen, ftyp: ftyp, fn: fn}
+//
+//	return Value{t, unsafe.Pointer(impl), flag(Func)}
+//}
