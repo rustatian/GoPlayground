@@ -9,7 +9,10 @@ import (
 
 // request handler in fasthttp style, i.e. just plain function.
 func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
-	_, _ = fmt.Fprintf(ctx, "Hello World!")
+	_, err := fmt.Fprintf(ctx, "Hello World!")
+	if err != nil {
+		panic(err)
+	}
 }
 
 func main()  {

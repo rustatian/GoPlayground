@@ -5,6 +5,7 @@ import (
 	"fmt"
 	pb "github.com/ValeryPiashchynski/GoPlayground/grpc/streaming"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/keepalive"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -39,42 +40,40 @@ func main() {
 		log.Println(http.ListenAndServe("0.0.0.0:6061", nil))
 	}()
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*500)
-
-	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:30000", grpc.WithInsecure(), grpc.WithKeepaliveParams(keepalive.ClientParameters{
+		Time:                12 * time.Second,
+		Timeout:             12 * time.Second,
+		PermitWithoutStream: false,
+	}))
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 	}
 
+	time.Sleep(time.Second * 30)
 	client := pb.NewFooServiceClient(conn)
-	stream, err := client.FooRPC(ctx)
+	stream, err := client.FooRPC(context.Background())
 
 	wc := make(chan struct{})
 
 	buf := make([]string, 0)
 	go func() {
 		for {
-			select {
-			case <-ctx.Done():
-				panic(ctx)
-			default:
-				time.Sleep(time.Millisecond * 100)
-				s := "flasfjash;fjhas;ljdf;lasjdf;ljasdf;ljlfaj;lsaghwret235dfsaddfj;"
-				j := ""
-				for i := 0; i < 1000; i++ {
-					j += s
-				}
-				msg := &pb.Data{Msg: j}
-				err := stream.SendMsg(msg)
-				buf = append(buf, j)
-				if err != nil {
-					cancel()
-					fmt.Println(err)
-				}
+			time.Sleep(time.Millisecond * 500)
+			s := "flasfjash;fjhas;ljdf;lasjdf;ljasdf;ljlfaj;lsaghwret235dfsaddfj;"
+			j := ""
+			for i := 0; i < 1000; i++ {
+				j += s
 			}
+			msg := &pb.Data{Msg: j}
+			err := stream.SendMsg(msg)
+			buf = append(buf, j)
+			if err != nil {
+				wc <- struct{}{}
+				fmt.Println(err)
+			}
+
 		}
 	}()
-
 	<-wc
 	err = stream.CloseSend()
 	if err != nil {
@@ -85,5 +84,4 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 }
