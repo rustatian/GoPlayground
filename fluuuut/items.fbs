@@ -1,0 +1,9 @@
+namespace items;
+
+table Item {
+  Key:string;
+  Value:string;
+  TTL:string;
+}
+
+root_type Item;

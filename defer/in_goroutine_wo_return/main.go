@@ -12,6 +12,7 @@ func main() {
 
 	m["key"] = "fsd"
 	m["key2"] = "fsd"
+	
 
 	fmt.Println("" +
 		bitbucket.org/inturnco/productservice/application/repository/pg.(*Repo).collectExistingData(0xc00012ff80, 0xc000096720, 0x24, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
