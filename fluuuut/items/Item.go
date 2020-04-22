@@ -50,8 +50,25 @@ func (rcv *Item) TTL() []byte {
 	return nil
 }
 
+func (rcv *Item) Data(j int) []byte {
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(10))
+	if o != 0 {
+		a := rcv._tab.Vector(o)
+		return rcv._tab.ByteVector(a + flatbuffers.UOffsetT(j*4))
+	}
+	return nil
+}
+
+func (rcv *Item) DataLength() int {
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(10))
+	if o != 0 {
+		return rcv._tab.VectorLen(o)
+	}
+	return 0
+}
+
 func ItemStart(builder *flatbuffers.Builder) {
-	builder.StartObject(3)
+	builder.StartObject(4)
 }
 func ItemAddKey(builder *flatbuffers.Builder, Key flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(0, flatbuffers.UOffsetT(Key), 0)
@@ -61,6 +78,12 @@ func ItemAddValue(builder *flatbuffers.Builder, Value flatbuffers.UOffsetT) {
 }
 func ItemAddTTL(builder *flatbuffers.Builder, TTL flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(TTL), 0)
+}
+func ItemAddData(builder *flatbuffers.Builder, Data flatbuffers.UOffsetT) {
+	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(Data), 0)
+}
+func ItemStartDataVector(builder *flatbuffers.Builder, numElems int) flatbuffers.UOffsetT {
+	return builder.StartVector(4, numElems, 4)
 }
 func ItemEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()

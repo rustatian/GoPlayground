@@ -4,6 +4,7 @@ table Item {
   Key:string;
   Value:string;
   TTL:string;
+  Data:[string];
 }
 
 root_type Item;

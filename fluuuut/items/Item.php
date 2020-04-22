@@ -51,24 +51,44 @@ class Item extends Table
     }
 
     /**
+     * @param int offset
+     * @return string
+     */
+    public function getData($j)
+    {
+        $o = $this->__offset(10);
+        return $o != 0 ? $this->__string($this->__vector($o) + $j * 4) : 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDataLength()
+    {
+        $o = $this->__offset(10);
+        return $o != 0 ? $this->__vector_len($o) : 0;
+    }
+
+    /**
      * @param FlatBufferBuilder $builder
      * @return void
      */
     public static function startItem(FlatBufferBuilder $builder)
     {
-        $builder->StartObject(3);
+        $builder->StartObject(4);
     }
 
     /**
      * @param FlatBufferBuilder $builder
      * @return Item
      */
-    public static function createItem(FlatBufferBuilder $builder, $Key, $Value, $TTL)
+    public static function createItem(FlatBufferBuilder $builder, $Key, $Value, $TTL, $Data)
     {
-        $builder->startObject(3);
+        $builder->startObject(4);
         self::addKey($builder, $Key);
         self::addValue($builder, $Value);
         self::addTTL($builder, $TTL);
+        self::addData($builder, $Data);
         $o = $builder->endObject();
         return $o;
     }
@@ -101,6 +121,40 @@ class Item extends Table
     public static function addTTL(FlatBufferBuilder $builder, $TTL)
     {
         $builder->addOffsetX(2, $TTL, 0);
+    }
+
+    /**
+     * @param FlatBufferBuilder $builder
+     * @param VectorOffset
+     * @return void
+     */
+    public static function addData(FlatBufferBuilder $builder, $Data)
+    {
+        $builder->addOffsetX(3, $Data, 0);
+    }
+
+    /**
+     * @param FlatBufferBuilder $builder
+     * @param array offset array
+     * @return int vector offset
+     */
+    public static function createDataVector(FlatBufferBuilder $builder, array $data)
+    {
+        $builder->startVector(4, count($data), 4);
+        for ($i = count($data) - 1; $i >= 0; $i--) {
+            $builder->putOffset($data[$i]);
+        }
+        return $builder->endVector();
+    }
+
+    /**
+     * @param FlatBufferBuilder $builder
+     * @param int $numElems
+     * @return void
+     */
+    public static function startDataVector(FlatBufferBuilder $builder, $numElems)
+    {
+        $builder->startVector(4, $numElems, 4);
     }
 
     /**
