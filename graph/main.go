@@ -1,7 +1,3 @@
-// This file is initialized with a code version of this
-// question's sample test case. Feel free to add, edit,
-// or remove test cases in this file as you see fit!
-
 package main
 
 type Dep struct {
@@ -15,8 +11,8 @@ func TopologicalSort(jobs []int, deps []Dep) []int {
 }
 
 func getOrderedJobs(graph *JobGraph) []int {
-	orderedJobs := []int{}
-	nodesWithNoPrereqs := []*JobNode{}
+	var orderedJobs []int
+	var nodesWithNoPrereqs []*JobNode
 
 	for _, node := range graph.Nodes {
 		if node.NumOfPrereqs == 0 {
