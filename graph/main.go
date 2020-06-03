@@ -14,7 +14,7 @@ func getOrderedJobs(graph *JobGraph) []int {
 	var orderedJobs []int
 	var nodesWithNoPrereqs []*JobNode
 
-	for _, node := range graph.Nodes {
+	for _, node := range graph.Vertices {
 		if node.NumOfPrereqs == 0 {
 			nodesWithNoPrereqs = append(nodesWithNoPrereqs, node)
 		}
@@ -27,7 +27,7 @@ func getOrderedJobs(graph *JobGraph) []int {
 		removeDeps(node, &nodesWithNoPrereqs)
 	}
 
-	for _, node := range graph.Nodes {
+	for _, node := range graph.Vertices {
 		if node.NumOfPrereqs > 0 {
 			return []int{}
 		}
@@ -57,8 +57,8 @@ func createJobGraph(jobs []int, deps []Dep) *JobGraph {
 }
 
 type JobGraph struct {
-	Nodes []*JobNode
-	Graph map[int]*JobNode
+	Vertices []*JobNode
+	Graph    map[int]*JobNode
 }
 
 type JobNode struct {
@@ -72,14 +72,14 @@ func NewJobGraph(jobs []int) *JobGraph {
 		Graph: map[int]*JobNode{},
 	}
 	for _, job := range jobs {
-		g.AddNode(job)
+		g.AddVertex(job)
 	}
 	return g
 }
 
-func (g *JobGraph) AddNode(job int) {
+func (g *JobGraph) AddVertex(job int) {
 	g.Graph[job] = &JobNode{Job: job}
-	g.Nodes = append(g.Nodes, g.Graph[job])
+	g.Vertices = append(g.Vertices, g.Graph[job])
 }
 
 func (g *JobGraph) AddDep(job, dep int) {
@@ -90,7 +90,7 @@ func (g *JobGraph) AddDep(job, dep int) {
 
 func (g *JobGraph) GetNode(job int) *JobNode {
 	if _, found := g.Graph[job]; !found {
-		g.AddNode(job)
+		g.AddVertex(job)
 	}
 	return g.Graph[job]
 }
