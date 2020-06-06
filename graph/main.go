@@ -83,12 +83,12 @@ func (g *JobGraph) AddVertex(job int) {
 }
 
 func (g *JobGraph) AddDep(job, dep int) {
-	jobNode, depNode := g.GetNode(job), g.GetNode(dep)
+	jobNode, depNode := g.GetVertex(job), g.GetVertex(dep)
 	jobNode.Deps = append(jobNode.Deps, depNode)
 	depNode.NumOfPrereqs++
 }
 
-func (g *JobGraph) GetNode(job int) *JobNode {
+func (g *JobGraph) GetVertex(job int) *JobNode {
 	if _, found := g.Graph[job]; !found {
 		g.AddVertex(job)
 	}

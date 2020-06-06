@@ -25,6 +25,9 @@ func main() {
 		// deny the request, show an error
 	}
 
-	roles := e.GetRolesForUser("alice")
+	roles, err := e.GetRolesForUser("alice")
+	if err != nil {
+		panic(err)
+	}
 	println(roles)
 }
