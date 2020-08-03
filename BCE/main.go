@@ -19,10 +19,12 @@ func xy(a []string) {
 }
 
 //go:noinline
-func yx(a []string) {
-	x := a[1]
-	y := a[0]
-	_ = x + y
+func yx_faster(a []string) {
+	if len(a) > 0 {
+		x := a[1]
+		y := a[0]
+		_ = x + y
+	}
 }
 
 //go:noinline

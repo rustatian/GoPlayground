@@ -28,6 +28,6 @@ func Benchmark_YX(b *testing.B) {
 	b.ReportAllocs()
 	a := []string{"0", "1"}
 	for n := 0; n < b.N; n++ {
-		yx(a)
+		yx_faster(a)
 	}
 }
