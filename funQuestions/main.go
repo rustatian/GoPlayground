@@ -19,5 +19,4 @@ func main() {
 
 	err = &MyError{}
 	errorHandler(err)
-
 }
