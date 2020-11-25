@@ -2,41 +2,32 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"log"
 	"net/http"
-	"strings"
 )
 
 func main() {
-
-	url := "https://api.github.com/repos/octocat/hello-world/branches"
-	method := "GET"
-
-	payload := strings.NewReader(` `)
-
-	client := &http.Client {
-	}
-	req, err := http.NewRequest(method, url, payload)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	req.Header.Add("Accept", "application/vnd.github.v3+json")
-	req.Header.Add("Content-Type", "text/plain")
-
-	fmt.Println(req)
-	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	defer res.Body.Close()
-
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Println(string(body))
+	http.HandleFunc("/hijack", func(w http.ResponseWriter, r *http.Request) {
+		hj, ok := w.(http.Hijacker)
+		if !ok {
+			http.Error(w, "webserver doesn't support hijacking", http.StatusInternalServerError)
+			return
+		}
+		conn, bufrw, err := hj.Hijack()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		// Don't forget to close the connection:
+		defer conn.Close()
+		bufrw.WriteString("Now we're speaking raw TCP. Say hi: ")
+		bufrw.Flush()
+		s, err := bufrw.ReadString('\n')
+		if err != nil {
+			log.Printf("error reading string: %v", err)
+			return
+		}
+		fmt.Fprintf(bufrw, "You said: %q\nBye.\n", s)
+		bufrw.Flush()
+	})
 }
