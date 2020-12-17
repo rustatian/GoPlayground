@@ -1,33 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"net/http"
-)
+type err string
+
+func (e err) Error() string { return string(e) }
+
+const FooErr = "foo"
+
+type err2 string
+
+func (e err2) Error() string {
+	return string(e)
+}
+
+var FooErr2 = err2("foo")
 
 func main() {
-	http.HandleFunc("/hijack", func(w http.ResponseWriter, r *http.Request) {
-		hj, ok := w.(http.Hijacker)
-		if !ok {
-			http.Error(w, "webserver doesn't support hijacking", http.StatusInternalServerError)
-			return
-		}
-		conn, bufrw, err := hj.Hijack()
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		// Don't forget to close the connection:
-		defer conn.Close()
-		bufrw.WriteString("Now we're speaking raw TCP. Say hi: ")
-		bufrw.Flush()
-		s, err := bufrw.ReadString('\n')
-		if err != nil {
-			log.Printf("error reading string: %v", err)
-			return
-		}
-		fmt.Fprintf(bufrw, "You said: %q\nBye.\n", s)
-		bufrw.Flush()
-	})
+	println(FooErr)
+	println(FooErr2)
 }
