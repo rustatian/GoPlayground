@@ -40,7 +40,6 @@ func RandASCIIBytes(n int) []byte {
 
 func main() {
 
-
 }
 
 //go:noinline

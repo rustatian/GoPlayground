@@ -109,7 +109,7 @@ func MakeItem(b *flatbuffers.Builder) []byte {
 	return b.Bytes[b.Head():]
 }
 
-func ReadData(buf []byte) () {
+func ReadData(buf []byte) {
 	itemRoot := data.GetRootAsSetData(buf, 0)
 
 	it := &data.Item{}
@@ -119,7 +119,6 @@ func ReadData(buf []byte) () {
 	println(string(it.Key()))
 	println(string(it.Value()))
 	println(string(it.Timeout()))
-
 
 	return
 }

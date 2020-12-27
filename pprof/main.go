@@ -9,19 +9,17 @@ import (
 	"time"
 )
 
-
-
 // request handler in fasthttp style, i.e. just plain function.
 func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 	_, _ = fmt.Fprintf(ctx, "Hello World!")
 }
 
-func main()  {
+func main() {
 	go func() {
 		log.Println(http.ListenAndServe("localhost:6063", nil))
 	}()
 
-	for i := 0; i<= 1000; i ++ {
+	for i := 0; i <= 1000; i++ {
 		time.Sleep(time.Second * 1)
 	}
 

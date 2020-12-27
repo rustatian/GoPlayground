@@ -9,10 +9,9 @@ import (
 )
 
 type fooServer struct {
-
 }
 
-func(f *fooServer) FooRPC(stream pb.FooService_FooRPCServer) error {
+func (f *fooServer) FooRPC(stream pb.FooService_FooRPCServer) error {
 
 	for {
 		msg, err := stream.Recv()
@@ -28,7 +27,7 @@ func(f *fooServer) FooRPC(stream pb.FooService_FooRPCServer) error {
 
 func main() {
 	server := grpc.NewServer()
-	pb.RegisterFooServiceServer(server,&fooServer{})
+	pb.RegisterFooServiceServer(server, &fooServer{})
 	listener, err := net.Listen("tcp", ":30000")
 	if err != nil {
 		fmt.Println(err)

@@ -10,7 +10,6 @@ import (
 
 var notlikezerobase uintptr
 
-
 func main() {
 	var s struct{}
 	var a [42]struct{}

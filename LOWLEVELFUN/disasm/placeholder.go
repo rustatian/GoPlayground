@@ -18,6 +18,7 @@ func pack(m string, s uint64, buf []byte) {
 		byte(s >> 56),
 	})
 }
+
 //placeholder.go:8	0x452610		64488b0c25f8ffffff	MOVQ FS:0xfffffff8, CX
 //placeholder.go:8	0x452619		483b6110		CMPQ 0x10(CX), SP
 //placeholder.go:8	0x45261d		0f86cb000000		JBE 0x4526ee

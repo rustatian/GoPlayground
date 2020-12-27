@@ -33,7 +33,6 @@ type augmentedWriter struct {
 	augmentFunc func([]byte) []byte
 }
 
-
 func (w *augmentedWriter) Write(buf []byte) (int, error) {
 	return w.innerWriter.Write(w.augmentFunc(buf))
 }
@@ -44,7 +43,6 @@ func EncryptReader(r io.Reader) io.Reader {
 func UpcaseWriter(w io.Writer) io.Writer {
 	return &augmentedWriter{innerWriter: w, augmentFunc: bytes.ToUpper}
 }
-
 
 func main() {
 	originalReader := strings.NewReader("this is the stuff I'm reading\n")

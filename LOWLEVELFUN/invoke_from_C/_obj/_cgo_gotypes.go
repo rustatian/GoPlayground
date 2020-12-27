@@ -9,12 +9,15 @@ import _ "runtime/cgo"
 import "syscall"
 
 var _ syscall.Errno
+
 func _Cgo_ptr(ptr unsafe.Pointer) unsafe.Pointer { return ptr }
 
 //go:linkname _Cgo_always_false runtime.cgoAlwaysFalse
 var _Cgo_always_false bool
+
 //go:linkname _Cgo_use runtime.cgoUse
 func _Cgo_use(interface{})
+
 type _Ctype_void [0]byte
 
 //go:linkname _cgo_runtime_cgocall runtime.cgocall
@@ -36,7 +39,7 @@ func _cgoCheckResult(interface{})
 //go:norace
 func _cgoexp_ca7c2c1b0b09_Add(a unsafe.Pointer, n int32, ctxt uintptr) {
 	fn := _cgoexpwrap_ca7c2c1b0b09_Add
-	_cgo_runtime_cgocallback(**(**unsafe.Pointer)(unsafe.Pointer(&fn)), a, uintptr(n), ctxt);
+	_cgo_runtime_cgocallback(**(**unsafe.Pointer)(unsafe.Pointer(&fn)), a, uintptr(n), ctxt)
 }
 
 func _cgoexpwrap_ca7c2c1b0b09_Add(p0 int, p1 int) (r0 int) {

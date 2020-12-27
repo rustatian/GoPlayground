@@ -14,9 +14,9 @@ func main() {
 }
 
 func testtt() chan int {
-	c := make(chan int, )
+	c := make(chan int)
 	go func() {
-		for i := 0; i < 50; i ++ {
+		for i := 0; i < 50; i++ {
 			c <- 1
 		}
 	}()

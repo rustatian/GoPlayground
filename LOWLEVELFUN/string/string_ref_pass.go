@@ -27,8 +27,6 @@ func magic_change(s string) {
 	//(*string)(unsafe.Pointer(&(*reflect.StringHeader)(unsafe.Pointer(&s)).Data)) = &newStd
 	*(*int)(unsafe.Pointer(&(*reflect.StringHeader)(unsafe.Pointer(&s)).Len)) = len("whatever")
 
-
-
 	newStr := "whatever"
 	data := []byte{'w'}
 	sss := *(*reflect.StringHeader)(unsafe.Pointer(&s))
@@ -42,4 +40,3 @@ func foo(a []bool) []bool {
 	a = nil
 	return a
 }
-

@@ -8,8 +8,8 @@ func isEven(v int) bool {
 	}
 	return !false
 
-	false:
-		return false
+false:
+	return false
 }
 
 func main() {

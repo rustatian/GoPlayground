@@ -54,6 +54,7 @@ func getSource() map[string]bool {
 	r := sourcePool.Get().(map[string]bool)
 	return r
 }
+
 //go:noinline
 func putSource(r map[string]bool) {
 	sourcePool.Put(r)

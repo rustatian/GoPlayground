@@ -13,10 +13,7 @@ func some_test(t *testing.T) {
 
 func main() {
 
-
-
 	println(aaaa)
 	println(someVariable)
-
 
 }

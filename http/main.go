@@ -5,8 +5,6 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-
-
 // request handler in fasthttp style, i.e. just plain function.
 func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 	_, err := fmt.Fprintf(ctx, "Hello World!")
@@ -15,8 +13,7 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 	}
 }
 
-func main()  {
+func main() {
 	// pass plain function to fasthttp
 	_ = fasthttp.ListenAndServe(":8000", fastHTTPHandler)
 }
-

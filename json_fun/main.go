@@ -19,7 +19,7 @@ func main() {
 		panic(err)
 	}
 	_ = data
-	_ =i
+	_ = i
 
 	g := string(data)
 	_ = g
@@ -31,4 +31,3 @@ func main() {
 	}
 	bs = bs[:n]
 }
-

@@ -6,7 +6,7 @@ import (
 )
 
 type Node struct {
-	Name string
+	Name     string
 	Children []Node
 }
 
@@ -19,14 +19,14 @@ func main() {
 	wg.Add(2)
 
 	go func() {
-		for i:=0; i < 10; i++ {
+		for i := 0; i < 10; i++ {
 			s = append(s, i)
 		}
 		wg.Done()
 	}()
 
 	go func() {
-		for i:=0; i < 10; i++ {
+		for i := 0; i < 10; i++ {
 			s = append(s, i)
 		}
 		wg.Done()

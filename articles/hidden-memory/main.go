@@ -21,13 +21,11 @@ func main() {
 
 	runtime.KeepAlive(f)
 
-
 	for i := 0; i <= 10; i++ {
 		start := time.Now()
 		runtime.GC()
 
 		fmt.Printf("GC time %s\n", time.Since(start))
 	}
-
 
 }

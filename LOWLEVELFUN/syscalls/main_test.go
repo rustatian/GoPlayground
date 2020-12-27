@@ -5,7 +5,6 @@ import (
 	"unsafe"
 )
 
-
 var lens int = 1000000000
 var size *int
 

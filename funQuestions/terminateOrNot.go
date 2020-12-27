@@ -1,6 +1,5 @@
 package main
 
-
 func main() {
 	data := make([]int, 5)
 	data[0] = 7
@@ -23,4 +22,3 @@ func changeData2(data []int) []int {
 	data = data[:1]
 	return data
 }
-

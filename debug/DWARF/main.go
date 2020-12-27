@@ -4,7 +4,6 @@ func main() {
 	foo()
 }
 
-
 func foo() {
 
 }

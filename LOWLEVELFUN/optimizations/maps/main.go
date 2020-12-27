@@ -19,7 +19,6 @@ func main() {
 	println(a) // expect to print: hello, world
 }
 
-
 //package main
 
 //func main() {

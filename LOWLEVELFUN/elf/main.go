@@ -22,7 +22,6 @@ func main() {
 
 }
 
-
 func readELFfile(path string) (*elf.File, error) {
 	f, err := os.Open(path)
 	// defer f.Close()
@@ -36,7 +35,7 @@ func readELFfile(path string) (*elf.File, error) {
 // from https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/reflect/makefunc.go#L56-L60
 func getFunctionAddress(func_name interface{}) uintptr {
 	type dummy struct {
-		typ uintptr
+		typ   uintptr
 		value *uintptr
 	}
 
@@ -84,7 +83,6 @@ func findInELF(elffile *elf.File) {
 //jz 0x000000000000004C
 //add byte ptr ds:[rax], al
 //or byte ptr ds:[rdx], ch
-
 
 //func MakeFunc(typ Type, fn func(args []Value) (results []Value)) Value {
 //	if typ.Kind() != Func {

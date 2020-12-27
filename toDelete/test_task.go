@@ -33,13 +33,13 @@ type Fetcher interface {
 // See FetchCache for more details.
 func NewCache(f Fetcher) Fetcher {
 	return &mitm{
-		ff:     f,
+		ff:    f,
 		cache: map[string]*Model{},
 	}
 }
 
 type mitm struct {
-	ff     Fetcher
+	ff    Fetcher
 	cache map[string]*Model
 }
 

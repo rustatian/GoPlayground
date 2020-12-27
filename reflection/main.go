@@ -41,7 +41,7 @@ func main() {
 		panic(err)
 	}
 
-	for k, _ := range ii {
+	for k := range ii {
 		print(k)
 	}
 

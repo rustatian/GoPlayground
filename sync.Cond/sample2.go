@@ -15,11 +15,6 @@ func main() {
 	}
 
 	atomic.
-
-
-
-	s.L.Unlock()
-
-
+		s.L.Unlock()
 
 }

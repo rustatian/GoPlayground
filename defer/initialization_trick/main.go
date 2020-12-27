@@ -22,7 +22,6 @@ func main() {
 
 	m.set("World")
 
-
 	defer func(mm string) {
 		fmt.Println("Some message")
 		fmt.Println(mm)

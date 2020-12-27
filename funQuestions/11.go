@@ -6,7 +6,7 @@ var numRun = 0
 
 func init() {
 	main()
-	numRun +=1
+	numRun += 1
 }
 
 func main() {

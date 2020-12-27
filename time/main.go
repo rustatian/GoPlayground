@@ -81,9 +81,7 @@ func Now() Time {
 	return Time{hasMonotonic | uint64(sec)<<nsecShift | uint64(nsec), mono}
 }
 
-
 type Time struct {
 	wall uint64
 	ext  int64
 }
-

@@ -42,9 +42,9 @@ func cc(data []int, numThreads int, wg *sync.WaitGroup) {
 		go func(index int) {
 			dataCopy := make([]int, begin)
 			if i == 0 {
-				dataCopy = data[begin*i + 1 : begin*(i+1)]
+				dataCopy = data[begin*i+1 : begin*(i+1)]
 			} else if remainder != 0 && i == numThreads {
-				dataCopy = data[begin*i : begin*(i+1) + remainder]
+				dataCopy = data[begin*i : begin*(i+1)+remainder]
 			} else {
 				dataCopy = data[begin*i : begin*(i+1)]
 			}
@@ -52,7 +52,7 @@ func cc(data []int, numThreads int, wg *sync.WaitGroup) {
 			wg.Add(1)
 			defer wg.Done()
 
-			for j:=0; i < len(dataCopy); j++ {
+			for j := 0; i < len(dataCopy); j++ {
 
 			}
 

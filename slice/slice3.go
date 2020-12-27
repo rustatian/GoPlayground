@@ -1,6 +1,5 @@
 package main
 
-
 func main() {
 	a := make([]int, 10)
 	a[0] = 10

@@ -7,7 +7,6 @@ import (
 func main() {
 	s := "abcdefgggggg"
 
-
 	sss := *(*StringHeader)(unsafe.Pointer(&s))
 
 	println(sss.Len)
@@ -18,8 +17,6 @@ func main() {
 	sss.Len = 1000
 	//
 	println(*(*string)(unsafe.Pointer(&sss.Data)))
-
-
 
 }
 

@@ -97,7 +97,5 @@ func main() {
 	fmt.Println(ctx3)
 }
 
-
 type sss struct {
-
 }

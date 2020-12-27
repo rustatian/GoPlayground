@@ -150,15 +150,14 @@ func DecodeVarintC(buf []byte) (x uint64) {
 	i++
 
 	tmp = buf[i] //174
-	x = x + uint64(tmp) << 7
+	x = x + uint64(tmp)<<7
 	if tmp&0x80 == 0 {
 		goto exit
 	}
 	i++
 	tmp = buf[i]
-	x = x + uint64(tmp) << 14
+	x = x + uint64(tmp)<<14
 
-
-	exit:
-		return x
+exit:
+	return x
 }
