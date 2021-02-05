@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/spf13/afero"
 	"math/rand"
 	"strconv"
 	"time"
+
+	"github.com/spf13/afero"
 )
 
 const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"

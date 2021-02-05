@@ -2,11 +2,12 @@
 
 package main
 
-import "unsafe"
+import (
+	"unsafe"
 
-import _ "runtime/cgo"
-
-import "syscall"
+	_ "runtime/cgo"
+	"syscall"
+)
 
 var _ syscall.Errno
 

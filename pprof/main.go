@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/valyala/fasthttp"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
 	"time"
+
+	"github.com/valyala/fasthttp"
 )
 
 // request handler in fasthttp style, i.e. just plain function.

@@ -23,7 +23,7 @@ func main() {
 func Quantize(lat, lng float64) (lat32 uint32, lng32 uint32) {
 	lat32 = uint32(Ldexp((lat+90.0)/180.0, 32))
 	lng32 = uint32(Ldexp((lng+180.0)/360.0, 32))
-
+	return lat32, lng32
 }
 
 // Float64bits returns the IEEE 754 binary representation of f.

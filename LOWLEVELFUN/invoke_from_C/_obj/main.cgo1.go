@@ -3,10 +3,9 @@
 //line main.go:1:1
 package main
 
-import _ "unsafe"
-
 import (
 	"sync"
+	_ "unsafe"
 )
 
 var count int

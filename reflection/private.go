@@ -75,13 +75,13 @@ func SetAccessible(val reflect.Value) (err error) {
 		tt := (*interfaceType)(unsafe.Pointer(v.typ))
 		m := &tt.methods[i]
 		if m.pkgPath != nil {
-			pkgPath = &m.pkgPath
+			//pkgPath = &m.pkgPath
 		}
 	} else {
 		ut := v.typ.uncommonType
 		m := &ut.methods[i]
 		if m.pkgPath != nil {
-			pkgPath = &m.pkgPath
+			//pkgPath = &m.pkgPath
 		}
 	}
 	//if pkgPath != nil && *pkgPath != nil {

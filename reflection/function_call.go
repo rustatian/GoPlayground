@@ -25,13 +25,6 @@ func funcAddr(fn interface{}) uintptr {
 }
 
 func main() {
-	//s := *S1{}
-	reflect.MakeFunc()
-	v := reflect.Type(1)
-
-	addr := funcAddr((*S1).Init)
-	v.Pointer = addr
-	println(addr)
 }
 
 func CreateFunc(fType reflect.Type, f func(args []reflect.Value) (results []reflect.Value)) (reflect.Value, error) {

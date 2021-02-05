@@ -2,7 +2,6 @@ package main
 
 import (
 	"sync"
-	"sync/atomic"
 )
 
 func main() {
@@ -13,8 +12,4 @@ func main() {
 		s.L.Lock()
 		s.Wait()
 	}
-
-	atomic.
-		s.L.Unlock()
-
 }
