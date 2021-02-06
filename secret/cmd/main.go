@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/48d90782/GoPlayground/secret"
+	"github.com/48d90782/GoPlayground/secret/application"
 	"github.com/48d90782/GoPlayground/secret/pkg/shared_data"
 	"github.com/48d90782/GoPlayground/secret/transport"
 	"github.com/gofiber/fiber/v2"
@@ -64,15 +66,25 @@ func main() {
 	// Initialize shared data between Websocket <-> Rabbitmq
 	shared := shared_data.NewSharedData()
 
+	// application layer
+	appL := application.NewAppLayer()
+	// domain layer
+	dom := secret.NewDomainLayer(appL)
+
+	// TODO temporary
+	_ = dom
+
 	// initialize infrastructure level (fiber, websockets)
 	app := &fiber.App{}
 	// initialize websocket transport
+	// TODO options
 	err = transport.NewWSHandler(app, logger, shared)
 	if err != nil {
 		logger.Error("failed to initialize websocket handler")
 		return
 	}
 
+	// TODO add to the config
 	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	if err != nil {
 		logger.Error("failed to instantiate RabbitMQ connection", zap.Error(err))
@@ -88,5 +100,6 @@ func main() {
 		return
 	}
 
+	// TODO listen address to the config
 	log.Fatal(app.Listen(":3000"))
 }
