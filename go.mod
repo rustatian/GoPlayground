@@ -8,6 +8,8 @@ require (
 	github.com/docker/docker v1.13.1
 	github.com/docker/go-connections v0.4.0
 	github.com/docker/go-units v0.4.0 // indirect
+	github.com/fasthttp/websocket v1.4.3
+	github.com/spiral/goridge/v3 v3.0.0
 	github.com/gofiber/fiber/v2 v2.4.1
 	github.com/gofiber/websocket/v2 v2.0.2
 	github.com/golang/protobuf v1.4.3
