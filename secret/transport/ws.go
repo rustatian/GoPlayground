@@ -37,8 +37,14 @@ func NewWSHandler(app *fiber.App, log *zap.Logger, shared shared_data.Shared) er
 			msg []byte
 			err error
 		)
+
+		// set the shared data
+		// at the moment we should have all data parsed via middlewares
+		// all data should be in the locals
+		shared.Set()
 		// for every connection
 		for {
+			// returned messageType is either TextMessage or BinaryMessage.
 			if mt, msg, err = c.ReadMessage(); err != nil {
 				log.Debug("read:", zap.Error(err))
 				break
