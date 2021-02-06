@@ -17,6 +17,7 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
 	github.com/spiral/goridge/v3 v3.0.0
+	github.com/streadway/amqp v1.0.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	github.com/valyala/fasthttp v1.18.0
 	go.uber.org/zap v1.16.0 // indirect

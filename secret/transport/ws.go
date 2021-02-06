@@ -1,11 +1,13 @@
 package transport
 
 import (
-	"log"
+	"fmt"
 	"sync"
 
+	"github.com/48d90782/GoPlayground/secret/pkg/shared_data"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
+	"go.uber.org/zap"
 )
 
 type Storage struct {
@@ -16,7 +18,8 @@ type Websocket struct {
 	Id [16]byte
 }
 
-func NewWSHandler(app *fiber.App) error {
+// TODO logger
+func NewWSHandler(app *fiber.App, log *zap.Logger, shared shared_data.Shared) error {
 	app.Use("/ws", func(c *fiber.Ctx) error {
 		// IsWebSocketUpgrade returns true if the client
 		// requested upgrade to the WebSocket protocol.
@@ -29,10 +32,10 @@ func NewWSHandler(app *fiber.App) error {
 
 	app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
 		// c.Locals is added to the *websocket.Conn
-		log.Println(c.Locals("allowed"))  // true
-		log.Println(c.Params("id"))       // 123
-		log.Println(c.Query("v"))         // 1.0
-		log.Println(c.Cookies("session")) // ""
+		fmt.Println(c.Locals("allowed"))  // true
+		fmt.Println(c.Params("id"))       // 123
+		fmt.Println(c.Query("v"))         // 1.0
+		fmt.Println(c.Cookies("session")) // ""
 
 		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
 		var (
@@ -43,13 +46,13 @@ func NewWSHandler(app *fiber.App) error {
 		// for every connection
 		for {
 			if mt, msg, err = c.ReadMessage(); err != nil {
-				log.Println("read:", err)
+				fmt.Println("read:", err)
 				break
 			}
-			log.Printf("recv: %s", msg)
+			fmt.Printf("recv: %s", msg)
 
 			if err = c.WriteMessage(mt, msg); err != nil {
-				log.Println("write:", err)
+				fmt.Println("write:", err)
 				break
 			}
 		}
