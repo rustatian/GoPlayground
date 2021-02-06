@@ -2,12 +2,22 @@ package transport
 
 import (
 	"log"
+	"sync"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
 )
 
-func InitWSApp() {
+type Storage struct {
+	Data *sync.Map
+}
+
+type Websocket struct {
+	Id  [16]byte
+	app *fiber.App
+}
+
+func InitWSApp() (*Websocket, error) {
 	app := fiber.New()
 
 	app.Use("/ws", func(c *fiber.Ctx) error {
@@ -20,7 +30,21 @@ func InitWSApp() {
 		return fiber.ErrUpgradeRequired
 	})
 
-	app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
+	w := &Websocket{
+		Id:  [16]byte{},
+		app: app,
+	}
+
+	return w, nil
+}
+
+func Init() {
+	ws, err := InitWSApp()
+	if err != nil {
+		panic(err)
+	}
+
+	ws.app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
 		// c.Locals is added to the *websocket.Conn
 		log.Println(c.Locals("allowed"))  // true
 		log.Println(c.Params("id"))       // 123
@@ -48,5 +72,5 @@ func InitWSApp() {
 
 	}))
 
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(ws.app.Listen(":3000"))
 }
