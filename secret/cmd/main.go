@@ -75,7 +75,7 @@ func main() {
 	_ = dom
 
 	// initialize infrastructure level (fiber, websockets)
-	app := &fiber.App{}
+	app := fiber.New()
 	// initialize websocket transport
 	// TODO options
 	err = transport.NewWSHandler(app, logger, shared)
@@ -85,7 +85,7 @@ func main() {
 	}
 
 	// TODO add to the config
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://rabbitmq:rabbitmq@localhost:5672/")
 	if err != nil {
 		logger.Error("failed to instantiate RabbitMQ connection", zap.Error(err))
 		return

@@ -17,10 +17,10 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
 	github.com/spiral/goridge/v3 v3.0.0
-	github.com/streadway/amqp v1.0.0 // indirect
+	github.com/streadway/amqp v1.0.0
 	github.com/urfave/cli/v2 v2.3.0
 	github.com/valyala/fasthttp v1.18.0
-	go.uber.org/zap v1.16.0 // indirect
+	go.uber.org/zap v1.16.0
 	gocv.io/x/gocv v0.23.0
 	golang.org/x/net v0.0.0-20201224014010-6772e930b67b
 	google.golang.org/appengine v1.6.7 // indirect
