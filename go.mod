@@ -9,7 +9,6 @@ require (
 	github.com/docker/go-connections v0.4.0
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/fasthttp/websocket v1.4.3
-	github.com/spiral/goridge/v3 v3.0.0
 	github.com/gofiber/fiber/v2 v2.4.1
 	github.com/gofiber/websocket/v2 v2.0.2
 	github.com/golang/protobuf v1.4.3
@@ -17,7 +16,11 @@ require (
 	github.com/google/gopacket v1.1.17
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
+	github.com/spiral/goridge/v3 v3.0.0
+	github.com/urfave/cli/v2 v2.3.0
 	github.com/valyala/fasthttp v1.18.0
+	go.uber.org/zap v1.16.0 // indirect
 	gocv.io/x/gocv v0.23.0
 	golang.org/x/net v0.0.0-20201224014010-6772e930b67b
+	google.golang.org/appengine v1.6.7 // indirect
 )

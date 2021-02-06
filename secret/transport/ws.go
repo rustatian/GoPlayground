@@ -13,13 +13,10 @@ type Storage struct {
 }
 
 type Websocket struct {
-	Id  [16]byte
-	app *fiber.App
+	Id [16]byte
 }
 
-func InitWSApp() (*Websocket, error) {
-	app := fiber.New()
-
+func NewWSHandler(app *fiber.App) error {
 	app.Use("/ws", func(c *fiber.Ctx) error {
 		// IsWebSocketUpgrade returns true if the client
 		// requested upgrade to the WebSocket protocol.
@@ -30,21 +27,7 @@ func InitWSApp() (*Websocket, error) {
 		return fiber.ErrUpgradeRequired
 	})
 
-	w := &Websocket{
-		Id:  [16]byte{},
-		app: app,
-	}
-
-	return w, nil
-}
-
-func Init() {
-	ws, err := InitWSApp()
-	if err != nil {
-		panic(err)
-	}
-
-	ws.app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
+	app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
 		// c.Locals is added to the *websocket.Conn
 		log.Println(c.Locals("allowed"))  // true
 		log.Println(c.Params("id"))       // 123
@@ -57,6 +40,7 @@ func Init() {
 			msg []byte
 			err error
 		)
+		// for every connection
 		for {
 			if mt, msg, err = c.ReadMessage(); err != nil {
 				log.Println("read:", err)
@@ -72,5 +56,5 @@ func Init() {
 
 	}))
 
-	log.Fatal(ws.app.Listen(":3000"))
+	return nil
 }
