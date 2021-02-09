@@ -14,6 +14,7 @@ require (
 	github.com/golang/protobuf v1.4.3
 	github.com/google/flatbuffers v1.12.0
 	github.com/google/gopacket v1.1.17
+	github.com/google/uuid v1.2.0
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/spf13/afero v1.2.2
 	github.com/spiral/goridge/v3 v3.0.0
