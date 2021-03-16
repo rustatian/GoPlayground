@@ -1,6 +1,6 @@
 module github.com/48d90782/GoPlayground
 
-go 1.15
+go 1.16
 
 require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
