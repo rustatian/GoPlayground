@@ -17,3 +17,5 @@ func Benchmark__not_optimized(b *testing.B) {
 		_ = a
 	}
 }
+
+
