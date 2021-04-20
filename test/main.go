@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"time"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
+func hello() (string, error) {
+	return "Hello ƛ!", nil
+}
+
 func main() {
-	for i := 0; i < 10000; i++ {
-		time.Sleep(time.Second)
-		_, _ = fmt.Fprintf(os.Stderr, "Hello %d", i)
-	}
+	e
+
+	lambda.Start(hello)
 }
