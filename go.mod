@@ -9,7 +9,6 @@ require (
 	github.com/docker/docker v1.13.1
 	github.com/docker/go-connections v0.4.0
 	github.com/docker/go-units v0.4.0 // indirect
-	github.com/gofiber/fiber/v2 v2.7.1
 	github.com/golang/protobuf v1.4.3
 	github.com/google/flatbuffers v1.12.0
 	github.com/google/gopacket v1.1.17
@@ -17,11 +16,12 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/spf13/afero v1.2.2
-	github.com/spiral/goridge/v3 v3.0.0
+	github.com/spiral/endure v1.0.1 // indirect
+	github.com/spiral/goridge/v3 v3.0.1
+	github.com/spiral/roadrunner/v2 v2.0.4 // indirect
 	github.com/urfave/cli/v2 v2.3.0 // indirect
 	github.com/valyala/fasthttp v1.18.0
 	gocv.io/x/gocv v0.23.0
 	golang.org/x/net v0.0.0-20201224014010-6772e930b67b
 	google.golang.org/appengine v1.6.7 // indirect
-	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )
