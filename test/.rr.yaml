@@ -1,9 +1,0 @@
-server:
-  command: "php handler.php"
-  user: ""
-  group: ""
-  env:
-    - SOME_KEY: "SOME_VALUE"
-    - SOME_KEY2: "SOME_VALUE2"
-  relay: pipes
-  relay_timeout: 60s
