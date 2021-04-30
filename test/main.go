@@ -1,82 +1,61 @@
 package main
 
 import (
-	_ "embed"
-	"log"
-	"os"
-	"os/signal"
-	"sync"
-	"syscall"
-	"time"
-
-	endure "github.com/spiral/endure/pkg/container"
-	"github.com/spiral/roadrunner/v2/plugins/config"
-	"github.com/spiral/roadrunner/v2/plugins/logger"
-	"github.com/spiral/roadrunner/v2/plugins/server"
+	"fmt"
+	"unsafe"
 )
 
-//go:embed .rr.yaml
-var rrYaml []byte
-
 func main() {
-	_ = os.Setenv("PATH", os.Getenv("PATH")+":"+os.Getenv("LAMBDA_TASK_ROOT"))
-	_ = os.Setenv("LD_LIBRARY_PATH", "./lib:/lib64:/usr/lib64")
+	var ch Chan
+	go func() { ch.Get() <- struct{}{} }()
+	<-ch.Get()
 
-	cont, err := endure.NewContainer(nil, endure.SetLogLevel(endure.ErrorLevel))
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println("it works?")
+}
 
-	cfg := &config.Viper{}
-	cfg.CommonConfig = &config.General{GracefulTimeout: time.Second * 30}
-	cfg.ReadInCfg = rrYaml
-	cfg.Type = "yaml"
+// this has to be kept in line with runtime.hchan
+//
+// it turns out that most of the code in makechan is a no-op for
+// chan struct{} with no capacity, so we can actually get away
+// with using the zero value.
+//
+// one complication is the goexperiment.staticlockranking build
+// tag. if it is specified, the mutex type changes in size, and
+// unfortunately the futex value moves. the comment in the runtime
+// though says
+//
+//	Initialization is helpful for static lock ranking, but not required.
+//
+// so the struct has been padded with the worst case size including
+// the 2 int fields, and the mutex will just use some of that memory.
+// it's no big deal if our Chan is bigger than the standard runtime.hchan
+// because it turns out that in some cases the buffer is allocated
+// with the runtime.hchan value.
 
-	// only 3 plugins needed here
-	// 1. Server which should provide pool to us
-	// 2. Our mini plugin, which expose this pool for us
-	// 3.
-	err = cont.RegisterAll(
-		cfg,
-		&logger.ZapLogger{},
-		&Plugin{},
-		&server.Plugin{},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+type Chan struct {
+	_ uint
+	_ uint
+	_ unsafe.Pointer
+	_ uint16
+	_ uint32
+	_ unsafe.Pointer // *_type
+	_ uint
+	_ uint
+	_ struct {
+		_ unsafe.Pointer // *sudog
+		_ unsafe.Pointer // *sudog
+	} // waitq
+	_ struct {
+		_ unsafe.Pointer // *sudog
+		_ unsafe.Pointer // *sudog
+	} // waitq
 
-	err = cont.Init()
-	if err != nil {
-		log.Fatal(err)
-	}
+	_ struct {
+		_ [2]int // worst case lock ranking
+		_ uintptr
+	} // mutex
+}
 
-	ch, err := cont.Serve()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-
-	wg := &sync.WaitGroup{}
-	wg.Add(1)
-
-	go func() {
-		defer wg.Done()
-		for {
-			select {
-			case e := <-ch:
-				log.Println(e.Error.Error())
-			case <-sig:
-				err = cont.Stop()
-				if err != nil {
-					log.Println(err)
-				}
-				return
-			}
-		}
-	}()
-
-	wg.Wait()
+func (c *Chan) Get() chan struct{} {
+	return *(*chan struct{})(unsafe.Pointer(&c))
 }
