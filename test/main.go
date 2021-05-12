@@ -1,8 +1,6 @@
 package main
 
-func main() {
-
-}
+func main() {}
 
 //go:noinline
 func test_btb(bp bool) {

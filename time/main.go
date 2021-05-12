@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	_ "unsafe"
 )
 
@@ -48,8 +47,17 @@ const (
 )
 
 func main() {
-	t := Now()
-	fmt.Println(t.UnixNano())
+	_, nsec1, _ := time_now()
+	test_btb(true)
+	println(nsec1)
+
+	_, nsec2, _ := time_now()
+	test_btb(true)
+	println(nsec2)
+
+	_, nsec3, _ := time_now()
+	test_btb(true)
+	println(nsec3)
 }
 
 func (t Time) UnixNano() int64 {
@@ -84,4 +92,11 @@ func Now() Time {
 type Time struct {
 	wall uint64
 	ext  int64
+}
+
+//go:noinline
+func test_btb(bp bool) {
+	if bp {
+		println("hello, I'm function")
+	}
 }

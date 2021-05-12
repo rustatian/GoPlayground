@@ -10,7 +10,6 @@ func TestAtomic(t *testing.T) {
 	test_btb(true)
 	println(time.Now().Sub(tt).Nanoseconds())
 
-
 	tt2 := time.Now()
 	test_btb(true)
 	println(time.Now().Sub(tt2).Nanoseconds())
