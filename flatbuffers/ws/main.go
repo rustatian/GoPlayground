@@ -95,23 +95,6 @@ func msgs(b *flatbuffers.Builder, msgs []Message) []byte {
 	return b.Bytes[b.Head():]
 }
 
-func read(buf []byte) {
-	root := message.GetRootAsMessage(buf, 0)
-
-	l := root.TopicsLength()
-
-	fmt.Println(string(root.Command()))
-	fmt.Println(string(root.Broker()))
-
-	for i := 0; i < l; i++ {
-		fmt.Println(string(root.Topics(i)))
-	}
-
-	for i := 0; i < root.PayloadLength(); i++ {
-		fmt.Println(string(byte(root.Payload(i))))
-	}
-}
-
 func readmsgs(buf []byte) {
 	root := message.GetRootAsMessages(buf, 0)
 
