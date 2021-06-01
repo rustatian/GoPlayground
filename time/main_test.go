@@ -31,5 +31,8 @@ func Benchmark_Time(b *testing.B) {
 
 }
 
+// Benchmark_FastTime-32    	25033443	        40.01 ns/op	       0 B/op	       0 allocs/op
+// Benchmark_Time-32    	28673226	        40.46 ns/op	       0 B/op	       0 allocs/op
+
 //Benchmark_FastTime-8   	2000000000	         1.48 ns/op	       0 B/op	       0 allocs/op
 //Benchmark_Time-8       	20000000	        87.5 ns/op

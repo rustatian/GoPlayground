@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  rabbitmq:
+    container_name: rabbitmq_spiral
+    image: rabbitmq:3.8.11-management
+    mem_limit: 8192m
+    mem_reservation: 2048M
+    cpus: 8
+    hostname: my-rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  roadrunner:
+    container_name: rr
+    environment:
+      - GOGC=100
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1024m
+    mem_reservation: 1024M
+    cpus: 1
+    restart: always
+    build:
+      context: ../.
+      dockerfile: tests/Dockerfile
+    command: "serve"
+    ports:
+      - "3000:3000"
+      - "6061:6061"

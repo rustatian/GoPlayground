@@ -11,7 +11,7 @@ func TestAtomic(t *testing.T) {
 	println(time.Now().Sub(tt).Nanoseconds())
 
 	tt2 := time.Now()
-	test_btb(true)
+	test_btb(false)
 	println(time.Now().Sub(tt2).Nanoseconds())
 
 	tt3 := time.Now()
