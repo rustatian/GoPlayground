@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/48d90782/GoPlayground/flatbuffers/data"
+	"github.com/48d90782/GoPlayground/flatbuffers/kv/data"
 	flatbuffers "github.com/google/flatbuffers/go"
 )
 
@@ -34,7 +34,6 @@ func main() {
 	b := MakeItem(builder)
 
 	ReadData(b)
-
 }
 
 func serializeItems(b *flatbuffers.Builder, item Item) flatbuffers.UOffsetT {

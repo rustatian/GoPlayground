@@ -16,31 +16,18 @@ import (
 
 	_ "embed"
 
+	"github.com/48d90782/GoPlayground/ws/tests/message"
 	"github.com/fasthttp/websocket"
 )
 
 var addr = flag.String("addr", "localhost:15395", "http service address")
 var redial = flag.Bool("r", true, "reconnect when lost connection")
-var numOfClients = flag.Uint64("n", 1, "number of connections")
+var numOfClients = flag.Uint64("n", 1000, "number of connections")
 var scheme = flag.String("s", "ws", "websocket scheme")
 
 var numberOfActiveClients int64 = 0
 var totalNumberOfMessages uint64 = 0
 var stop uint64 = 0
-
-type Msg struct {
-	// Topic message been pushed into.
-	T []string `json:"topic"`
-
-	// Command (join, leave, headers)
-	C string `json:"command"`
-
-	// Broker (redis, memory)
-	B string `json:"broker"`
-
-	// Payload to be broadcasted
-	P []byte `json:"payload"`
-}
 
 func main() {
 	interrupt := make(chan os.Signal, 1)
@@ -169,11 +156,11 @@ func (conn *Connection) dial() {
 	}()
 
 	data := "hello bbbbbbbbbbbbbbbeeeeeeeeeee"
-	m := &Msg{
-		T: []string{"foo", "foo2"},
-		C: "join",
-		B: "memory",
-		P: []byte(data),
+	m := &message.Message{
+		Topics:  []string{"foo", "foo2"},
+		Command: "join",
+		Broker:  "memory",
+		Payload: []byte(data),
 	}
 
 	d, err := json.Marshal(m)
