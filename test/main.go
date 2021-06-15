@@ -45,9 +45,7 @@ func FuncAdd(x, y, z int) int {
         0x000a 00010 (main.go:5)        ADDQ    CX, AX
         0x000d 00013 (main.go:5)        MOVQ    "".z+24(SP), CX
         0x0012 00018 (main.go:5)        SUBQ    CX, AX
-        нu
         0x001a 00026 (main.go:5)        RET
-
 
 
 
