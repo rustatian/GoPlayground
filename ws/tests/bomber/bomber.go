@@ -5,6 +5,7 @@ import (
 	"flag"
 	"net"
 	"net/rpc"
+	"time"
 
 	"github.com/48d90782/GoPlayground/ws/tests/message"
 	goridgeRpc "github.com/spiral/goridge/v3/pkg/rpc"
@@ -12,12 +13,12 @@ import (
 )
 
 var addr = flag.String("addr", "localhost:6001", "amqp connection string")
-var rate = flag.Uint64("r", 1000000, "filters rate per second")
+var rate = flag.Uint64("r", 1, "filters rate per second")
 
 func main() {
 	flag.Parse()
 
-	data := "hello bbbbbbbbbbbbbbbeeeeeeeeeee"
+	data := "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
 
 	m := makeMessage("join", "memory", []byte(data), "foo", "foo2")
 
@@ -29,21 +30,23 @@ func main() {
 	client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 
 	rl := ratelimit.New(int(*rate))
+	_ = rl
 
 	for j := 0; j < 1_000_000; j++ {
 		for i := 0; i < 1_000_000; i++ {
-			_ = rl.Take()
-			var ret bool
-			err = client.Call("websockets.Publish", m, &ret)
+			//_ = rl.Take()
+			resp := &websocketsv1beta.Response{}
+			err = client.Call("broadcast.Publish", m, resp)
 			if err != nil {
 				panic(err)
 			}
+			time.Sleep(time.Second * 5)
 		}
 	}
 }
-func makeMessage(command string, broker string, payload []byte, topics ...string) *message.Messages {
-	m := &message.Messages{
-		Messages: []*message.Message{
+func makeMessage(command string, broker string, payload []byte, topics ...string) *websocketsv1beta.Request {
+	m := &websocketsv1beta.Request{
+		Messages: []*websocketsv1beta.Message{
 			{
 				Topics:  topics,
 				Command: command,
