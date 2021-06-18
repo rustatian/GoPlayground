@@ -7,7 +7,7 @@ import (
 	"net/rpc"
 	"time"
 
-	"github.com/48d90782/GoPlayground/ws/tests/message"
+	"github.com/rustatian/GoPlayground/ws/tests/message"
 	goridgeRpc "github.com/spiral/goridge/v3/pkg/rpc"
 	"go.uber.org/ratelimit"
 )

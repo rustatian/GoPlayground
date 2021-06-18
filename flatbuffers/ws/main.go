@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/48d90782/GoPlayground/flatbuffers/ws/message"
+	"github.com/rustatian/GoPlayground/flatbuffers/ws/message"
 	flatbuffers "github.com/google/flatbuffers/go"
 )
 

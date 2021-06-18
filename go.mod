@@ -1,4 +1,4 @@
-module github.com/48d90782/GoPlayground
+module github.com/rustatian/GoPlayground
 
 go 1.16
 

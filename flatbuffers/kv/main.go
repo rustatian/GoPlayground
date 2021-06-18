@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/48d90782/GoPlayground/flatbuffers/kv/data"
+	"github.com/rustatian/GoPlayground/flatbuffers/kv/data"
 	flatbuffers "github.com/google/flatbuffers/go"
 )
 
