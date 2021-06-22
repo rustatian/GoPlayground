@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	"github.com/rustatian/GoPlayground/flatbuffers/kv/data"
 	flatbuffers "github.com/google/flatbuffers/go"
+	"github.com/rustatian/GoPlayground/flatbuffers/kv/data"
 )
 
 // Item represents general storage item

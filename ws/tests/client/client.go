@@ -16,8 +16,8 @@ import (
 
 	_ "embed"
 
-	"github.com/rustatian/GoPlayground/ws/tests/message"
 	"github.com/fasthttp/websocket"
+	"github.com/rustatian/GoPlayground/ws/tests/message"
 )
 
 var addr = flag.String("addr", "localhost:15395", "http service address")

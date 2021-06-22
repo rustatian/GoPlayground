@@ -2,13 +2,13 @@ package main
 
 func main() {
 	v := FuncAdd(1, 2, 3)
-        _ = v
+	_ = v
 }
 
 //go:noinline
-func FuncAdd(x, y, z int) int { 
-        res := x + y - z 
-        return res
+func FuncAdd(x, y, z int) int {
+	res := x + y - z
+	return res
 }
 
 /*

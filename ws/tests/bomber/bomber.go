@@ -30,11 +30,10 @@ func main() {
 	client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 
 	rl := ratelimit.New(int(*rate))
-	_ = rl
 
 	for j := 0; j < 1_000_000; j++ {
 		for i := 0; i < 1_000_000; i++ {
-			//_ = rl.Take()
+			_ = rl.Take()
 			resp := &websocketsv1beta.Response{}
 			err = client.Call("broadcast.Publish", m, resp)
 			if err != nil {

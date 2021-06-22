@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/rustatian/GoPlayground/flatbuffers/ws/message"
 	flatbuffers "github.com/google/flatbuffers/go"
+	"github.com/rustatian/GoPlayground/flatbuffers/ws/message"
 )
 
 type Message struct {
