@@ -3,12 +3,13 @@ package amqp
 import (
 	"errors"
 	"fmt"
-	"github.com/spiral/jobs/v2"
-	"github.com/streadway/amqp"
 	"os"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/spiral/jobs/v2"
+	"github.com/streadway/amqp"
 )
 
 type ExchangeType string

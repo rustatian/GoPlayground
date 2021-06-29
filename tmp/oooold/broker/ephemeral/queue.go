@@ -4,6 +4,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/spiral/jobs/v2"
 )
 
 type queue struct {

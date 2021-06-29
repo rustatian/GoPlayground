@@ -2,10 +2,11 @@ package amqp
 
 import (
 	"fmt"
-	"github.com/gofrs/uuid"
-	"github.com/spiral/jobs/v2"
 	"sync"
 	"sync/atomic"
+
+	"github.com/gofrs/uuid"
+	"github.com/spiral/jobs/v2"
 )
 
 // Broker represents AMQP broker.

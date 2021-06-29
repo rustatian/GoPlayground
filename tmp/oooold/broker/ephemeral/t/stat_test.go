@@ -1,4 +1,4 @@
-package ephemeral
+package t
 
 import (
 	"github.com/spiral/jobs/v2"

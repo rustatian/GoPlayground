@@ -1,4 +1,4 @@
-package ephemeral
+package t
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 
 func TestBroker_Consume_Job(t *testing.T) {
 	b := &Broker{}
-	_, err := b.Init()
+	_, err := b.Init(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -56,7 +56,7 @@ func TestBroker_Consume_Job(t *testing.T) {
 
 func TestBroker_ConsumeAfterStart_Job(t *testing.T) {
 	b := &Broker{}
-	_, err := b.Init()
+	_, err := b.Init(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -64,6 +64,7 @@ func TestBroker_ConsumeAfterStart_Job(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	ready := make(chan interface{})
 	b.Listen(func(event int, ctx interface{}) {
 		if event == jobs.EventBrokerReady {
@@ -101,14 +102,16 @@ func TestBroker_ConsumeAfterStart_Job(t *testing.T) {
 
 func TestBroker_Consume_Delayed(t *testing.T) {
 	b := &Broker{}
-	_, err := b.Init()
+	_, err := b.Init(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	err = b.Register(pipe)
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	ready := make(chan interface{})
 	b.Listen(func(event int, ctx interface{}) {
 		if event == jobs.EventBrokerReady {
@@ -124,6 +127,7 @@ func TestBroker_Consume_Delayed(t *testing.T) {
 
 	<-ready
 
+	start := time.Now()
 	jid, perr := b.Push(pipe, &jobs.Job{
 		Job:     "test",
 		Payload: "body",
@@ -134,7 +138,6 @@ func TestBroker_Consume_Delayed(t *testing.T) {
 	assert.NoError(t, perr)
 
 	waitJob := make(chan interface{})
-	start := time.Now()
 	exec <- func(id string, j *jobs.Job) error {
 		assert.Equal(t, jid, id)
 		assert.Equal(t, "body", j.Payload)
@@ -145,13 +148,13 @@ func TestBroker_Consume_Delayed(t *testing.T) {
 	<-waitJob
 
 	elapsed := time.Since(start)
-	assert.True(t, elapsed > time.Second)
-	assert.True(t, elapsed < 2*time.Second)
+	assert.True(t, elapsed >= time.Second)
+	assert.True(t, elapsed < 3*time.Second)
 }
 
 func TestBroker_Consume_Errored(t *testing.T) {
 	b := &Broker{}
-	_, err := b.Init()
+	_, err := b.Init(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -159,6 +162,7 @@ func TestBroker_Consume_Errored(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	ready := make(chan interface{})
 	b.Listen(func(event int, ctx interface{}) {
 		if event == jobs.EventBrokerReady {
@@ -199,7 +203,7 @@ func TestBroker_Consume_Errored(t *testing.T) {
 
 func TestBroker_Consume_Errored_Attempts(t *testing.T) {
 	b := &Broker{}
-	_, err := b.Init()
+	_, err := b.Init(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -207,6 +211,7 @@ func TestBroker_Consume_Errored_Attempts(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	ready := make(chan interface{})
 	b.Listen(func(event int, ctx interface{}) {
 		if event == jobs.EventBrokerReady {
