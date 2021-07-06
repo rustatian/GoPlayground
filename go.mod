@@ -21,8 +21,7 @@ require (
 	github.com/sirupsen/logrus v1.6.0
 	github.com/spf13/afero v1.6.0
 	github.com/spf13/viper v1.8.1
-	github.com/spiral/errors v1.0.9 // indirect
-	github.com/spiral/goridge/v3 v3.0.1
+	github.com/spiral/goridge/v3 v3.1.4
 	github.com/spiral/jobs/v2 v2.2.1
 	github.com/spiral/roadrunner v1.9.2
 	github.com/streadway/amqp v1.0.0

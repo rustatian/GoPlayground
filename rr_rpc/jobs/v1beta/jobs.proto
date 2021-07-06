@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package jobs.v1beta;
+option go_package = "./;jobsv1beta";
+
+// single job request
+message Request {
+    Job job = 1;
+}
+
+// batch jobs request
+message BatchRequest {
+    repeated Job jobs = 1;
+}
+
+// RPC response
+message Response {
+    string id = 1;
+}
+
+message Job {
+    string job = 1;
+    string payload = 2;
+    Options options = 3;
+}
+
+message Options {
+    uint64 priority = 1;
+    string id = 2;
+    string pipeline = 3;
+    uint64 delay = 4;
+    uint64 attempts = 5;
+    uint64 retry_delay = 6;
+    uint64 timeout = 7;
+}
+

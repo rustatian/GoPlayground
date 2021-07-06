@@ -10,6 +10,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/spiral/roadrunner"
 )
 
 // ID defines public service name.
