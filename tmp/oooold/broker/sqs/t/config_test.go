@@ -1,4 +1,4 @@
-package sqs
+package t
 
 import (
 	json "github.com/json-iterator/go"

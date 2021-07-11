@@ -25,7 +25,12 @@ message Job {
     string job = 1;
     string id = 2;
     string payload = 3;
+    map<string, HeaderValue> headers = 5;
     Options options = 4;
+}
+
+message HeaderValue {
+    repeated string value = 1;
 }
 
 message Options {

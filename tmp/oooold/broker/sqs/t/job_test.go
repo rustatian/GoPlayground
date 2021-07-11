@@ -1,4 +1,4 @@
-package sqs
+package t
 
 import (
 	"github.com/aws/aws-sdk-go/aws"
