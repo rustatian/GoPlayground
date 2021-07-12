@@ -43,7 +43,7 @@ func main() {
 	}
 
 	ch := make(chan struct{})
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 10; i++ {
 		go func() {
 			conn, err := net.Dial("unix", *addr)
 			if err != nil {
