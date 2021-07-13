@@ -2,12 +2,13 @@ package sqs
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/spiral/roadrunner/service"
-	"time"
 )
 
 // Config defines sqs broker configuration.

@@ -24,11 +24,11 @@ func main() {
 	}
 
 	msg, err := pack("212", &Item{
-		Job:      "super-job",
-		Ident:    "212",
-		Payload:  "asdfkasjdf;laskjdflkajsdfl;kjas;ldkfjlksjdlfkasjdf;lkajs;dkjfkl;asjdfl",
-		Headers:  nil,
-		Options:  &Options{
+		Job:     "super-job",
+		Ident:   "212",
+		Payload: "asdfkasjdf;laskjdflkajsdfl;kjas;ldkfjlksjdlfkasjdf;lkajs;dkjfkl;asjdfl",
+		Headers: nil,
+		Options: &Options{
 			Priority:   1,
 			Pipeline:   "test-1",
 			Delay:      0,
