@@ -7,11 +7,13 @@ func main() {
 }
 
 type Payload struct {
-	// Context represent payload context, might be omitted.
 	Context []byte
+	Body    []byte
+}
 
-	// body contains binary payload to be processed by WorkerProcess.
-	Body []byte
+type PayloadStr struct {
+	Context string
+	Body    string
 }
 
 //go:noinline
@@ -116,4 +118,20 @@ func generate() ([]byte, []byte) {
 	}
 
 	return b1, b2
+}
+
+//go:noinline
+func fooPtr1(p *Payload) int {
+	a := len(p.Body)
+	b := len(p.Context)
+
+	return a + b
+}
+
+//go:noinline
+func fooVal1(p Payload) int {
+	a := len(p.Body)
+	b := len(p.Context)
+
+	return a + b
 }

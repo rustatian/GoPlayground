@@ -1,51 +1,89 @@
 package main
 
-import "testing"
-
-type TL [2]uintptr
-
-func (TL) Method1() {
-
-}
-
-func (TL) Method2() {
-
-}
-
-var tl TL
-
-var e interface{}
+import (
+	"crypto/rand"
+	"testing"
+)
 
 func BenchmarkA_FooP(b *testing.B) {
-	aa := aa{}
+	b1 := make([]byte, 351024)
+	b2 := make([]byte, 351024)
+
+	_, err := rand.Read(b1)
+	if err != nil {
+		b.Fatal(err)
+	}
+
+	_, err = rand.Read(b2)
+	if err != nil {
+		b.Fatal(err)
+	}
 	a := &foos{
-		a: "yuv has", b: "a small", c: "dick",
+		a:  "yuv has",
+		b:  "a small",
+		c:  "dick",
+		f:  "1 mmmmmmiiiiiilllimeter",
+		g:  "or might be 2",
+		h:  "you know yuv",
+		hh: "he is from the project",
+		aa: "IN",
+		bb: "TU",
+		cc: "RN",
+		ee: string(b1),
+		dd: string(b2),
 		d: struct {
 			a string
 			b string
 			c string
 		}{a: "really", b: "really", c: "small"},
-		foo: aa,
 	}
+
+	b.ResetTimer()
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		FooP(a)
+		ret := FooP(a)
+		_ = ret
 	}
 }
 
 func BenchmarkA_FooV(b *testing.B) {
-	aa := aa{}
+	b1 := make([]byte, 351024)
+	b2 := make([]byte, 351024)
+
+	_, err := rand.Read(b1)
+	if err != nil {
+		b.Fatal(err)
+	}
+
+	_, err = rand.Read(b2)
+	if err != nil {
+		b.Fatal(err)
+	}
+
 	a := foos{
-		a: "yuv has", b: "a small", c: "dick",
+		a:  "yuv has",
+		b:  "a small",
+		c:  "dick",
+		f:  "1 mmmmmmiiiiiilllimeter",
+		g:  "or might be 2",
+		h:  "you know yuv",
+		hh: "he is from the project",
+		aa: "IN",
+		bb: "TU",
+		cc: "RN",
+		ee: string(b1),
+		dd: string(b2),
 		d: struct {
 			a string
 			b string
 			c string
 		}{a: "really", b: "really", c: "small"},
-		foo: aa,
 	}
+
+	b.ResetTimer()
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
-		FooV(a)
+		ret := FooV(a)
+		_ = ret
 	}
 }

@@ -5,6 +5,8 @@ go 1.16
 require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/aws/aws-sdk-go v1.38.68
+	github.com/aws/aws-sdk-go-v2 v1.7.0
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.6.0
 	github.com/beanstalkd/go-beanstalk v0.1.0
 	github.com/cenkalti/backoff/v4 v4.1.1
 	github.com/docker/distribution v2.7.1+incompatible // indirect

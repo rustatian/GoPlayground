@@ -1,4 +1,4 @@
-package beanstalk
+package t
 
 import (
 	"github.com/beanstalkd/go-beanstalk"

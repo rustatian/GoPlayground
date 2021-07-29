@@ -18,13 +18,13 @@ type foos struct {
 	aa string
 	bb string
 	cc string
+	dd string
+	ee string
 	d  struct {
 		a string
 		b string
 		c string
 	}
-
-	foo
 }
 
 func main() {
@@ -43,12 +43,14 @@ func (aa) Foo() {
 }
 
 //go:noinline
-func FooV(s foos) {
+func FooV(s foos) interface{} {
 	aaa = s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
+	return aaa
 
 }
 
 //go:noinline
-func FooP(s *foos) {
+func FooP(s *foos) interface{} {
 	aaa = s.a + s.b + s.c + s.f + s.g + s.h + s.hh + s.aa + s.bb + s.cc + s.d.a + s.d.b + s.d.c
+	return aaa
 }

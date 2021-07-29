@@ -11,7 +11,7 @@ import (
 	goridgeRpc "github.com/spiral/goridge/v3/pkg/rpc"
 )
 
-var addr = flag.String("addr", "/tmp/rr.sock", "")
+var addr = flag.String("addr", "localhost:6001", "")
 var rate = flag.Uint64("r", 1, "filters rate per second")
 
 func main() {
@@ -26,38 +26,43 @@ func main() {
 				Options: &jobsv1beta.Options{
 					Priority: 1,
 					Pipeline: "test-1",
-					Delay:    5,
+					Delay:    0,
+					Attempts: 10,
 				},
 			},
 			{
 				Job:     "test2-",
 				Id:      "2",
-				Payload: "amqp-2",
+				Payload: "test-2",
 				Headers: map[string]*jobsv1beta.HeaderValue{"test": {Value: []string{"hello"}}},
 				Options: &jobsv1beta.Options{
 					Priority: 1,
-					Pipeline: "test-2-amqp",
+					Pipeline: "test-2",
+					Attempts: 10,
+					Delay: 1,
 				},
 			},
 		},
 	}
 
 	ch := make(chan struct{})
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 1000; i++ {
 		go func() {
-			conn, err := net.Dial("unix", *addr)
+			conn, err := net.Dial("tcp", *addr)
 			if err != nil {
-				panic(err)
+				fmt.Println(err)
+				return
 			}
 
 			client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 
-			for j := 0; j < 9999999; j++ {
+			for j := 0; j < 100000; j++ {
 				resp := jobsv1beta.EmptyResponse{}
 				err = client.Call("jobs.PushBatch", payloads, &resp)
 				if err != nil {
 					fmt.Println(err)
 				}
+				//time.Sleep(time.Second * 1)
 			}
 		}()
 	}
