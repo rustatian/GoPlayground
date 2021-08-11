@@ -1,9 +1,0 @@
-# command-line-arguments
-./main.go:7:6: cannot inline main: unhandled op FOR
-./main.go:9:6: can inline main.func1 as: func(int) { print(ii) }
-/var/folders/7z/z5vvjcvj5fb1j5m9spn3gh3r0000gn/T/go-build703893371/b001/_gomod_.go:6:8: can inline init.0 as: func() { __debug_modinfo__ = "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tGoPlayground/lowlevelfun/funG\nmod\tGoPlayground\t(devel)\t\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2" }
-./main.go:9:6: func literal escapes to heap
-./main.go:9:6: 	from .sink (assigned to top level variable) at <unknown line number>
-./main.go:9:6: func literal escapes to heap
-./main.go:9:6: 	from &(func literal) (address-of) at ./main.go:9:6
-./main.go:9:6: 	from .sink (assigned to top level variable) at <unknown line number>
