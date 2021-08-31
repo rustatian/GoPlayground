@@ -19,6 +19,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v1.12.0
 	github.com/google/gopacket v1.1.17
+	github.com/google/uuid v1.3.0
 	github.com/json-iterator/go v1.1.11
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.6.0

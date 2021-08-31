@@ -13,32 +13,48 @@ message PushBatchRequest {
     repeated Job jobs = 1;
 }
 
-// request to pause/resume
-message MaintenanceRequest {
+// request to pause/resume/list/Destroy
+message Pipelines {
     repeated string pipelines = 1;
 }
 
-// all endpoints returns nothing
-message EmptyResponse {}
+// some endpoints receives nothing
+// all endpoints returns nothing, except error
+message Empty {}
+
+message DeclareRequest {
+    map<string, string> pipeline = 1;
+}
 
 message Job {
     string job = 1;
     string id = 2;
     string payload = 3;
-    map<string, HeaderValue> headers = 5;
-    Options options = 4;
+    map<string, HeaderValue> headers = 4;
+    Options options = 5;
+}
+
+message Options {
+    int64 priority = 1;
+    string pipeline = 2;
+    int64 delay = 3;
 }
 
 message HeaderValue {
     repeated string value = 1;
 }
 
-message Options {
-    uint64 priority = 1;
-    string pipeline = 2;
-    uint64 delay = 3;
-    uint64 attempts = 4;
-    uint64 retry_delay = 5;
-    uint64 timeout = 6;
+message Stats {
+    repeated Stat Stats = 1;
 }
 
+// Stat used as a response for the Stats RPC call
+message Stat {
+    string pipeline = 1;
+    string driver = 2;
+    string queue = 3;
+    int64 active = 4;
+    int64 delayed = 5;
+    int64 reserved = 6;
+    bool ready = 7;
+}
