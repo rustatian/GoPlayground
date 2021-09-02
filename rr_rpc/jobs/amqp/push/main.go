@@ -42,6 +42,7 @@ func main() {
 						},
 					},
 				}
+
 				resp := jobsv1beta.Empty{}
 				err = client.Call("jobs.Push", payloads, &resp)
 				if err != nil {
