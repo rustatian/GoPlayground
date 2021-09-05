@@ -38,7 +38,7 @@ func main() {
 					startPipelines(client, n)
 					push100(client, n)
 					pausePipelines(client, n)
-					//destroyPipelines(client, n)
+					destroyPipelines(client, n)
 				}
 				wg.Done()
 			}()
@@ -58,13 +58,18 @@ func main() {
 	//				startPipelines(client, n)
 	//				push100(client, n)
 	//				pausePipelines(client, n)
-	//				//destroyPipelines(client, n)
+	//				destroyPipelines(client, n)
 	//			}
 	//			wg.Done()
 	//		}()
 	//	}
 	//}()
 	//go func() {
+	//	conn, err := net.Dial("tcp", "127.0.0.1:6001")
+	//	if err != nil {
+	//		log.Fatal(err)
+	//	}
+	//	client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 	//	for i := 0; i < 5; i++ {
 	//		go func() {
 	//			for j := 0; j < 50; j++ {
@@ -94,13 +99,18 @@ func main() {
 					startPipelines(client, n)
 					push100(client, n)
 					pausePipelines(client, n)
-					//destroyPipelines(client, n)
+					destroyPipelines(client, n)
 				}
 				wg.Done()
 			}()
 		}
 	}()
 	//go func() {
+	//	conn, err := net.Dial("tcp", "127.0.0.1:6001")
+	//	if err != nil {
+	//		log.Fatal(err)
+	//	}
+	//	client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 	//	for i := 0; i < 5; i++ {
 	//		go func() {
 	//			for j := 0; j < 1000; j++ {
