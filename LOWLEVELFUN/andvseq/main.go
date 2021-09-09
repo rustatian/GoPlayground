@@ -8,7 +8,7 @@ type Foo interface {
 	State() int
 }
 
-type FooImpl struct {}
+type FooImpl struct{}
 
 //go:noinline
 func (f *FooImpl) State() int {

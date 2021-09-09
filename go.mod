@@ -16,6 +16,7 @@ require (
 	github.com/eggsampler/acme/v3 v3.2.1
 	github.com/fasthttp/websocket v1.4.3
 	github.com/gofrs/uuid v4.0.0+incompatible
+	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v1.12.0
 	github.com/google/gopacket v1.1.17
