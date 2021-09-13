@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package main;
+option go_package = "./;main";
+
+// Ping Service.
+service PingService {
+    // Ping Method.
+    rpc Ping (Message) returns (Message) {
+    }
+}
+
+// Pong service.
+service PongService {
+    rpc Pong (stream Message) returns (stream Message) {
+    }
+}
+
+message Message {
+    string msg = 1;
+    int64 value = 2;
+}message Test1 {
+    sint64 a = 1;
+}
