@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/rpc"
 	"sync"
+	"time"
 
 	"github.com/google/uuid"
 	jobsv1beta "github.com/rustatian/GoPlayground/rr_rpc/jobs/v1beta"
@@ -24,14 +25,15 @@ const (
 func main() {
 	wg := &sync.WaitGroup{}
 	wg.Add(5)
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 1; i++ {
 		go func() {
-			for j := 0; j < 500; j++ {
+			for j := 0; j < 1; j++ {
 				n := uuid.NewString()
 				declareAMQPPipe(n)
 				startPipelines(n)
 				push100(n)
 				pausePipelines(n)
+				time.Sleep(time.Second)
 				destroyPipelines(n)
 			}
 			wg.Done()
