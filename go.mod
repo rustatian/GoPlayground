@@ -3,7 +3,7 @@ module github.com/rustatian/GoPlayground
 go 1.17
 
 require (
-	github.com/Microsoft/go-winio v0.4.14 // indirect
+	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/aws/aws-sdk-go v1.38.68
 	github.com/aws/aws-sdk-go-v2 v1.7.0
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.6.0
@@ -16,14 +16,13 @@ require (
 	github.com/eggsampler/acme/v3 v3.2.1
 	github.com/fasthttp/websocket v1.4.3
 	github.com/gofrs/uuid v4.0.0+incompatible
-	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v1.12.0
 	github.com/google/gopacket v1.1.17
 	github.com/google/uuid v1.3.0
 	github.com/json-iterator/go v1.1.11
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/sirupsen/logrus v1.6.0
+	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/afero v1.6.0
 	github.com/spf13/viper v1.8.1
 	github.com/spiral/goridge/v3 v3.1.4
@@ -34,11 +33,12 @@ require (
 	github.com/valyala/fasthttp v1.18.0
 	go.uber.org/ratelimit v0.2.0
 	gocv.io/x/gocv v0.23.0
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
-	golang.org/x/sys v0.0.0-20210603125802-9665404d3644 // indirect
+	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
+	golang.org/x/sys v0.0.0-20210817190340-bfb29a6856f2 // indirect
 	google.golang.org/grpc v1.38.0
 	google.golang.org/protobuf v1.27.1
+	tailscale.com v1.14.3
 )
 
 require (
@@ -48,12 +48,12 @@ require (
 	github.com/aws/smithy-go v1.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
-	github.com/go-ole/go-ole v1.2.4 // indirect
+	github.com/go-ole/go-ole v1.2.5 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/klauspost/compress v1.10.7 // indirect
-	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
+	github.com/klauspost/compress v1.12.2 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
+	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
@@ -71,10 +71,14 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/tcplisten v0.0.0-20161114210144-ceec8f93295a // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
-	golang.org/x/text v0.3.5 // indirect
+	go4.org/intern v0.0.0-20210108033219-3eb7198706b2 // indirect
+	go4.org/mem v0.0.0-20201119185036-c04c5a6ff174 // indirect
+	go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063 // indirect
+	golang.org/x/text v0.3.7-0.20210524175448-3115f89c4b99 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20210602131652-f16073e35f0c // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	inet.af/netaddr v0.0.0-20210721214506-ce7a8ad02cc1 // indirect
 )
