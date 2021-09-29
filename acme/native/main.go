@@ -9,6 +9,7 @@ import (
 	"crypto/x509/pkix"
 	"encoding/pem"
 	"fmt"
+	"net"
 	"net/http"
 	"os"
 	"path"
@@ -55,13 +56,13 @@ func newKey(filename string) (crypto.Signer, error) {
 	return k, nil
 }
 
-func generate(domain string, addr string) error {
+func main() {
 	tmpDir := os.TempDir()
 
 	// generate account key
 	accKey, err := newKey(path.Join(tmpDir, "account.pem"))
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	client := &acme.Client{
@@ -70,16 +71,25 @@ func generate(domain string, addr string) error {
 	}
 
 	_, err = client.Register(context.Background(), &acme.Account{
-		Contact: []string{"mailto"},
+		URI:                    "",
+		Contact:                []string{"govnomulo@mail.ru"},
+		Status:                 "",
+		OrdersURL:              "",
+		AgreedTerms:            "",
+		CurrentTerms:           "",
+		Authz:                  "",
+		Authorizations:         "",
+		Certificates:           "",
+		ExternalAccountBinding: nil,
 	}, acme.AcceptTOS)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	// https://datatracker.ietf.org/doc/html/rfc8555#section-7.4.1
-	auth, err := client.Authorize(context.Background(), domain)
+	auth, err := client.Authorize(context.Background(), "rustatian.me")
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	var challenge *acme.Challenge
@@ -90,7 +100,7 @@ func generate(domain string, addr string) error {
 	}
 
 	if challenge == nil {
-		return errors.Str("no http-01 challenge found")
+		panic(errors.Str("no http-01 challenge found"))
 	}
 
 	// "http-01", "tls-alpn-01", "dns-01".
@@ -98,7 +108,7 @@ func generate(domain string, addr string) error {
 	challengePath := client.HTTP01ChallengePath(challenge.Token)
 	challengeResp, err := client.HTTP01ChallengeResponse(challenge.Token)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	go func() {
@@ -110,42 +120,50 @@ func generate(domain string, addr string) error {
 			_, _ = w.Write(b)
 		})
 
+		l, err := net.Listen("tcp", "0.0.0.0:80")
+		if err != nil {
+			panic(err)
+		}
+
+		defer l.Close()
+
+		http.Serve(l, serv)
 
 		// LISTENER SHOULD BE HERE
 	}()
 
 	_, err = client.Accept(context.Background(), challenge)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	_, err = client.WaitAuthorization(context.Background(), auth.URI)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
-	uDomain := strings.ReplaceAll(domain, ".", "_")
+	uDomain := strings.ReplaceAll("rustatian.me", ".", "_")
 	domainKey, err := newKey(fmt.Sprintf("%s.key", path.Join(tmpDir, uDomain)))
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	csr, err := x509.CreateCertificateRequest(rand.Reader, &x509.CertificateRequest{
-		Subject: pkix.Name{CommonName: domain},
+		Subject: pkix.Name{CommonName: "rustatian.me"},
 	}, domainKey)
 
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	domainCert, _, err := client.CreateCert(context.Background(), csr, 90*24*time.Hour, true)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	w, err := os.Create(path.Join(tmpDir, fmt.Sprintf("%s.crt", uDomain)))
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	defer func() {
@@ -158,9 +176,10 @@ func generate(domain string, addr string) error {
 			Bytes: domainCert[k],
 		})
 		if err != nil {
-			return err
+			panic(err)
 		}
 	}
 
-	return nil
+
+	fmt.Println("[------] DONE")
 }
