@@ -62,4 +62,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	err = cfg.ManageSync([]string{"testtesttest.club"})
+	if err != nil {
+		panic(err)
+	}
 }
