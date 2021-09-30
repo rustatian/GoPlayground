@@ -1,9 +1,0 @@
-{
-	"status": "valid",
-	"contact": [
-		"mailto:govnomulo@mail.ru"
-	],
-	"termsOfServiceAgreed": true,
-	"orders": "",
-	"location": "https://acme-staging-v02.api.letsencrypt.org/acme/acct/28390678"
-}
