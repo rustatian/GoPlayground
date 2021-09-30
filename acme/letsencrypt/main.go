@@ -7,10 +7,12 @@ import (
 	"net/http"
 
 	"github.com/caddyserver/certmagic"
+	"go.uber.org/zap"
 	"golang.org/x/sys/cpu"
 )
 
 func main() {
+	z, _ := zap.NewProduction()
 	cache := certmagic.NewCache(certmagic.CacheOptions{
 		GetConfigForCert: func(c certmagic.Certificate) (*certmagic.Config, error) {
 			return &certmagic.Config{
@@ -22,7 +24,7 @@ func main() {
 				CertSelection:      nil,
 				OCSP:               certmagic.OCSPConfig{},
 				Storage:            &certmagic.FileStorage{Path: "rr_le_certs"},
-				Logger:             nil,
+				Logger:             z,
 			}, nil
 		},
 		OCSPCheckInterval:  0,
@@ -40,6 +42,7 @@ func main() {
 		CertSelection:      nil,
 		OCSP:               certmagic.OCSPConfig{},
 		Storage:            &certmagic.FileStorage{Path: "rr_le_certs"},
+		Logger:             z,
 	})
 
 	myAcme := certmagic.NewACMEManager(cfg, certmagic.ACMEManager{
@@ -57,7 +60,7 @@ func main() {
 		Resolver:                "",
 		NewAccountFunc:          nil,
 		PreferredChains:         certmagic.ChainPreference{},
-		Logger:                  nil,
+		Logger:                  z,
 	})
 
 	cfg.Issuers = append(cfg.Issuers, myAcme)
