@@ -10,7 +10,6 @@ func main() {
 			return &certmagic.Config{
 				RenewalWindowRatio: 0,
 				OnEvent:            nil,
-				DefaultServerName:  "https",
 				OnDemand:           nil,
 				MustStaple:         false,
 				KeySource:          nil,
@@ -25,7 +24,17 @@ func main() {
 		Capacity:           0,
 	})
 
-	cfg := certmagic.New(cache, certmagic.Config{})
+	cfg := certmagic.New(cache, certmagic.Config{
+		RenewalWindowRatio: 0,
+		OnEvent:            nil,
+		OnDemand:           nil,
+		MustStaple:         false,
+		Issuers:            nil,
+		KeySource:          nil,
+		CertSelection:      nil,
+		OCSP:               certmagic.OCSPConfig{},
+		Storage:            &certmagic.FileStorage{Path: "rr_le_certs"},
+	})
 
 	myAcme := certmagic.NewACMEManager(cfg, certmagic.ACMEManager{
 		CA:                      certmagic.LetsEncryptStagingCA,
@@ -34,14 +43,16 @@ func main() {
 		Agreed:                  true,
 		DisableHTTPChallenge:    false,
 		DisableTLSALPNChallenge: false,
-		ListenHost:              "localhost",
+		ListenHost:              "",
 		AltHTTPPort:             0,
 		AltTLSALPNPort:          0,
 		DNS01Solver:             nil,
 		TrustedRoots:            nil,
 		CertObtainTimeout:       0,
 		Resolver:                "",
+		NewAccountFunc:          nil,
 		PreferredChains:         certmagic.ChainPreference{},
+		Logger:                  nil,
 	})
 
 	cfg.Issuers = append(cfg.Issuers, myAcme)
