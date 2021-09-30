@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+
 	"github.com/caddyserver/certmagic"
 )
 
@@ -46,7 +48,6 @@ func main() {
 		ListenHost:              "",
 		AltHTTPPort:             0,
 		AltTLSALPNPort:          0,
-		DNS01Solver:             nil,
 		TrustedRoots:            nil,
 		CertObtainTimeout:       0,
 		Resolver:                "",
@@ -57,11 +58,8 @@ func main() {
 
 	cfg.Issuers = append(cfg.Issuers, myAcme)
 
-	err := cfg.ManageSync([]string{"testtesttest.club"})
+	err := cfg.ObtainCertAsync(context.Background(), "testtesttest.club")
 	if err != nil {
 		panic(err)
 	}
-
-	tlsConfig := cfg.TLSConfig()
-	_ = tlsConfig
 }
