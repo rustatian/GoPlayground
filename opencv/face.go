@@ -33,7 +33,7 @@ func main() {
 	classifier := gocv.NewCascadeClassifier()
 	defer classifier.Close()
 
-	if !classifier.Load("/home/valery/Projects/opensource/github/GoPlayground/opencv/data/haarcascade_frontalface_default.xml") {
+	if !classifier.Load("/home/valery/projects/opensource/github/GoPlayground/opencv/data/haarcascade_frontalface_default.xml") {
 		fmt.Println("Error reading cascade file: data/haarcascade_frontalface_default.xml")
 		return
 	}
