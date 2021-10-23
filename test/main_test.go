@@ -1,26 +1,30 @@
 package main
 
 import (
-	"runtime"
+	"context"
 	"testing"
 )
 
-func BenchmarkSleep(b *testing.B) {
-	runtime.GOMAXPROCS(1)
+func BenchmarkMy(b *testing.B) {
+	bgr := context.Background()
+
 	b.ReportAllocs()
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		sleep()
+		ctx := context.WithValue(bgr, PsrContextKey, "foo")
+		_ = ctx.Value("foo")
 	}
 }
 
-func BenchmarkBlock(b *testing.B) {
-	runtime.GOMAXPROCS(1)
+func BenchmarkNr(b *testing.B) {
+	bgr := context.Background()
+
 	b.ReportAllocs()
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		block()
+		ctx := context.WithValue(bgr, GinTransactionContextKey, "foo")
+		_ = ctx.Value("foo")
 	}
 }
