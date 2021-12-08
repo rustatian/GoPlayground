@@ -78,10 +78,10 @@ func main() {
 	myUser.Registration = reg
 
 	request := certificate.ObtainRequest{
-		Domains:        []string{"rustatian.me"},
-		Bundle:         true,
-		PrivateKey:     privateKey,
-		MustStaple:     false,
+		Domains:    []string{"rustatian.me"},
+		Bundle:     true,
+		PrivateKey: privateKey,
+		MustStaple: false,
 	}
 
 	certificates, err := client.Certificate.Obtain(request)
@@ -93,7 +93,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	err = os.WriteFile("domain" + certificates.Domain + ".cert", certificates.Certificate, 0600)
+	err = os.WriteFile("domain"+certificates.Domain+".cert", certificates.Certificate, 0600)
 	if err != nil {
 		panic(err)
 	}

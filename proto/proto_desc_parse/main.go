@@ -20,7 +20,6 @@ func main() {
 
 	meth := desc.Options().ProtoReflect().ProtoMethods()
 	_ = meth
-	
 
 	m := desc.Services()
 	nm := m.Get(0)
@@ -29,7 +28,6 @@ func main() {
 	// 	Methods: nm.Name(),
 	// }
 
-	
 	println(nm)
 
 	server := grpc.NewServer()
