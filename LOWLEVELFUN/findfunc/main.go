@@ -23,7 +23,7 @@ func FindFuncWithName(name string) (uintptr, error) {
 			}
 		}
 	}
-	return 0, fmt.Errorf("Invalid function name: %s", name)
+	return 0, fmt.Errorf("invalid function name: %s", name)
 }
 
 type Moduledata struct {
