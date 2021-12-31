@@ -29,8 +29,6 @@ require (
 )
 
 require (
-	github.com/goccy/go-json v0.7.10
-	github.com/mmcloughlin/avo v0.2.0
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129 // indirect
 	github.com/andybalholm/brotli v1.0.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.1 // indirect
@@ -40,6 +38,7 @@ require (
 	github.com/mholt/acmez v1.0.0 // indirect
 	github.com/miekg/dns v1.1.42 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
+	github.com/mmcloughlin/avo v0.2.0
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/nats-io/nats-server/v2 v2.6.1 // indirect
