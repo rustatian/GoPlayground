@@ -21,7 +21,7 @@ require (
 	go.uber.org/zap v1.17.0
 	gocv.io/x/gocv v0.23.0
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
-	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 	golang.org/x/sys v0.0.0-20210817190340-bfb29a6856f2
 	google.golang.org/grpc v1.38.0
 	google.golang.org/protobuf v1.27.1
