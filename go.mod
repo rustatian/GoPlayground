@@ -12,6 +12,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/json-iterator/go v1.1.12
 	github.com/nats-io/nats.go v1.13.0
+	github.com/roadrunner-server/tcplisten v1.1.0
 	github.com/spf13/afero v1.6.0
 	github.com/spiral/errors v1.0.12
 	github.com/spiral/goridge/v3 v3.2.4
@@ -27,6 +28,13 @@ require (
 	google.golang.org/protobuf v1.27.1
 	tailscale.com v1.14.3
 )
+
+require (
+	github.com/kavu/go_reuseport v1.5.0 // indirect
+	github.com/tidwall/evio v1.0.8 // indirect
+)
+
+replace github.com/roadrunner-server/tcplisten => ../../spiral/tcplisten
 
 require (
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129 // indirect
