@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/rand"
+	"fmt"
 	"net"
 	"sync"
 	"time"
@@ -17,7 +18,7 @@ func main() {
 			panic(err)
 		}
 
-		data := make([]byte, 70000)
+		data := make([]byte, 7000)
 		_, err = rand.Read(data)
 		if err != nil {
 			panic(err)
@@ -26,6 +27,10 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
+		res := make([]byte, 7000)
+		c.Read(res)
+		fmt.Printf("res: %s\n", res)
 	}()
 	go func() {
 		//defer wg.Done()
