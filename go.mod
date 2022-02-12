@@ -21,20 +21,15 @@ require (
 	go.uber.org/ratelimit v0.2.0
 	go.uber.org/zap v1.17.0
 	gocv.io/x/gocv v0.23.0
-	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
+	golang.org/x/crypto v0.0.0-20220210151621-f4118a5b28e2
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 	golang.org/x/sys v0.0.0-20210817190340-bfb29a6856f2
 	google.golang.org/grpc v1.38.0
 	google.golang.org/protobuf v1.27.1
-	tailscale.com v1.14.3
-)
-
-require (
+	tailscale.com v1.20.4
 	github.com/kavu/go_reuseport v1.5.0 // indirect
 	github.com/tidwall/evio v1.0.8 // indirect
 )
-
-replace github.com/roadrunner-server/tcplisten => ../../spiral/tcplisten
 
 require (
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129 // indirect
@@ -49,10 +44,10 @@ require (
 	github.com/mmcloughlin/avo v0.2.0
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/nats-io/nats-server/v2 v2.6.1 // indirect
+	github.com/nats-io/nats-server/v2 v2.7.2 // indirect
 	github.com/nats-io/nkeys v0.3.0 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
-	github.com/savsgio/gotils v0.0.0-20200608150037-a5f6f5aef16c // indirect
+	github.com/savsgio/gotils v0.0.0-20220201163454-d252f0a44d5b // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
