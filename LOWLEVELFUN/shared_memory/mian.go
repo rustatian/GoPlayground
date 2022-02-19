@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/spiral/goridge/v3/pkg/shared_memory/posix"
+	"github.com/roadrunner-server/goridge/v3/pkg/shared_memory/posix"
 )
 
 func main() {

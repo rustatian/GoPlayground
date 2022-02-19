@@ -5,7 +5,7 @@ import (
 	"net"
 	"net/rpc"
 
-	goridgeRpc "github.com/spiral/goridge/v3/pkg/rpc"
+	goridgeRpc "github.com/roadrunner-server/goridge/v3/pkg/rpc"
 )
 
 type App struct{}
