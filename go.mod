@@ -10,7 +10,7 @@ require (
 	github.com/google/go-github/v42 v42.0.0
 	github.com/google/gopacket v1.1.17
 	github.com/mmcloughlin/avo v0.2.0
-	github.com/nats-io/nats.go v1.13.1-0.20220121202836-972a071d373d
+	github.com/nats-io/nats.go v1.13.1-0.20220308171302-2f2f6968e98d
 	github.com/roadrunner-server/errors v1.1.1
 	github.com/roadrunner-server/goridge/v3 v3.3.1
 	github.com/spf13/afero v1.6.0
@@ -32,7 +32,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.1.0 // indirect
-	github.com/klauspost/compress v1.13.6 // indirect
+	github.com/klauspost/compress v1.14.4 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.6 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/mholt/acmez v1.0.0 // indirect
@@ -61,7 +61,7 @@ require (
 
 require (
 	github.com/cenkalti/backoff/v4 v4.1.1 // indirect
-	github.com/nats-io/nats-server/v2 v2.7.2 // indirect
+	github.com/nats-io/nats-server/v2 v2.7.4 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20210819190943-2bc19b11175f
 	google.golang.org/api v0.56.0

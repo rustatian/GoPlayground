@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-func main() {
+func header() {
 	sliceOne := []int{0, 1, 2, 4, 5}
 	sliceTwo := []int{6, 7, 8, 9, 10}
 

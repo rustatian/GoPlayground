@@ -24,9 +24,6 @@ func funcAddr(fn interface{}) uintptr {
 	return *e.value
 }
 
-func main() {
-}
-
 func CreateFunc(fType reflect.Type, f func(args []reflect.Value) (results []reflect.Value)) (reflect.Value, error) {
 	if fType.Kind() != reflect.Func {
 		return reflect.Value{}, errors.New("invalid input")

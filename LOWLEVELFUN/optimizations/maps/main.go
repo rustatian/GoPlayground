@@ -29,7 +29,6 @@ func main() {
 //	fmt.Println(m)
 //}
 
-//go:noinline
 //func fun() {
 //	bt := []byte{'a', 'b', 'c'}
 //	m := make(map[string]int, 10)
@@ -37,7 +36,6 @@ func main() {
 //	m[string(bt[0])] = 1
 //}
 
-//go:noinline
 //func notfun() {
 //	bt := []byte{'a', 'b', 'c'}
 //	m := make(map[string]int, 10)
