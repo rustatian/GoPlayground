@@ -11,17 +11,19 @@ require (
 	github.com/google/gopacket v1.1.19
 	github.com/mmcloughlin/avo v0.4.0
 	github.com/nats-io/nats.go v1.13.1-0.20220308171302-2f2f6968e98d
-	github.com/roadrunner-server/errors v1.1.1
-	github.com/roadrunner-server/goridge/v3 v3.3.1
-	github.com/spf13/afero v1.6.0
+	github.com/roadrunner-server/errors v1.1.2
+	github.com/roadrunner-server/goridge/v3 v3.4.0
+	github.com/spf13/afero v1.8.2
 	github.com/valyala/fasthttp v1.34.0
-	go.uber.org/zap v1.17.0
-	gocv.io/x/gocv v0.23.0
-	golang.org/x/crypto v0.0.0-20220214200702-86341886e292
-	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9
-	google.golang.org/grpc v1.40.0
-	google.golang.org/protobuf v1.27.1
-	tailscale.com v1.20.4
+	go.uber.org/zap v1.21.0
+	gocv.io/x/gocv v0.30.0
+	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064
+	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
+	golang.org/x/sys v0.0.0-20220328115105-d36c6a25d886
+	google.golang.org/api v0.73.0
+	google.golang.org/grpc v1.45.0
+	google.golang.org/protobuf v1.28.0
+	tailscale.com v1.22.2
 )
 
 require (
