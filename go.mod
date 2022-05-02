@@ -17,6 +17,7 @@ require (
 	github.com/roadrunner-server/goridge/v3 v3.4.0
 	github.com/spf13/afero v1.8.2
 	github.com/stretchr/testify v1.7.1
+	github.com/temporalio/samples-go v1.3.0
 	github.com/uber-go/tally/v4 v4.1.1
 	github.com/valyala/fasthttp v1.35.0
 	go.temporal.io/sdk v1.14.0
