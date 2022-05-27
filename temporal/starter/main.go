@@ -9,9 +9,8 @@ import (
 	"go.temporal.io/sdk/client"
 )
 
-// @@@SNIPSTART samples-go-child-workflow-example-execution-starter
 func main() {
-	// The client is a heavyweight object that should be created only once per process.
+	// The client is a heavyweight object that should be created once per process.
 	c, err := client.NewClient(client.Options{
 		HostPort: client.DefaultHostPort,
 	})
@@ -20,28 +19,14 @@ func main() {
 	}
 	defer c.Close()
 
-	// This Workflow ID can be a user supplied business logic identifier.
-	workflowID := "parent-workflow_" + uuid.New()
 	workflowOptions := client.StartWorkflowOptions{
-		ID:        workflowID,
-		TaskQueue: "child-workflow",
+		ID:        "timer_" + uuid.New(),
+		TaskQueue: "default",
 	}
 
-	workflowRun, err := c.ExecuteWorkflow(context.Background(), workflowOptions, temporal.SampleParentWorkflow)
+	we, err := c.ExecuteWorkflow(context.Background(), workflowOptions, temporal.SampleTimerWorkflow)
 	if err != nil {
 		log.Fatalln("Unable to execute workflow", err)
 	}
-	log.Println("Started workflow",
-		"WorkflowID", workflowRun.GetID(), "RunID", workflowRun.GetRunID())
-
-	// Synchronously wait for the Workflow Execution to complete.
-	// Behind the scenes the SDK performs a long poll operation.
-	// If you need to wait for the Workflow Execution to complete from another process use
-	// Client.GetWorkflow API to get an instance of the WorkflowRun.
-	var result string
-	err = workflowRun.Get(context.Background(), &result)
-	if err != nil {
-		log.Fatalln("Failure getting workflow result", err)
-	}
-	log.Println("Workflow result: %v", "result", result)
+	log.Println("Started workflow", "WorkflowID", we.GetID(), "RunID", we.GetRunID())
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
@@ -9,9 +10,8 @@ import (
 	"github.com/rustatian/GoPlayground/temporal"
 )
 
-// @@@SNIPSTART samples-go-child-workflow-example-worker-starter
 func main() {
-	// The client is a heavyweight object that should be created only once per process.
+	// The client and worker are heavyweight objects that should be created once per process.
 	c, err := client.NewClient(client.Options{
 		HostPort: client.DefaultHostPort,
 	})
@@ -20,12 +20,23 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, "child-workflow", worker.Options{})
+	w := worker.New(c, "default", worker.Options{
+		MaxConcurrentActivityExecutionSize: 3,
+	})
 
-	w.RegisterWorkflow(temporal.SampleParentWorkflow)
-	w.RegisterWorkflow(temporal.SampleChildWorkflow)
+	w.RegisterWorkflow(temporal.SampleTimerWorkflow)
+	w.RegisterActivity(temporal.OrderProcessingActivity)
+	w.RegisterActivity(temporal.SendEmailActivity)
+	w.RegisterActivity(temporal.CurrentTime)
 
-	err = w.Run(worker.InterruptCh())
+	ch := make(chan interface{})
+
+	go func() {
+		time.Sleep(time.Second * 50)
+		ch <- struct{}{}
+	}()
+
+	err = w.Run(ch)
 	if err != nil {
 		log.Fatalln("Unable to start worker", err)
 	}
