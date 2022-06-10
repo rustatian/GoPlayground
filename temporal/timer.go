@@ -5,15 +5,23 @@ import (
 	"time"
 
 	"go.temporal.io/sdk/activity"
+	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/workflow"
 )
 
 // SampleTimerWorkflow workflow definition
 func SampleTimerWorkflow(ctx workflow.Context) error {
-	ao := workflow.ActivityOptions{
+	ao := workflow.LocalActivityOptions{
 		StartToCloseTimeout: 1000 * time.Second,
+		RetryPolicy: &temporal.RetryPolicy{
+			InitialInterval:        0,
+			BackoffCoefficient:     0,
+			MaximumInterval:        0,
+			MaximumAttempts:        100,
+			NonRetryableErrorTypes: nil,
+		},
 	}
-	ctx = workflow.WithActivityOptions(ctx, ao)
+	ctx = workflow.WithLocalActivityOptions(ctx, ao)
 
 	queryType := "current_state"
 	err := workflow.SetQueryHandler(ctx, queryType, func() (string, error) {
@@ -23,7 +31,7 @@ func SampleTimerWorkflow(ctx workflow.Context) error {
 		return err
 	}
 
-	childCtx, cancelHandler := workflow.WithCancel(ctx)
+	//childCtx, cancelHandler := workflow.WithCancel(ctx)
 	selector := workflow.NewSelector(ctx)
 
 	// In this sample case, we want to demo a use case where the workflow starts a long running order processing operation
@@ -31,19 +39,19 @@ func SampleTimerWorkflow(ctx workflow.Context) error {
 	// but we won't cancel the operation. If the operation finishes before the timer fires, then we want to cancel the timer.
 
 	var processingDone bool
-	f := workflow.ExecuteActivity(ctx, OrderProcessingActivity)
+	f := workflow.ExecuteLocalActivity(ctx, OrderProcessingActivity)
 	selector.AddFuture(f, func(f workflow.Future) {
 		processingDone = true
 		// cancel timerFuture
-		cancelHandler()
+		//cancelHandler()
 	})
 
 	// use timer future to send notification email if processing takes too long
-	timerFuture := workflow.NewTimer(childCtx, time.Second*60)
+	timerFuture := workflow.NewTimer(ctx, time.Second*60)
 	selector.AddFuture(timerFuture, func(f workflow.Future) {
 		if !processingDone {
 			// processing is not done yet when timer fires, send notification email
-			_ = workflow.ExecuteActivity(ctx, SendEmailActivity).Get(ctx, nil)
+			_ = workflow.ExecuteLocalActivity(ctx, SendEmailActivity).Get(ctx, nil)
 		}
 	})
 
@@ -75,6 +83,6 @@ func SendEmailActivity(ctx context.Context) error {
 	return nil
 }
 
-func CurrentTime(ctx context.Context) (string, error) {
+func CurrentTime(_ context.Context) (string, error) {
 	return time.Now().String(), nil
 }

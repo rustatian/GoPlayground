@@ -4,32 +4,26 @@ go 1.18
 
 require (
 	github.com/caddyserver/certmagic v0.16.1
-	github.com/go-acme/lego/v4 v4.6.0
+	github.com/go-acme/lego/v4 v4.7.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v2.0.6+incompatible
 	github.com/google/go-github/v42 v42.0.0
 	github.com/google/gopacket v1.1.19
 	github.com/mmcloughlin/avo v0.4.0
-	github.com/nats-io/nats.go v1.15.0
+	github.com/nats-io/nats.go v1.16.0
 	github.com/pborman/uuid v1.2.1
-	github.com/roadrunner-server/api/v2 v2.17.0
-	github.com/roadrunner-server/config/v2 v2.13.5
-	github.com/roadrunner-server/endure v1.3.0
 	github.com/roadrunner-server/errors v1.1.2
-	github.com/roadrunner-server/goridge/v3 v3.4.1
-	github.com/roadrunner-server/logger/v2 v2.12.5
-	github.com/roadrunner-server/server/v2 v2.13.5
+	github.com/roadrunner-server/goridge/v3 v3.4.2
 	github.com/spf13/afero v1.8.2
-	github.com/valyala/fasthttp v1.36.0
-	go.temporal.io/api v1.7.1-0.20220223032354-6e6fe738916a
+	github.com/valyala/fasthttp v1.37.0
 	go.temporal.io/sdk v1.14.0
 	go.uber.org/zap v1.21.0
 	gocv.io/x/gocv v0.30.0
-	golang.org/x/crypto v0.0.0-20220507011949-2cf3adece122
-	golang.org/x/oauth2 v0.0.0-20220411215720-9780585627b5
-	golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a
-	google.golang.org/api v0.78.0
-	google.golang.org/grpc v1.46.0
+	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e
+	golang.org/x/oauth2 v0.0.0-20220524215830-622c5d57e401
+	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
+	google.golang.org/api v0.81.0
+	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.0
 	tailscale.com v1.24.2
 )
@@ -54,13 +48,13 @@ require (
 	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/googleapis/gax-go/v2 v2.3.0 // indirect
+	github.com/googleapis/gax-go/v2 v2.4.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/hashicorp/go-version v1.4.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/josharian/native v1.0.0 // indirect
 	github.com/jsimonetti/rtnetlink v1.2.0 // indirect
-	github.com/klauspost/compress v1.15.3 // indirect
+	github.com/klauspost/compress v1.15.5 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.12 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
@@ -69,7 +63,7 @@ require (
 	github.com/mdlayher/netlink v1.6.0 // indirect
 	github.com/mdlayher/socket v0.2.3 // indirect
 	github.com/mholt/acmez v1.0.2 // indirect
-	github.com/miekg/dns v1.1.48 // indirect
+	github.com/miekg/dns v1.1.49 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/nats-io/nats-server/v2 v2.7.4 // indirect
@@ -78,7 +72,12 @@ require (
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/roadrunner-server/api/v2 v2.17.0 // indirect
+	github.com/roadrunner-server/config/v2 v2.13.5 // indirect
+	github.com/roadrunner-server/endure v1.3.0 // indirect
+	github.com/roadrunner-server/logger/v2 v2.12.5 // indirect
 	github.com/roadrunner-server/sdk/v2 v2.14.0 // indirect
+	github.com/roadrunner-server/server/v2 v2.13.5 // indirect
 	github.com/roadrunner-server/tcplisten v1.1.2 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
@@ -96,25 +95,26 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	go.opencensus.io v0.23.0 // indirect
+	go.temporal.io/api v1.7.1-0.20220223032354-6e6fe738916a // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	go4.org/intern v0.0.0-20220301175310-a089fc204883 // indirect
 	go4.org/mem v0.0.0-20220409205537-d9185028b2dc // indirect
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20211027215541-db492cf91b37 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
-	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4 // indirect
+	golang.org/x/net v0.0.0-20220526153639-5463443f8c37 // indirect
 	golang.org/x/sync v0.0.0-20220513210516-0976fa681c29 // indirect
 	golang.org/x/text v0.3.8-0.20211105212822-18b340fc7af2 // indirect
 	golang.org/x/time v0.0.0-20220411224347-583f2d630306 // indirect
 	golang.org/x/tools v0.1.11-0.20220413170336-afc6aad76eb1 // indirect
-	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
+	golang.org/x/xerrors v0.0.0-20220517211312-f3a8303e98df // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3 // indirect
+	google.golang.org/genproto v0.0.0-20220527130721-00d5c0f3be58 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 	inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6 // indirect
 )
