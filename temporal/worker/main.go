@@ -34,8 +34,8 @@ func main() {
 
 	w.RegisterWorkflow(temporal.SampleTimerWorkflow)
 	w.RegisterActivity(temporal.OrderProcessingActivity)
-	w.RegisterActivity(temporal.SendEmailActivity)
-	w.RegisterActivity(temporal.CurrentTime)
+	//w.RegisterActivity(temporal.SendEmailActivity)
+	//w.RegisterActivity(temporal.CurrentTime)
 
 	err = w.Run(worker.InterruptCh())
 	if err != nil {
