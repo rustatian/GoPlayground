@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime/debug"
 
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/reflect/protoregistry"
@@ -12,6 +13,18 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	bi, _ := debug.ReadBuildInfo()
+	_ = bi
+
+	n := protoregistry.GlobalTypes.NumMessages()
+	_ = n
+
+	nn, err := protoregistry.GlobalTypes.FindMessageByName("main.Message")
+	if err != nil {
+		panic(err)
+	}
+	_ = nn
 
 	// err = protoregistry.GlobalFiles.RegisterFile(desc)
 	// if err != nil {
