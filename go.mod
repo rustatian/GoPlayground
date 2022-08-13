@@ -12,8 +12,13 @@ require (
 	github.com/mmcloughlin/avo v0.4.0
 	github.com/nats-io/nats.go v1.16.0
 	github.com/pborman/uuid v1.2.1
+<<<<<<< HEAD
 	github.com/roadrunner-server/errors v1.2.0
 	github.com/roadrunner-server/goridge/v3 v3.5.1
+=======
+	github.com/roadrunner-server/errors v1.1.2
+	github.com/roadrunner-server/goridge/v3 v3.4.5
+>>>>>>> 2ac251b (temporal experiment)
 	github.com/spf13/afero v1.9.2
 	github.com/valyala/fasthttp v1.39.0
 	go.temporal.io/sdk v1.16.0
@@ -36,6 +41,10 @@ require (
 	github.com/cenkalti/backoff/v4 v4.1.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
+<<<<<<< HEAD
+=======
+	github.com/frankban/quicktest v1.14.3 // indirect
+>>>>>>> 2ac251b (temporal experiment)
 	github.com/goccy/go-json v0.9.10 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
@@ -58,7 +67,11 @@ require (
 	github.com/mholt/acmez v1.0.4 // indirect
 	github.com/miekg/dns v1.1.50 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
+<<<<<<< HEAD
 	github.com/nats-io/nats-server/v2 v2.8.4 // indirect
+=======
+	github.com/nats-io/nats-server/v2 v2.7.4 // indirect
+>>>>>>> 2ac251b (temporal experiment)
 	github.com/nats-io/nkeys v0.3.0 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
@@ -69,8 +82,14 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	go.opencensus.io v0.23.0 // indirect
+<<<<<<< HEAD
 	go.temporal.io/api v1.11.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
+=======
+	go.temporal.io/api v1.10.0 // indirect
+	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/goleak v1.1.12 // indirect
+>>>>>>> 2ac251b (temporal experiment)
 	go.uber.org/multierr v1.8.0 // indirect
 	go4.org/intern v0.0.0-20220617035311-6925f38cc365 // indirect
 	go4.org/mem v0.0.0-20220726221520-4f986261bf13 // indirect
@@ -83,7 +102,12 @@ require (
 	golang.org/x/tools v0.1.12 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
+<<<<<<< HEAD
 	google.golang.org/genproto v0.0.0-20220815135757-37a418bb8959 // indirect
+=======
+	google.golang.org/genproto v0.0.0-20220722212130-b98a9ff5e252 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
+>>>>>>> 2ac251b (temporal experiment)
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	inet.af/netaddr v0.0.0-20220811202034-502d2d690317 // indirect
