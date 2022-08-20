@@ -3,7 +3,7 @@ module github.com/rustatian/GoPlayground
 go 1.19
 
 require (
-	github.com/caddyserver/certmagic v0.16.2
+	github.com/caddyserver/certmagic v0.16.3
 	github.com/go-acme/lego/v4 v4.8.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v2.0.6+incompatible
@@ -13,23 +13,23 @@ require (
 	github.com/nats-io/nats.go v1.16.0
 	github.com/pborman/uuid v1.2.1
 	github.com/roadrunner-server/errors v1.2.0
-	github.com/roadrunner-server/goridge/v3 v3.5.1
+	github.com/roadrunner-server/goridge/v3 v3.5.2
 	github.com/spf13/afero v1.9.2
 	github.com/valyala/fasthttp v1.39.0
 	go.temporal.io/sdk v1.16.0
 	go.uber.org/zap v1.22.0
 	gocv.io/x/gocv v0.31.0
-	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
+	golang.org/x/crypto v0.0.0-20220817201139-bc19a97f63c8
 	golang.org/x/oauth2 v0.0.0-20220808172628-8227340efae7
-	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
-	google.golang.org/api v0.92.0
+	golang.org/x/sys v0.0.0-20220818161305-2296e01440c6
+	google.golang.org/api v0.93.0
 	google.golang.org/grpc v1.48.0
 	google.golang.org/protobuf v1.28.1
 	tailscale.com v1.28.0
 )
 
 require (
-	cloud.google.com/go/compute v1.8.0 // indirect
+	cloud.google.com/go/compute v1.9.0 // indirect
 	github.com/akutz/memconn v0.1.0 // indirect
 	github.com/alexbrainman/sspi v0.0.0-20210105120005-909beea2cc74 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
@@ -37,7 +37,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/frankban/quicktest v1.14.3 // indirect
-	github.com/goccy/go-json v0.9.10 // indirect
+	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gogo/status v1.1.1 // indirect
@@ -79,13 +79,13 @@ require (
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20220617031537-928513b29760 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
 	golang.org/x/net v0.0.0-20220812174116-3211cb980234 // indirect
-	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
+	golang.org/x/sync v0.0.0-20220819030929-7fc1605a5dde // indirect
 	golang.org/x/text v0.3.8-0.20211105212822-18b340fc7af2 // indirect
 	golang.org/x/time v0.0.0-20220722155302-e5dcc9cfc0b9 // indirect
 	golang.org/x/tools v0.1.12 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20220815135757-37a418bb8959 // indirect
+	google.golang.org/genproto v0.0.0-20220819174105-e9f053255caa // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	inet.af/netaddr v0.0.0-20220811202034-502d2d690317 // indirect
