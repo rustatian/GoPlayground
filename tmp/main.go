@@ -1,22 +1,37 @@
 package main
 
 import (
-	_ "embed"
 	"fmt"
-	"net"
-	"net/rpc"
+	"os"
+	"os/signal"
+	"syscall"
 
-	goridgeRpc "github.com/roadrunner-server/goridge/v3/pkg/rpc"
+	rrLib "github.com/roadrunner-server/roadrunner/v2/lib"
 )
 
+// go get -u github.com/roadrunner-server/roadrunner/v2
 func main() {
-	conn, err := net.Dial("tcp", "100.100.109.23:6001")
+	rr, err := rrLib.NewRR("/path/to/.rr.yaml", nil, rrLib.DefaultPluginsList())
 	if err != nil {
 		panic(err)
 	}
-	client := rpc.NewClientWithCodec(goridgeRpc.NewClientCodec(conn))
 
-	data := make([]string, 0, 100)
-	err = client.Call("temporal.GetActivityNames", false, &data)
-	fmt.Println(data)
+	stopCh := make(chan os.Signal, 1)
+	errCh := make(chan error, 1)
+	go func() {
+		err2 := rr.Serve()
+		if err2 != nil {
+			errCh <- err2
+		}
+	}()
+
+	signal.Notify(stopCh, syscall.SIGINT, syscall.SIGTERM)
+
+	select {
+	case e := <-errCh:
+		fmt.Printf("error occured: %v\n", e)
+		return
+	case <-stopCh:
+		rr.Stop()
+	}
 }
