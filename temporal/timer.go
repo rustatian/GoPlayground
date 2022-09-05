@@ -2,9 +2,9 @@ package temporal
 
 import (
 	"context"
+	"fmt"
 	"time"
 
-	"go.temporal.io/sdk/activity"
 	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/workflow"
 )
@@ -78,13 +78,8 @@ func SampleTimerWorkflow(ctx workflow.Context) error {
 }
 
 func OrderProcessingActivity(ctx context.Context) (string, error) {
-	logger := activity.GetLogger(ctx)
-	logger.Info("OrderProcessingActivity processing started.")
-	//timeNeededToProcess := time.Second * 40
-	//time.Sleep(timeNeededToProcess)
-	//logger.Info("OrderProcessingActivity done.", "duration", timeNeededToProcess)
-
 	time.Sleep(time.Second * 10)
+	fmt.Println("fooooooooooooooooooooooo")
 	return "foo", nil
 }
 

@@ -2,36 +2,61 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"os/signal"
-	"syscall"
-
-	rrLib "github.com/roadrunner-server/roadrunner/v2/lib"
+	"math/rand"
+	"time"
 )
 
-// go get -u github.com/roadrunner-server/roadrunner/v2
-func main() {
-	rr, err := rrLib.NewRR("/path/to/.rr.yaml", nil, rrLib.DefaultPluginsList())
-	if err != nil {
-		panic(err)
-	}
+func Coalesce[T any](in chan T, maxBatch int, maxWait time.Duration, complete func([]T)) {
+	items := make([]T, 0, maxBatch)
+	for v := range in {
+		items = append(items, v)
 
-	stopCh := make(chan os.Signal, 1)
-	errCh := make(chan error, 1)
-	go func() {
-		err2 := rr.Serve()
-		if err2 != nil {
-			errCh <- err2
+		t := time.NewTicker(maxWait)
+
+	waitmore:
+		for {
+			select {
+			case v, ok := <-in:
+				if !ok {
+					break waitmore
+				}
+				items = append(items, v)
+				if len(items) >= maxBatch {
+					break waitmore
+				}
+			case <-t.C:
+				break waitmore
+			}
 		}
-	}()
+		t.Stop()
 
-	signal.Notify(stopCh, syscall.SIGINT, syscall.SIGTERM)
+	fillbatch:
+		for len(items) < maxBatch {
+			select {
+			case v, ok := <-in:
+				if !ok {
+					break fillbatch
+				}
+				items = append(items, v)
+			default:
+				break fillbatch
+			}
+		}
 
-	select {
-	case e := <-errCh:
-		fmt.Printf("error occured: %v\n", e)
-		return
-	case <-stopCh:
-		rr.Stop()
+		complete(items)
+		items = items[:0]
+	}
+}
+
+func main() {
+	q := make(chan int, 16)
+	defer close(q)
+	go Coalesce(q, 4, time.Second, func(batch []int) {
+		fmt.Println(batch)
+	})
+
+	for i := 0; i < 1000; i++ {
+		q <- i
+		time.Sleep(time.Duration(rand.Intn(10)) * 100 * time.Millisecond)
 	}
 }
