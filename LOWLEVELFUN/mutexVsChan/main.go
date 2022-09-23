@@ -1,1 +1,3 @@
-package mutexVsChan
+package main
+
+func main() {}
