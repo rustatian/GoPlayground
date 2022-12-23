@@ -28,7 +28,7 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, "default", worker.Options{
+	w := worker.New(c, "", worker.Options{
 		MaxConcurrentActivityExecutionSize: 3,
 	})
 

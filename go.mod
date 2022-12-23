@@ -24,14 +24,12 @@ require (
 	gocv.io/x/gocv v0.31.0
 	golang.org/x/crypto v0.1.0
 	golang.org/x/oauth2 v0.1.0
-	golang.org/x/sys v0.1.0
+	golang.org/x/sys v0.3.0
 	google.golang.org/api v0.102.0
 	google.golang.org/grpc v1.50.1
 	google.golang.org/protobuf v1.28.1
 	tailscale.com v1.32.2
 )
-
-exclude go.temporal.io/api v1.13.0
 
 require (
 	cloud.google.com/go/compute v1.12.1 // indirect
@@ -93,12 +91,12 @@ require (
 	go.uber.org/multierr v1.8.0 // indirect
 	go4.org/mem v0.0.0-20220726221520-4f986261bf13 // indirect
 	go4.org/netipx v0.0.0-20220925034521-797b0c90d8ab // indirect
-	golang.org/x/mod v0.6.0 // indirect
-	golang.org/x/net v0.1.0 // indirect
+	golang.org/x/mod v0.7.0 // indirect
+	golang.org/x/net v0.3.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/text v0.5.0 // indirect
 	golang.org/x/time v0.1.0 // indirect
-	golang.org/x/tools v0.2.0 // indirect
+	golang.org/x/tools v0.4.0 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20221027153422-115e99e71e1c // indirect
