@@ -3,34 +3,34 @@ module github.com/rustatian/GoPlayground
 go 1.19
 
 require (
-	github.com/caddyserver/certmagic v0.17.2
-	github.com/centrifugal/centrifuge-go v0.9.5
-	github.com/go-acme/lego/v4 v4.10.2
+	github.com/caddyserver/certmagic v0.19.0
+	github.com/centrifugal/centrifuge-go v0.10.0
+	github.com/go-acme/lego/v4 v4.12.3
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/golang/protobuf v1.5.3
-	github.com/google/flatbuffers v23.3.3+incompatible
+	github.com/google/flatbuffers v23.5.26+incompatible
 	github.com/google/go-github/v42 v42.0.0
 	github.com/google/gopacket v1.1.19
 	github.com/mmcloughlin/avo v0.5.0
-	github.com/nats-io/nats.go v1.25.0
+	github.com/nats-io/nats.go v1.27.1
 	github.com/roadrunner-server/endure v1.4.6
 	github.com/roadrunner-server/errors v1.2.0
-	github.com/roadrunner-server/goridge/v3 v3.6.2
+	github.com/roadrunner-server/goridge/v3 v3.6.3
 	github.com/spf13/afero v1.9.5
-	github.com/valyala/fasthttp v1.46.0
+	github.com/valyala/fasthttp v1.48.0
 	go.uber.org/zap v1.24.0
-	gocv.io/x/gocv v0.32.1
-	golang.org/x/crypto v0.8.0
-	golang.org/x/oauth2 v0.7.0
-	golang.org/x/sys v0.7.0
-	google.golang.org/api v0.119.0
-	google.golang.org/grpc v1.54.0
-	google.golang.org/protobuf v1.30.0
-	tailscale.com v1.38.4
+	gocv.io/x/gocv v0.33.0
+	golang.org/x/crypto v0.11.0
+	golang.org/x/oauth2 v0.10.0
+	golang.org/x/sys v0.10.0
+	google.golang.org/api v0.131.0
+	google.golang.org/grpc v1.56.2
+	google.golang.org/protobuf v1.31.0
+	tailscale.com v1.44.0
 )
 
 require (
-	cloud.google.com/go/compute v1.19.1 // indirect
+	cloud.google.com/go/compute v1.21.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
@@ -39,31 +39,30 @@ require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
 	github.com/centrifugal/protocol v0.10.0 // indirect
-	github.com/frankban/quicktest v1.14.3 // indirect
 	github.com/fxamacker/cbor/v2 v2.4.0 // indirect
 	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/s2a-go v0.1.2 // indirect
+	github.com/google/s2a-go v0.1.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect
-	github.com/googleapis/gax-go/v2 v2.8.0 // indirect
+	github.com/googleapis/enterprise-certificate-proxy v0.2.5 // indirect
+	github.com/googleapis/gax-go/v2 v2.12.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hdevalence/ed25519consensus v0.1.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/josharian/native v1.1.1-0.20230202152459-5c7d0dd6ab86 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
-	github.com/jsimonetti/rtnetlink v1.3.2 // indirect
-	github.com/klauspost/compress v1.16.5 // indirect
-	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
+	github.com/jsimonetti/rtnetlink v1.3.4 // indirect
+	github.com/klauspost/compress v1.16.7 // indirect
+	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/mdlayher/netlink v1.7.1 // indirect
-	github.com/mdlayher/socket v0.4.0 // indirect
-	github.com/mholt/acmez v1.1.0 // indirect
-	github.com/miekg/dns v1.1.53 // indirect
+	github.com/mdlayher/netlink v1.7.2 // indirect
+	github.com/mdlayher/socket v0.4.1 // indirect
+	github.com/mholt/acmez v1.2.0 // indirect
+	github.com/miekg/dns v1.1.55 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/nats-io/nats-server/v2 v2.8.4 // indirect
 	github.com/nats-io/nkeys v0.4.4 // indirect
@@ -74,19 +73,20 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
+	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	go.uber.org/atomic v1.10.0 // indirect
+	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.2.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go4.org/mem v0.0.0-20220726221520-4f986261bf13 // indirect
 	go4.org/netipx v0.0.0-20230303233057-f1b76eb4bb35 // indirect
-	golang.org/x/exp v0.0.0-20230420155640-133eef4313cb // indirect
-	golang.org/x/mod v0.10.0 // indirect
-	golang.org/x/net v0.9.0 // indirect
-	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/text v0.9.0 // indirect
-	golang.org/x/tools v0.8.0 // indirect
+	golang.org/x/exp v0.0.0-20230713183714-613f0c0eb8a1 // indirect
+	golang.org/x/mod v0.12.0 // indirect
+	golang.org/x/net v0.12.0 // indirect
+	golang.org/x/sync v0.3.0 // indirect
+	golang.org/x/text v0.11.0 // indirect
+	golang.org/x/tools v0.11.0 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230717213848-3f92550aa753 // indirect
 )

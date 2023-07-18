@@ -1,21 +1,27 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"net/url"
 )
 
 func main() {
-	m := http.NewServeMux()
-	m.Handle("/", &Foo{})
-	_ = http.ListenAndServe(":8080", m)
-}
+	var urls []url.URL
+	urls = append(urls, url.URL{
+		Host: "foo",
+	})
+	urls = append(urls, url.URL{
+		Host: "bar",
+	})
+	urls = append(urls, url.URL{
+		Host: "baz",
+	})
 
-type Foo struct{}
+	var urls2 []*url.URL
 
-func (f *Foo) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
-	vals := r.URL.Query()
+	for _, u := range urls {
+		ur := u
+		urls2 = append(urls2, &ur)
+	}
 
-	foo := vals["plugin"]
-	fmt.Println(foo)
+	println("foo")
 }
