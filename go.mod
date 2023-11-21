@@ -42,7 +42,7 @@ require (
 	github.com/centrifugal/protocol v0.11.0 // indirect
 	github.com/dblohm7/wingoes v0.0.0-20231025182615-65d8b4b5428f // indirect
 	github.com/fxamacker/cbor/v2 v2.5.0 // indirect
-	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
+	github.com/go-jose/go-jose/v3 v3.0.1 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
