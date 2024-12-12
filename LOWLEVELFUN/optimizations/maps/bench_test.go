@@ -7,7 +7,7 @@ import (
 func Benchmark_Fun(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		fun(i)
+		fun()
 	}
 	b.ResetTimer()
 }
@@ -15,7 +15,7 @@ func Benchmark_Fun(b *testing.B) {
 func Benchmark_NotFun(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		notfun(i)
+		notfun()
 	}
 	b.ResetTimer()
 }

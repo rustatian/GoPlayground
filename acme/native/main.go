@@ -72,7 +72,7 @@ func main() {
 
 	_, err = client.Register(context.Background(), &acme.Account{
 		URI:                    "",
-		Contact:                []string{"govnomulo@mail.ru"},
+		Contact:                []string{""},
 		Status:                 "",
 		OrdersURL:              "",
 		AgreedTerms:            "",

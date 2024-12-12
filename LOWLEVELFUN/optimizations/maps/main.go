@@ -29,19 +29,19 @@ func main() {
 //	fmt.Println(m)
 //}
 
-//func fun() {
-//	bt := []byte{'a', 'b', 'c'}
-//	m := make(map[string]int, 10)
-//
-//	m[string(bt[0])] = 1
-//}
+func fun() {
+	bt := []byte{'a', 'b', 'c'}
+	m := make(map[string]int, 10)
 
-//func notfun() {
-//	bt := []byte{'a', 'b', 'c'}
-//	m := make(map[string]int, 10)
-//	tmp := string(bt[0])
-//	m[tmp] = 1
-//}
+	m[string(bt[0])] = 1
+}
+
+func notfun() {
+	bt := []byte{'a', 'b', 'c'}
+	m := make(map[string]int, 10)
+	tmp := string(bt[0])
+	m[tmp] = 1
+}
 
 //pcdata  $2, $1
 //leaq    type.map[string]int(SB), AX

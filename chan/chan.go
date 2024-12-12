@@ -26,7 +26,6 @@ func Launch(j int) {
 }
 
 func main() {
-
 	var wg sync.WaitGroup
 	wg.Add(10)
 
