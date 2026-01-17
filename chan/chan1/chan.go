@@ -18,7 +18,6 @@ func Setup() (receiver chan int) {
 //}
 
 func Launch(j int) {
-
 	for i := 0; i < j; i++ {
 		receiver <- i
 	}

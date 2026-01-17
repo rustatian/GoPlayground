@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"sort"
 	"sync"
 )
 
@@ -83,4 +84,34 @@ func main() {
 	}
 
 	wg.Wait()
+}
+
+
+func groupAnagrams(strs []string) [][]string {
+    hm := make(map[string][]string)
+
+    for _, str := range strs {
+        orig := str
+        sort.Slice([]byte(str), func(i, j int) bool {
+            return str[i] < str[j]
+        })
+        if _, ok := hm[str]; ok {
+            hm[str] = append(hm[str], orig)
+        } else {
+            hm[str] = make([]string, 0, 10)
+            hm[str] = append(hm[str], orig)
+        }
+    }
+
+    res := make([][]string, 0, 10)
+    for _, v := range hm {
+        interm := make([]string, 0, 10)
+        for _, vv := range v {
+            interm = append(interm, vv)
+        } 
+
+        res = append(res, interm)
+    }
+
+    return res
 }
