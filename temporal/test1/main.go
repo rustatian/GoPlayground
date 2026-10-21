@@ -32,6 +32,7 @@ func main() {
 
 	options := client.Options{
 		Interceptors: []interceptor.ClientInterceptor{tracingInterceptor},
+		WorkerHeartbeatInterval: ,
 	}
 
 	// The client and worker are heavyweight objects that should be created once per process.
